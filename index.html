@@ -86,4 +86,152 @@ body.light .toast{background:#111;color:white}
     <div class="logo">SABI<span>•</span> MOTI</div>
     <div class="top-btns">
       <button class="install-btn" id="installBtn" onclick="instaloApp()">⬇ INSTALO</button>
-     
+      <button class="mode-btn" id="modeBtn" onclick="ndryshoMode()">🌙</button>
+      <div class="vip-badge">★ VIP PRO</div>
+    </div>
+  </div>
+  <div class="by-sabi">BY <b>SABI</b></div>
+  <div class="search">
+    <input id="cityInput" placeholder="Kërko qytetin..." value="Tiranë" onkeydown="if(event.key==='Enter') kerko()">
+    <button class="btn-gold" onclick="kerko()">KËRKO</button>
+    <button class="btn-white" onclick="gps()">📍</button>
+  </div>
+  <div id="appContent"><div class="loading">Duke ngarkuar SABI VIP...</div></div>
+  <div class="footer">SABI VIP APP • BY <b>SABI</b> • © 2026</div>
+</div>
+<div class="toast" id="toast">SABI • App u instalua me sukses ✅</div>
+
+<script>
+// --- PWA: Manifest + Ikonë SABI + Service Worker automatik ---
+const iconSVG = `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><rect width="512" height="512" rx="110" fill="#0a0a0f"/><circle cx="256" cy="200" r="90" fill="#FFD700"/><text x="256" y="360" text-anchor="middle" font-family="Arial" font-weight="900" font-size="110" fill="white">SABI</text><text x="256" y="410" text-anchor="middle" font-family="Arial" font-size="32" fill="#FFD700" letter-spacing="8">MOTI VIP</text></svg>`;
+const iconURL = 'data:image/svg+xml,'+encodeURIComponent(iconSVG);
+const manifest = {name:"SABI MOTI VIP", short_name:"SABI", description:"Moti VIP by Sabi", start_url:".", display:"standalone", background_color:"#0a0a0f", theme_color:"#0a0a0f", icons:[{src:iconURL,sizes:"512x512",type:"image/svg+xml",purpose:"any maskable"}]};
+const manifestBlob = new Blob([JSON.stringify(manifest)],{type:'application/json'});
+const manifestURL = URL.createObjectURL(manifestBlob);
+const link = document.createElement('link'); link.rel='manifest'; link.href=manifestURL; document.head.appendChild(link);
+const appleIcon = document.createElement('link'); appleIcon.rel='apple-touch-icon'; appleIcon.href=iconURL; document.head.appendChild(appleIcon);
+let deferredPrompt=null;
+window.addEventListener('beforeinstallprompt', e=>{ e.preventDefault(); deferredPrompt=e; document.getElementById('installBtn').style.display='block'; });
+function instaloApp(){ if(deferredPrompt){ deferredPrompt.prompt(); deferredPrompt.userChoice.then(r=>{ if(r.outcome==='accepted') tregoToast(); deferredPrompt=null; }); } else { tregoToast('Për ta instaluar: Share → Add to Home Screen'); } }
+function tregoToast(msg){ const t=document.getElementById('toast'); if(msg) t.innerText=msg; t.style.display='block'; setTimeout(()=>t.style.display='none',3000); }
+// Service Worker minimal për offline
+if('serviceWorker' in navigator){
+  const swCode = `self.addEventListener('fetch',e=>{e.respondWith(fetch(e.request).catch(()=>new Response('SABI Offline'))})`;
+  const swBlob = new Blob([swCode],{type:'text/javascript'});
+  navigator.serviceWorker.register(URL.createObjectURL(swBlob)).catch(()=>{});
+}
+
+// --- DARK / LIGHT MODE ---
+let dark = localStorage.getItem('sabi-mode')!=='light';
+function aplikoMode(){ document.body.classList.toggle('light',!dark); document.getElementById('modeBtn').innerText = dark ? '🌙' : '☀️'; document.querySelector('meta[name="theme-color"]').content = dark ? '#0a0a0f' : '#f2f2f7'; }
+function ndryshoMode(){ dark=!dark; localStorage.setItem('sabi-mode', dark?'dark':'light'); aplikoMode(); }
+if(localStorage.getItem('sabi-mode')==='light') dark=false; aplikoMode();
+
+// --- APP LOGJIKA ---
+let chart=null, teDhenat=null;
+const ditet=["E Die","E Hën","E Mar","E Mër","E Enj","E Pre","E Sht"];
+const ditetPlot=["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"];
+const muajt=["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
+const FOTO={
+  diell:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1200&q=80",
+  re:"https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1200&q=80",
+  shi:"https://images.unsplash.com/photo-1428592953211-077101b2021b?w=1200&q=80",
+  bore:"https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=1200&q=80",
+  stuhi:"https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?w=1200&q=80",
+  mjegull:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d?w=1200&q=80",
+  nate:"https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1200&q=80"
+};
+function emoji(k){ if(k===0) return "☀️"; if(k===1||k===2) return "🌤️"; if(k===3) return "☁️"; if(k===45||k===48) return "🌫️"; if(k>=51&&k<=57) return "🌦️"; if(k>=61&&k<=67) return "🌧️"; if(k>=71&&k<=77) return "❄️"; if(k>=80&&k<=82) return "🌧️"; if(k>=95) return "⛈️"; return "🌤️"; }
+function pershkrimi(k){ if(k===0) return "Diell i plotë"; if(k===1) return "Pjesërisht me diell"; if(k===2) return "Pak re"; if(k===3) return "Me re"; if(k===45||k===48) return "Mjegull"; if(k>=51&&k<=57) return "Shi i lehtë"; if(k>=61&&k<=67) return "Shi"; if(k>=71&&k<=77) return "Borë"; if(k>=80&&k<=82) return "Shi i fortë"; if(k>=95) return "Stuhi"; return "Mot i ndryshueshëm"; }
+
+async function merrMotin(lat,lon,emri){
+  document.getElementById('appContent').innerHTML='<div class="loading">Duke ngarkuar...</div>';
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&hourly=temperature_2m,weather_code,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,weather_code&timezone=auto&forecast_days=7`;
+  const res=await fetch(url); const d=await res.json(); teDhenat=d;
+  const ora=new Date(d.current.time).getHours();
+  let foto=FOTO.diell;
+  if(ora>=20||ora<6) foto=FOTO.nate;
+  else if(d.current.weather_code===0) foto=FOTO.diell;
+  else if(d.current.weather_code<=3) foto=FOTO.re;
+  else if(d.current.weather_code>=45&&d.current.weather_code<=48) foto=FOTO.mjegull;
+  else if(d.current.weather_code>=71&&d.current.weather_code<=77) foto=FOTO.bore;
+  else if(d.current.weather_code>=95) foto=FOTO.stuhi;
+  else if(d.current.weather_code>=51) foto=FOTO.shi;
+  document.getElementById('bg').style.backgroundImage=`url(${foto})`;
+  if(!dark) document.getElementById('bg').style.opacity='0.35';
+
+  let start=d.hourly.time.findIndex(t=>new Date(t)>=new Date(d.current.time)); if(start<0) start=0;
+  let hourly='';
+  for(let i=start;i<Math.min(start+18,d.hourly.time.length);i++){
+    const dt=new Date(d.hourly.time[i]);
+    hourly+=`<div class="hour ${i===start?'now':''}"><div style="font-size:11px">${dt.getHours()}:00</div><div class="emoji">${emoji(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:10px;opacity:.7">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div></div>`;
+  }
+  let days='';
+  d.daily.time.forEach((t,i)=>{
+    const dt=new Date(t+'T12:00:00');
+    days+=`<div class="card day ${i===0?'active':''}" onclick="zgjidh(${i},this)">
+      <div class="left"><b>${i===0?'SOT':ditet[dt.getDay()]}</b><span>${dt.getDate()} ${muajt[dt.getMonth()]}</span></div>
+      <div class="emoji2">${emoji(d.daily.weather_code[i])}</div>
+      <div class="mid">${pershkrimi(d.daily.weather_code[i])}<div class="bar"><i style="width:${d.daily.precipitation_probability_max[i]||0}%"></i></div><span style="font-size:11px">🌧️ ${d.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h</span></div>
+      <div class="temp"><b>${Math.round(d.daily.temperature_2m_max[i])}°</b> <span style="opacity:.7">${Math.round(d.daily.temperature_2m_min[i])}°</span></div>
+    </div>`;
+  });
+
+  document.getElementById('appContent').innerHTML=`
+  <div class="hero">
+    <div class="city">📍 ${emri}</div>
+    <div class="date">${ditetPlot[new Date(d.current.time).getDay()]} • ${new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})} • BY SABI</div>
+    <div class="big">${Math.round(d.current.temperature_2m)}<small>°C</small></div>
+    <div class="cond">${emoji(d.current.weather_code)} ${pershkrimi(d.current.weather_code)}</div>
+    <div class="feel">Ndjehet si ${Math.round(d.current.apparent_temperature)}° • Max ${Math.round(d.daily.temperature_2m_max[0])}° / Min ${Math.round(d.daily.temperature_2m_min[0])}°</div>
+  </div>
+  <div class="card"><div class="card-title">Orë për Orë <span>Sot • BY SABI</span></div><div class="hourly">${hourly}</div></div>
+  <div class="stats">
+    <div class="stat"><div class="ic">💨</div><div><b>${Math.round(d.current.wind_speed_10m)} km/h</b><span>Era</span></div></div>
+    <div class="stat"><div class="ic">💧</div><div><b>${d.current.relative_humidity_2m}%</b><span>Lagështia</span></div></div>
+    <div class="stat"><div class="ic">🌡️</div><div><b>${Math.round(d.current.pressure_msl)} hPa</b><span>Presioni</span></div></div>
+    <div class="stat"><div class="ic">🌧️</div><div><b>${d.daily.precipitation_probability_max[0]||0}%</b><span>Mundësia shi</span></div></div>
+    <div class="stat"><div class="ic">🌅</div><div><b>${d.daily.sunrise[0].slice(11,16)}</b><span>Lindja e diellit</span></div></div>
+    <div class="stat"><div class="ic">🌇</div><div><b>${d.daily.sunset[0].slice(11,16)}</b><span>Perëndimi</span></div></div>
+  </div>
+  <div class="card" style="margin-top:12px"><div class="card-title">Grafik Temperatura • 7 Ditë <span>BY SABI</span></div><div class="chart-wrap"><canvas id="grafiku"></canvas></div><div class="legend"><span><i class="dot" style="background:#FFD700"></i> Max</span><span><i class="dot" style="background:#38BDF8"></i> Min</span></div></div>
+  <div style="margin-top:16px;font-weight:800;font-size:14px">Parashikimi 7 Ditë</div>
+  <div class="days">${days}</div>
+  <div id="detaje" class="card detail"></div>
+  `;
+  zgjidh(0, document.querySelector('.day'));
+  vizatoGrafik(d);
+}
+function vizatoGrafik(d){
+  const ctx=document.getElementById('grafiku').getContext('2d');
+  if(chart) chart.destroy();
+  const isLight = !dark;
+  chart=new Chart(ctx,{
+    type:'line',
+    data:{
+      labels:d.daily.time.map(t=>{const dt=new Date(t+'T12:00:00');return ditet[dt.getDay()]}),
+      datasets:[
+        {label:'Max',data:d.daily.temperature_2m_max,[STRIPPED]
+        {label:'Min',data:d.daily.temperature_2m_min,[STRIPPED]
+      ]
+    },
+    options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{color:isLight?'rgba(0,0,0,.08)':'rgba(255,255,255,.08)'},ticks:{color:isLight?'#111':'white'}},y:{grid:{color:isLight?'rgba(0,0,0,.08)':'rgba(255,255,255,.08)'},ticks:{color:isLight?'#555':'rgba(255,255,255,.8)',callback:v=>v+'°'}}}}
+  });
+}
+function zgjidh(i,el){
+  document.querySelectorAll('.day').forEach(c=>c.classList.remove('active')); if(el) el.classList.add('active');
+  const d=teDhenat; const dt=new Date(d.daily.time[i]+'T12:00:00');
+  document.getElementById('detaje').innerHTML=`<b>${i===0?'SOT - ':''}${ditetPlot[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]}</b><p>${emoji(d.daily.weather_code[i])} ${pershkrimi(d.daily.weather_code[i])}<br>🌡️ Max ${Math.round(d.daily.temperature_2m_max[i])}° / Min ${Math.round(d.daily.temperature_2m_min[i])}° • 🌧️ ${d.daily.precipitation_probability_max[i]||0}% shi • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h<br>🌅 ${d.daily.sunrise[i].slice(11,16)} • 🌇 ${d.daily.sunset[i].slice(11,16)}</p>`;
+}
+async function kerko(){
+  const q=document.getElementById('cityInput').value; if(!q) return;
+  const res=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`);
+  const data=await res.json();
+  if(data.results?.length>0){const r=data.results[0]; merrMotin(r.latitude,r.longitude,r.name+', '+(r.country||''));}
+  else alert('Qyteti nuk u gjet!');
+}
+function gps(){ navigator.geolocation.getCurrentPosition(p=>merrMotin(p.coords.latitude,p.coords.longitude,'Vendndodhja Ime'),()=>alert('Lejo GPS')); }
+merrMotin(41.3275,19.8187,'Tiranë, Shqipëri');
+</script>
+</body>
+</html>
