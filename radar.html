@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SABIMOTI LIVE RADAR</title>
+<link rel="icon" href="icon.png">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{background:#0a0a0f;color:#fff}
+.app{max-width:480px;margin:0 auto;padding:14px 14px 30px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:18px}.logo img{width:44px;height:44px;border-radius:12px;border:2px solid #FFD700;object-fit:cover}.logo span{color:#FFD700}
+.vip{background:#FFD700;color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
+.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.6;margin-top:6px}.by b{color:#FFD700}
+.card{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.2);border-radius:20px;padding:14px;margin-top:12px}
+.card h3{font-size:13px;margin-bottom:10px}
+.map-box{width:100%;height:380px;border-radius:18px;overflow:hidden;border:2px solid #FFD700;position:relative;background:#111}
+.map-box iframe{width:100%;height:100%;border:none}
+.live-dot{width:10px;height:10px;background:#ef4444;border-radius:50%;display:inline-block;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.2}}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.btn-grid button{border:none;padding:12px;border-radius:13px;font-weight:800;cursor:pointer}
+.gold{background:#FFD700}.white{background:#fff}.red{background:#ef4444;color:#fff}.blue{background:#0ea5e9;color:#fff}
+.legend{display:flex;gap:8px;flex-wrap:wrap;font-size:11px;margin-top:10px}.legend span{padding:5px 10px;border-radius:100px;font-weight:700}
+.rrufe-item{display:flex;justify-content:space-between;align-items:center;padding:11px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}.rrufe-item:last-child{border:none}
+.back{width:100%;margin-top:14px;background:#fff;color:#000;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;padding:11px 16px;border-radius:100px;font-weight:800;font-size:13px;display:none;z-index:99}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top"><div class="logo"><img src="icon.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1163/1163661.png'">SABI<span>•</span> MOTI</div><div class="vip">★ LIVE</div></div>
+<div class="by">BY <b>SABI</b> • LIVE RADAR</div>
+
+<div class="card">
+<h3><span class="live-dot"></span> 📡 RADAR LIVE - Ku është shiu TANI?</h3>
+<p style="font-size:12px;opacity:.7;margin-bottom:10px">Blu = Shi i lehtë &nbsp;•&nbsp; E verdhë = Shi i fortë &nbsp;•&nbsp; E kuqe = Stuhi</p>
+<div class="map-box">
+<!-- HARTA LIVE E SHIUT - REAL, NGA RAINVIEWER -->
+<iframe src="https://www.rainviewer.com/map.html?loc=41.3275,19.8187,7&oFa=0&oC=1&oU=0&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1&hu=0" loading="lazy"></iframe>
+</div>
+<div class="legend">
+<span style="background:#0ea5e9">🌧️ Shi i lehtë</span>
+<span style="background:#facc15;color:#000">🌧️ Shi mesatar</span>
+<span style="background:#ef4444">⛈️ Shi i fortë</span>
+<span style="background:#7c3aed">🌪️ Stuhi</span>
+</div>
+<div class="btn-grid">
+<button class="gold" onclick="rifreskoRadar()">🔄 Rifresko Radarin</button>
+<button class="white" onclick="hapFull()">🗺️ Hap Hartën Plot</button>
+</div>
+</div>
+
+<div class="card">
+<h3>⚡ RRUFE & STUHI LIVE - Shqipëri</h3>
+<div id="rrufeList"><p style="font-size:12px;opacity:.7">Duke ngarkuar të dhënat live...</p></div>
+<button class="red" onclick="kontrollRrufe()" style="width:100%;margin-top:10px;padding:12px;border:none;border-radius:13px;font-weight:800;cursor:pointer;background:#ef4444;color:#fff">⚡ Kontrollo Rrufetë Tani</button>
+</div>
+
+<div class="card">
+<h3>🌍 Tërmete LIVE - Shqipëri & Rajon</h3>
+<div id="termteList"><p style="font-size:12px;opacity:.7">Duke ngarkuar...</p></div>
+<button class="blue" onclick="merrTermetet()" style="width:100%;margin-top:10px;padding:12px;border:none;border-radius:13px;font-weight:800;cursor:pointer;background:#0ea5e9;color:#fff">🌍 Rifresko Tërmetet</button>
+</div>
+
+<div class="card">
+<h3>🏆 Qytetet Më Të Nxehta Sot - LIVE</h3>
+<div id="topQytete"><p style="font-size:12px;opacity:.7">Duke llogaritur...</p></div>
+</div>
+
+<button class="back" onclick="location.href='index.html'">↩ Kthehu te Moti</button>
+<div style="text-align:center;font-size:10px;opacity:.5;margin-top:16px;letter-spacing:2px">SABIMOTI LIVE • BY <b>SABI</b> • © 2026</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+function toast(t){const e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',3000)}
+function rifreskoRadar(){ const f=document.querySelector('iframe'); f.src=f.src; toast('🔄 Radari u rifreskua!'); }
+function hapFull(){ window.open('https://www.rainviewer.com/map.html?loc=41.3275,19.8187,7&layer=radar','_blank'); }
+
+// RRUFE - nga moti real, nese ka stuhi ne ndonje qytet
+async function kontrollRrufe(){
+  document.getElementById('rrufeList').innerHTML='<p style="font-size:12px;opacity:.7">Duke kontrolluar...</p>';
+  const qytete=[{n:'Tiranë',lat:41.3275,lon:19.8187},{n:'Durrës',lat:41.3246,lon:19.4565},{n:'Vlorë',lat:40.7167,lon:19.5667},{n:'Shkodër',lat:42.0667,lon:19.5},{n:'Korçë',lat:40.6186,lon:20.7808},{n:'Prishtinë',lat:42.65,lon:21.15}];
+  let html='';
+  for(let q of qytete){
+    try{
+      const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${q.lat}&longitude=${q.lon}&current=weather_code,temperature_2m,wind_speed_10m&timezone=auto`);
+      const d=await r.json(); const k=d.current.weather_code;
+      let status='', icon='';
+      if(k>=95){ status='⛈️ STUHI + RRUFE AKTIVE!'; icon='⚡⚡'; }
+      else if(k>=61){ status='🌧️ Shi i fortë - Mundësi rrufeje'; icon='🌧️'; }
+      else if(k===0){ status='☀️ Pa rrufe - Diell'; icon='☀️'; }
+      else { status='☁️ Pa rrufe'; icon='☁️'; }
+      html+=`<div class="rrufe-item"><span>${icon} <b>${q.n}</b> • ${Math.round(d.current.temperature_2m)}°</span><span style="font-size:11px;font-weight:700">${status}</span></div>`;
+    }catch(e){ html+=`<div class="rrufe-item"><span><b>${q.n}</b></span><span>Pa të dhëna</span></div>`; }
+  }
+  document.getElementById('rrufeList').innerHTML=html;
+  toast('⚡ Rrufetë u kontrolluan!');
+}
+
+// TERmete LIVE - API real USGS
+async function merrTermetet(){
+  document.getElementById('termteList').innerHTML='<p style="font-size:12px;opacity:.7">Duke ngarkuar...</p>';
+  try{
+    const r=await fetch('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_day.geojson');
+    const j=await r.json();
+    // Filtro vetem afer Shqiperise (Ballkan)
+    const afer=j.features.filter(f=> f.geometry.coordinates[1]>38 && f.geometry.coordinates[1]<47 && f.geometry.coordinates[0]>12 && f.geometry.coordinates[0]<28).slice(0,5);
+    if(afer.length===0){
+      document.getElementById('termteList').innerHTML='<div class="rrufe-item"><span>✅ <b>Asnjë tërmet sot në rajon</b></span><span style="color:#22c55e;font-weight:800">QETË</span></div><div class="rrufe-item"><span>🌍 Tërmeti më i madh sot në botë</span><span><b>'+j.features[0].properties.mag+' M</b> • '+j.features[0].properties.place+'</span></div>';
+    } else {
+      document.getElementById('termteList').innerHTML = afer.map(f=>`<div class="rrufe-item"><span>🌍 <b>${f.properties.mag} M</b> • ${f.properties.place}</span><span style="font-size:11px">${new Date(f.properties.time).toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})}</span></div>`).join('');
+    }
+  }catch(e){ document.getElementById('termteList').innerHTML='<p>Nuk u ngarkuan. Provo prapë.</p>'; }
+}
+
+// TOP QYTETE - temp real
+async function topQytete(){
+  const qytete=[{n:'Tiranë',lat:41.3275,lon:19.8187},{n:'Durrës',lat:41.3246,lon:19.4565},{n:'Vlorë',lat:40.7167,lon:19.5667},{n:'Shkodër',lat:42.0667,lon:19.5},{n:'Elbasan',lat:41.11,lon:20.08},{n:'Prishtinë',lat:42.65,lon:21.15}];
+  let rez=[];
+  for(let q of qytete){
+    try{ const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${q.lat}&longitude=${q.lon}&current=temperature_2m,weather_code&timezone=auto`); const d=await r.json(); rez.push({n:q.n, t:Math.round(d.current.temperature_2m), k:d.current.weather_code}); }catch(e){}
+  }
+  rez.sort((a,b)=>b.t-a.t);
+  const em={0:'☀️',1:'🌤️',2:'🌤️',3:'☁️',61:'🌧️',95:'⛈️'};
+  document.getElementById('topQytete').innerHTML = rez.map((q,i)=>`<div class="rrufe-item"><span>${i===0?'🥇':i===1?'🥈':i===2?'🥉':'•'} <b>${q.n}</b></span><span>${em[q.k]||'🌤️'} <b>${q.t}°C</b></span></div>`).join('');
+}
+kontrollRrufe(); merrTermetet(); topQytete();
+</script>
+</body>
+</html>
