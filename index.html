@@ -3,121 +3,189 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Moti 7 Ditë - Tiranë</title>
+<title>MOTI PREMIUM | 7 Ditë + Orë për Orë</title>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
-  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
-  body{background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);color:white;min-height:100vh;padding:20px}
-  .container{max-width:900px;margin:auto}
-  h1{text-align:center;font-size:28px;margin-bottom:5px}
-  p.sub{text-align:center;opacity:.8;margin-bottom:20px}
-  .search{display:flex;gap:10px;justify-content:center;margin-bottom:25px;flex-wrap:wrap}
-  input{padding:12px 16px;border-radius:30px;border:none;outline:none;width:260px;font-size:15px;color:#333}
-  button{padding:12px 22px;border-radius:30px;border:none;background:#ffcc00;font-weight:bold;cursor:pointer;font-size:15px}
-  button:hover{background:#ffd83d}
-  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
-  .card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:20px;padding:18px 10px;text-align:center;border:1px solid rgba(255,255,255,.2)}
-  .card.sot{background:#ffcc00;color:#222;transform:scale(1.03)}
-  .card .dita{font-weight:bold;font-size:16px}
-  .card .data{font-size:12px;opacity:.8;margin-bottom:10px}
-  .card .emoji{font-size:42px;margin:8px 0}
-  .card .temp{font-size:20px;font-weight:bold}
-  .card .minmax{font-size:13px;opacity:.9}
-  .card .detaje{font-size:12px;margin-top:10px;line-height:1.6;opacity:.9}
-  .loading{text-align:center;margin-top:30px;font-size:18px}
-  .footer{text-align:center;margin-top:25px;font-size:12px;opacity:.6}
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Plus Jakarta Sans',sans-serif}
+body{min-height:100vh;color:white;transition:background 1s ease;background-size:cover;background-position:center;background-attachment:fixed}
+body::before{content:'';position:fixed;inset:0;background:linear-gradient(180deg,rgba(0,0,0,.25),rgba(0,0,0,.75));z-index:0}
+.wrap{position:relative;z-index:1;max-width:1100px;margin:auto;padding:22px 16px 40px}
+.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px}
+.logo{font-weight:800;font-size:22px;letter-spacing:-.5px;background:white;color:#111;padding:8px 14px;border-radius:100px}
+.logo span{color:#ff9a00}
+.live{ background:#22c55e;color:white;padding:7px 12px;border-radius:100px;font-size:12px;font-weight:700;display:flex;gap:6px;align-items:center}
+.live i{width:8px;height:8px;background:white;border-radius:50%;display:block;animation:blink 1s infinite}
+@keyframes blink{50%{opacity:.3}}
+.hero{text-align:center;margin:28px 0 20px}
+.hero h1{font-size:clamp(38px,7vw,64px);font-weight:800;line-height:.95;letter-spacing:-1px;text-shadow:0 10px 30px rgba(0,0,0,.5)}
+.hero p{opacity:.9;margin-top:10px;font-size:16px}
+.big-temp{font-size:clamp(80px,15vw,130px);font-weight:800;line-height:1;margin:10px 0}
+.big-temp small{font-size:40px}
+.search-box{background:rgba(255,255,255,.15);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.3);padding:10px;border-radius:100px;display:flex;gap:8px;max-width:620px;margin:20px auto}
+.search-box input{flex:1;background:transparent;border:none;outline:none;color:white;padding:10px 14px;font-size:16px}
+.search-box input::placeholder{color:rgba(255,255,255,.7)}
+.search-box button{border:none;padding:12px 20px;border-radius:100px;font-weight:800;cursor:pointer;background:#ffcc00;color:#111}
+.search-box button.gps{background:white}
+.glass{background:rgba(255,255,255,.14);backdrop-filter:blur(20px);border:1px solid rgba(255,255,255,.25);border-radius:24px;padding:20px}
+.grid-4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+@media(max-width:700px){.grid-4{grid-template-columns:repeat(2,1fr)}}
+.stat{text-align:center}
+.stat b{font-size:22px;display:block}
+.stat span{font-size:12px;opacity:.8;text-transform:uppercase;letter-spacing:.5px}
+h2{font-size:20px;margin:26px 0 12px}
+h2 span{opacity:.7;font-weight:400;font-size:14px}
+.hourly{display:flex;gap:12px;overflow-x:auto;padding-bottom:10px;scrollbar-width:none}
+.hourly::-webkit-scrollbar{display:none}
+.hour-card{min-width:95px;text-align:center;padding:16px 8px}
+.hour-card.now{background:#ffcc00;color:#111}
+.hour-card .emoji{font-size:30px;margin:8px 0}
+.days{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:12px}
+.day-card{cursor:pointer;text-align:center;transition:.2s}
+.day-card:hover{transform:translateY(-4px)}
+.day-card.active{outline:3px solid #ffcc00;background:rgba(255,204,0,.25)}
+.day-card .emoji{font-size:44px;margin:10px 0}
+.bar{height:6px;background:rgba(255,255,255,.25);border-radius:100px;overflow:hidden;margin:10px 0}
+.bar i{display:block;height:100%;background:linear-gradient(90deg,#38bdf8,#ffcc00);border-radius:100px}
+.detail-row{display:flex;justify-content:space-between;font-size:13px;opacity:.9}
+.footer{text-align:center;opacity:.6;font-size:12px;margin-top:30px}
+.loading{text-align:center;padding:40px;font-size:18px}
 </style>
 </head>
-<body>
-<div class="container">
-  <h1>🌤️ Moti 7 Ditë</h1>
-  <p class="sub" id="qyteti">Tiranë, Shqipëri</p>
-
-  <div class="search">
-    <input id="cityInput" type="text" placeholder="Shkruaj qytetin... p.sh Durrës" value="Tiranë">
-    <button onclick="kerkoQytetin()">Kërko</button>
-    <button onclick="merrVendndodhjen()">📍 Vendndodhja Ime</button>
+<body id="bodyBg">
+<div class="wrap">
+  <div class="top">
+    <div class="logo">MOTI<span>•</span> PREMIUM</div>
+    <div class="live"><i></i> LIVE • OPEN-METEO API</div>
   </div>
 
-  <div id="rezultati"><div class="loading">Duke ngarkuar motin...</div></div>
-  <div class="footer">Të dhëna falas nga Open-Meteo • Pa API Key</div>
+  <div class="hero">
+    <p id="qytetiLabel">Tiranë, Shqipëri • <span id="oraLabel"></span></p>
+    <div class="big-temp" id="tempAktuale">--°</div>
+    <h1 id="pershkrimiAktual">Duke ngarkuar...</h1>
+    <p id="ndjenja">Ndjehet si --° • Max --° / Min --°</p>
+  </div>
+
+  <div class="search-box">
+    <input id="cityInput" placeholder="Kërko qytetin... Durrës, Prishtinë, Shkodër..." value="Tiranë" onkeydown="if(event.key==='Enter') kerkoQytetin()">
+    <button onclick="kerkoQytetin()">KËRKO</button>
+    <button class="gps" onclick="merrVendndodhjen()">📍 GPS</button>
+  </div>
+
+  <div id="content"><div class="loading">Duke ngarkuar motin premium...</div></div>
+  <div class="footer">Premium UI • Të dhëna LIVE nga Open-Meteo • Foto ndryshon automatikisht sipas motit • Pa pagesë, pa API Key</div>
 </div>
 
 <script>
-const ditet = ["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"];
-const muajt = ["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
+const ditet=["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"];
+const muajt=["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
+let teDhenat=null, qytetiAktual="Tiranë, Shqipëri";
 
-function emojiMoti(kodi){
-  if(kodi===0) return "☀️";
-  if(kodi===1||kodi===2) return "🌤️";
-  if(kodi===3) return "☁️";
-  if(kodi===45||kodi===48) return "🌫️";
-  if(kodi>=51&&kodi<=57) return "🌦️";
-  if(kodi>=61&&kodi<=67) return "🌧️";
-  if(kodi>=71&&kodi<=77) return "❄️";
-  if(kodi>=80&&kodi<=82) return "🌧️";
-  if(kodi>=95) return "⛈️";
-  return "🌤️";
+const FOTO={
+  diell:"https://images.unsplash.com/photo-1507525428034-b723cf961d3e?w=1600&q=80",
+  re:"https://images.unsplash.com/photo-1534088568595-a066f410bcda?w=1600&q=80",
+  shi:"https://images.unsplash.com/photo-1428592953211-077101b2021b?w=1600&q=80",
+  bore:"https://images.unsplash.com/photo-1418985991508-e47386d96a71?w=1600&q=80",
+  stuhi:"https://images.unsplash.com/photo-1605727216801-e27ce1d0cc28?w=1600&q=80",
+  mjegull:"https://images.unsplash.com/photo-1483664852095-d6cc6870702d?w=1600&q=80",
+  nate:"https://images.unsplash.com/photo-1419242902214-272b3f66ee7a?w=1600&q=80"
+};
+
+function emoji(k){
+  if(k===0) return "☀️"; if(k===1||k===2) return "🌤️"; if(k===3) return "☁️";
+  if(k===45||k===48) return "🌫️"; if(k>=51&&k<=57) return "🌦️";
+  if(k>=61&&k<=67) return "🌧️"; if(k>=71&&k<=77) return "❄️";
+  if(k>=80&&k<=82) return "🌧️"; if(k>=95) return "⛈️"; return "🌤️";
 }
-function pershkrimi(kodi){
-  if(kodi===0) return "Diell";
-  if(kodi===1) return "Pjesërisht me diell";
-  if(kodi===2) return "Pak re";
-  if(kodi===3) return "Me re";
-  if(kodi===45||kodi===48) return "Mjegull";
-  if(kodi>=51&&kodi<=57) return "Shi i lehtë";
-  if(kodi>=61&&kodi<=67) return "Shi";
-  if(kodi>=71&&kodi<=77) return "Borë";
-  if(kodi>=80&&kodi<=82) return "Shi i fortë";
-  if(kodi>=95) return "Stuhi";
-  return "Mot i ndryshueshëm";
+function pershkrimi(k){
+  if(k===0) return "Diell i plotë"; if(k===1) return "Pjesërisht me diell"; if(k===2) return "Pak re";
+  if(k===3) return "Me re"; if(k===45||k===48) return "Mjegull e dendur";
+  if(k>=51&&k<=57) return "Shi i lehtë"; if(k>=61&&k<=67) return "Shi";
+  if(k>=71&&k<=77) return "Borë"; if(k>=80&&k<=82) return "Shi i fortë"; if(k>=95) return "Stuhi me vetëtima"; return "Mot i ndryshueshëm";
+}
+function ndryshoFoton(kodi, ora){
+  let foto=FOTO.diell;
+  if(ora>=20||ora<6) foto=FOTO.nate;
+  else if(kodi===0) foto=FOTO.diell;
+  else if(kodi<=3) foto=FOTO.re;
+  else if(kodi>=45&&kodi<=48) foto=FOTO.mjegull;
+  else if(kodi>=71&&kodi<=77) foto=FOTO.bore;
+  else if(kodi>=95) foto=FOTO.stuhi;
+  else if(kodi>=51) foto=FOTO.shi;
+  document.getElementById('bodyBg').style.backgroundImage=`url(${foto})`;
 }
 
-async function merrMotin(lat, lon, emri){
-  document.getElementById('qyteti').innerText = emri;
-  document.getElementById('rezultati').innerHTML = '<div class="loading">Duke ngarkuar...</div>';
-  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,weathercode&timezone=auto&forecast_days=7`;
-  const res = await fetch(url);
-  const data = await res.json();
-  let html = '<div class="cards">';
-  data.daily.time.forEach((d,i)=>{
-    const date = new Date(d+'T12:00:00');
-    const dita = ditet[date.getDay()];
-    const dataStr = date.getDate()+' '+muajt[date.getMonth()];
-    html += `
-    <div class="card ${i===0?'sot':''}">
-      <div class="dita">${i===0?'SOT - '+dita:dita}</div>
-      <div class="data">${dataStr}</div>
-      <div class="emoji">${emojiMoti(data.daily.weathercode[i])}</div>
-      <div>${pershkrimi(data.daily.weathercode[i])}</div>
-      <div class="temp">${Math.round(data.daily.temperature_2m_max[i])}° / ${Math.round(data.daily.temperature_2m_min[i])}°</div>
-      <div class="detaje">🌧️ ${data.daily.precipitation_probability_max[i]||0}% shi<br>💨 ${Math.round(data.daily.windspeed_10m_max[i])} km/h</div>
+async function merrMotin(lat,lon,emri){
+  qytetiAktual=emri;
+  document.getElementById('qytetiLabel').innerHTML=emri+' • <span id="oraLabel"></span>';
+  document.getElementById('content').innerHTML='<div class="loading">Duke ngarkuar...</div>';
+  const url=`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&hourly=temperature_2m,weather_code,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,weather_code&timezone=auto&forecast_days=7`;
+  const res=await fetch(url); const d=await res.json(); teDhenat=d;
+
+  const oraTani=new Date(d.current.time).getHours();
+  ndryshoFoton(d.current.weather_code, oraTani);
+  document.getElementById('tempAktuale').innerHTML=`${Math.round(d.current.temperature_2m)}<small>°C</small>`;
+  document.getElementById('pershkrimiAktual').innerText=pershkrimi(d.current.weather_code)+' '+emoji(d.current.weather_code);
+  document.getElementById('ndjenja').innerText=`Ndjehet si ${Math.round(d.current.apparent_temperature)}° • Max ${Math.round(d.daily.temperature_2m_max[0])}° / Min ${Math.round(d.daily.temperature_2m_min[0])}° • Lindja ${d.daily.sunrise[0].slice(11,16)} • Perëndimi ${d.daily.sunset[0].slice(11,16)}`;
+  document.getElementById('oraLabel').innerText=new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'});
+
+  // Hourly - 24 orët e ardhshme nga ora aktuale
+  let hourlyHtml='<h2>Orë për Orë <span>• 24 orët e ardhshme</span></h2><div class="hourly">';
+  let startIndex=d.hourly.time.findIndex(t=> new Date(t) >= new Date(d.current.time));
+  if(startIndex<0) startIndex=0;
+  for(let i=startIndex;i<Math.min(startIndex+24,d.hourly.time.length);i++){
+    const dt=new Date(d.hourly.time[i]);
+    hourlyHtml+=`<div class="glass hour-card ${i===startIndex?'now':''}"><div>${dt.getHours()}:00</div><div class="emoji">${emoji(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:12px;opacity:.8">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div></div>`;
+  }
+  hourlyHtml+='</div>';
+
+  let stats=`<div class="glass grid-4">
+    <div class="stat"><b>💨 ${Math.round(d.current.wind_speed_10m)} km/h</b><span>Era</span></div>
+    <div class="stat"><b>💧 ${d.current.relative_humidity_2m}%</b><span>Lagështia</span></div>
+    <div class="stat"><b>🌡️ ${Math.round(d.current.pressure_msl)} hPa</b><span>Presioni</span></div>
+    <div class="stat"><b>🌧️ ${d.daily.precipitation_probability_max[0]||0}%</b><span>Mundësia për shi sot</span></div>
+  </div>`;
+
+  let daysHtml='<h2>Parashikimi 7 Ditë <span>• Kliko një ditë për detaje</span></h2><div class="days">';
+  d.daily.time.forEach((t,i)=>{
+    const dt=new Date(t+'T12:00:00');
+    daysHtml+=`<div class="glass day-card ${i===0?'active':''}" onclick="zgjidhDiten(${i},this)">
+      <div style="font-weight:800">${i===0?'SOT':ditet[dt.getDay()]}</div>
+      <div style="font-size:12px;opacity:.8">${dt.getDate()} ${muajt[dt.getMonth()]}</div>
+      <div class="emoji">${emoji(d.daily.weather_code[i])}</div>
+      <div style="font-size:13px">${pershkrimi(d.daily.weather_code[i])}</div>
+      <b style="font-size:18px">${Math.round(d.daily.temperature_2m_max[i])}° / ${Math.round(d.daily.temperature_2m_min[i])}°</b>
+      <div class="bar"><i style="width:${d.daily.precipitation_probability_max[i]||0}%"></i></div>
+      <div class="detail-row"><span>🌧️ ${d.daily.precipitation_probability_max[i]||0}%</span><span>💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h</span></div>
     </div>`;
   });
-  html += '</div>';
-  document.getElementById('rezultati').innerHTML = html;
+  daysHtml+='</div><div id="detajeDite" style="margin-top:14px"></div>';
+
+  document.getElementById('content').innerHTML=hourlyHtml+stats+daysHtml;
+  zgjidhDiten(0, document.querySelector('.day-card'));
+}
+
+function zgjidhDiten(i, el){
+  document.querySelectorAll('.day-card').forEach(c=>c.classList.remove('active'));
+  if(el) el.classList.add('active');
+  const d=teDhenat; const dt=new Date(d.daily.time[i]+'T12:00:00');
+  document.getElementById('detajeDite').innerHTML=`<div class="glass" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:12px;align-items:center">
+    <div><b style="font-size:18px">${i===0?'Sot - ':''}${ditet[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]}</b><br><span style="opacity:.8">${pershkrimi(d.daily.weather_code[i])} ${emoji(d.daily.weather_code[i])}</span></div>
+    <div style="text-align:right"><b style="font-size:22px">${Math.round(d.daily.temperature_2m_max[i])}° / ${Math.round(d.daily.temperature_2m_min[i])}°</b><br><span style="font-size:13px;opacity:.8">🌅 Lindja ${d.daily.sunrise[i].slice(11,16)} • 🌇 Perëndimi ${d.daily.sunset[i].slice(11,16)} • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h • 🌧️ ${d.daily.precipitation_probability_max[i]||0}%</span></div>
+  </div>`;
 }
 
 async function kerkoQytetin(){
-  const q = document.getElementById('cityInput').value;
-  if(!q) return;
-  const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`);
-  const data = await res.json();
-  if(data.results && data.results.length>0){
-    const r = data.results[0];
-    merrMotin(r.latitude, r.longitude, r.name + ', ' + (r.country||''));
-  } else {
-    alert('Qyteti nuk u gjet!');
-  }
+  const q=document.getElementById('cityInput').value; if(!q) return;
+  const res=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`);
+  const data=await res.json();
+  if(data.results?.length>0){ const r=data.results[0]; merrMotin(r.latitude,r.longitude, r.name+', '+(r.country||'')); }
+  else alert('Qyteti nuk u gjet!');
 }
-
 function merrVendndodhjen(){
-  navigator.geolocation.getCurrentPosition(pos=>{
-    merrMotin(pos.coords.latitude, pos.coords.longitude, 'Vendndodhja Ime');
-  }, ()=> alert('Lejo vendndodhjen në browser'));
+  navigator.geolocation.getCurrentPosition(p=>merrMotin(p.coords.latitude,p.coords.longitude,'Vendndodhja Ime'),()=>alert('Lejo GPS në browser'));
 }
-
-// Ngarkimi fillestar - Tiranë
-merrMotin(41.3275, 19.8187, 'Tiranë, Shqipëri');
+merrMotin(41.3275,19.8187,'Tiranë, Shqipëri');
+setInterval(()=>{ const el=document.getElementById('oraLabel'); if(el) el.innerText=new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'}); },10000);
 </script>
 </body>
 </html>
