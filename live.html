@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SABIMOTI LIVE VIDEO - BY SABI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#0a0a0f;color:#fff;overflow:hidden}
+.app{max-width:480px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;padding:14px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:18px}.logo span{color:#FFD700}
+.vip{background:#FFD700;color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
+.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.6;margin:6px 0}.by b{color:#FFD700}
+
+/* VIDEO SCENA */
+.scene{position:relative;flex:1;border-radius:24px;overflow:hidden;border:2px solid #FFD700;background:linear-gradient(180deg,#1e90ff,#aee3ff);transition:background 1s}
+.scene.diell{background:linear-gradient(180deg,#1e90ff,#ffe27a)}
+.scene.re{background:linear-gradient(180deg,#475569,#94a3b8)}
+.scene.shi{background:linear-gradient(180deg,#1e293b,#475569)}
+.scene.stuhi{background:linear-gradient(180deg,#0f172a,#7f1d1d)}
+.scene.bore{background:linear-gradient(180deg,#0ea5e9,#e0f2fe)}
+.scene.nate{background:linear-gradient(180deg,#020617,#1e1b4b)}
+
+/* Dielli / Hena / Ret */
+.dielli{position:absolute;top:18px;right:20px;width:68px;height:68px;background:#FFD700;border-radius:50%;box-shadow:0 0 40px #FFD700,0 0 80px #FFD700;animation:diellRrot 8s linear infinite}
+@keyframes diellRrot{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.dielli::after{content:'☀️';font-size:44px;position:absolute;top:12px;left:12px}
+.hena{position:absolute;top:18px;right:20px;font-size:54px;display:none;animation:henaLev 3s ease-in-out infinite}
+@keyframes henaLev{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.rete{position:absolute;top:22px;left:-80px;font-size:58px;animation:reLev 14s linear infinite;opacity:.95}
+.rete.r2{top:60px;font-size:42px;animation-duration:20s;animation-delay:3s;opacity:.7}
+@keyframes reLev{to{left:110%}}
+.rrufe{position:absolute;top:0;left:50%;font-size:70px;opacity:0;transform:translateX(-50%);z-index:5}
+.rrufe.show{animation:rrufeBie .6s}
+@keyframes rrufeBie{0%{opacity:0;transform:translateX(-50%) translateY(-20px)}20%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(80px)}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:4;pointer-events:none}
+.flash.show{animation:flash .4s}
+@keyframes flash{0%{opacity:.7}100%{opacity:0}}
+
+/* Toka / Rruga */
+.toka{position:absolute;bottom:0;left:0;right:0;height:78px;background:#2d2d2d;border-top:4px solid #fff;overflow:hidden}
+.toka::after{content:'';position:absolute;top:34px;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,#FFD700 0 30px,transparent 30px 60px);animation:rrugaLev .6s linear infinite}
+@keyframes rrugaLev{to{background-position-x:-60px}}
+.peme{position:absolute;bottom:70px;font-size:42px;animation:pemeLev 4s linear infinite}
+.peme.p2{font-size:34px;animation-duration:5s;animation-delay:1s;bottom:74px}
+@keyframes pemeLev{from{left:110%}to{left:-60px}}
+.shtepi{position:absolute;bottom:70px;font-size:54px;animation:pemeLev 9s linear infinite;opacity:.9}
+
+/* NJERIU - ME CODE */
+.njeriu{position:absolute;bottom:72px;left:50%;transform:translateX(-50%);z-index:10;text-align:center;transition:left .5s}
+.njeriu .trupi{font-size:74px;line-height:1;display:block;animation:ecje .55s ease-in-out infinite}
+.njeriu.ecen .trupi{animation:ecje .55s ease-in-out infinite}
+.njeriu.vrapon .trupi{animation:ecje .22s ease-in-out infinite}
+.njeriu.ndalon .trupi{animation:none}
+@keyframes ecje{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.njeriu .cadra{font-size:82px;position:absolute;top:-62px;left:50%;transform:translateX(-50%) scale(0);transition:transform .4s;z-index:11}
+.njeriu.me-cadra .cadra{transform:translateX(-50%) scale(1)}
+.njeriu.me-cadra .trupi{animation:ecjeCadra .6s ease-in-out infinite}
+@keyframes ecjeCadra{0%,100%{transform:translateY(0)}50%{transform:translateY(-5px)}}
+.njeriu .pika-shiu{position:absolute;top:-10px;left:50%;font-size:20px;opacity:0}
+.njeriu.laget .pika-shiu{animation:laget 1s infinite}
+@keyframes laget{0%{opacity:0;transform:translateY(0)}50%{opacity:1}100%{opacity:0;transform:translateY(20px)}}
+.emri-njeri{position:absolute;top:-92px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:800;white-space:nowrap;border:1px solid #FFD700}
+.emri-njeri b{color:#FFD700}
+.fjala{position:absolute;top:-128px;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:7px 12px;border-radius:14px;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.3);animation:fjalaLev 2s ease-in-out infinite}
+.fjala::after{content:'';position:absolute;bottom:-6px;left:50%;width:12px;height:12px;background:#fff;transform:rotate(45deg)}
+@keyframes fjalaLev{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+
+/* Shi / Bore Canvas */
+canvas{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+
+/* Info poshte videos */
+.info{position:absolute;top:14px;left:14px;right:14px;z-index:20;display:flex;justify-content:space-between;align-items:flex-start;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.info .temp{font-size:52px;font-weight:800;line-height:1}.info .temp small{font-size:22px}
+.info .city{font-size:15px;font-weight:700}.info .cond{font-size:12px;opacity:.9}
+.badge-live{background:#ef4444;color:#fff;font-size:11px;font-weight:800;padding:6px 10px;border-radius:100px;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.statusi{position:absolute;bottom:88px;left:14px;right:14px;z-index:20;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);padding:10px 12px;border-radius:14px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center}
+.statusi b{color:#FFD700}
+
+/* Butonat */
+.controls{margin-top:12px;display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px}
+.controls button{border:none;padding:12px 4px;border-radius:14px;font-weight:800;font-size:12px;cursor:pointer}
+.gold{background:#FFD700}.white{background:#fff}.blue{background:#0ea5e9;color:#fff}.red{background:#ef4444;color:#fff}
+.controls2{margin-top:8px;display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.controls2 button{border:none;padding:12px;border-radius:14px;font-weight:800;cursor:pointer}
+select{width:100%;margin-top:10px;padding:12px;border-radius:14px;border:1px solid #333;background:#111;color:#fff;font-weight:700;outline:none}
+select option{color:#000}
+.footer{text-align:center;font-size:10px;opacity:.5;margin-top:10px;letter-spacing:2px}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top"><div class="logo">SABI<span>•</span> MOTI</div><div class="vip">★ LIVE VIDEO</div></div>
+<div class="by">BY <b>SABI</b> • VIDEO ME CODE • PA FOTO</div>
+
+<!-- VIDEO ME CODE -->
+<div class="scene diell" id="scene">
+  <div class="dielli" id="dielli"></div>
+  <div class="hena" id="hena">🌙</div>
+  <div class="rete" id="re1">☁️</div>
+  <div class="rete r2" id="re2">☁️</div>
+  <div class="rrufe" id="rrufe">⚡</div>
+  <div class="flash" id="flash"></div>
+  <canvas id="canvasShi"></canvas>
+  <div class="peme" id="peme1">🌳</div>
+  <div class="peme p2">🌲</div>
+  <div class="shtepi">🏠</div>
+  <div class="toka"></div>
+
+  <!-- NJERIU -->
+  <div class="njeriu ecen" id="njeriu">
+    <div class="fjala" id="fjala">☀️ Ditë e mirë, po ecën SABI!</div>
+    <div class="emri-njeri">🚶‍♂️ <b>SABI</b></div>
+    <div class="cadra" id="cadra">☂️</div>
+    <div class="pika-shiu">💧</div>
+    <span class="trupi" id="trupi">🚶‍♂️</span>
+  </div>
+
+  <div class="info">
+    <div><div class="city">📍 <span id="qytet">Tiranë</span></div><div class="cond" id="cond">Duke ngarkuar...</div><div class="temp"><span id="temp">--</span><small>°C</small></div></div>
+    <div class="badge-live">● LIVE</div>
+  </div>
+
+  <div class="statusi"><span id="statusiTekst">🚶‍♂️ SABI po ecën...</span><span id="statusiShi">🌧️ 0%</span></div>
+</div>
+
+<!-- KONTROLLI - PROVO TE GJITHA MOTET -->
+<div class="controls">
+<button class="gold" onclick="ndryshoMot('diell')">☀️ Diell</button>
+<button class="white" onclick="ndryshoMot('re')">☁️ Re</button>
+<button class="blue" onclick="ndryshoMot('shi')">🌧️ Shi</button>
+<button class="red" onclick="ndryshoMot('stuhi')">⛈️ Stuhi</button>
+</div>
+<div class="controls2">
+<button class="gold" onclick="ndryshoMot('bore')">❄️ Borë</button>
+<button class="white" onclick="ndryshoMot('nate')">🌙 Natë</button>
+</div>
+
+<select id="qytetSelect" onchange="ndryshoQytet()">
+<option value="41.3275,19.8187,Tiranë">📍 Tiranë - Moti Real</option>
+<option value="41.3246,19.4565,Durrës">📍 Durrës - Moti Real</option>
+<option value="40.7167,19.5667,Vlorë">📍 Vlorë - Moti Real</option>
+<option value="42.0667,19.5,Shkodër">📍 Shkodër - Moti Real</option>
+<option value="42.65,21.15,Prishtinë">📍 Prishtinë - Moti Real</option>
+</select>
+<button onclick="location.href='index.html'" style="width:100%;margin-top:10px;background:#fff;color:#000;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer">↩ Kthehu te Moti 7 Ditë</button>
+<div class="footer">SABIMOTI LIVE VIDEO • BY <b>SABI</b> • © 2026</div>
+</div>
+
+<script>
+let moti='diell', shiIntensitet=0, boreIntensitet=0, lat=41.3275, lon=19.8187, qyteti='Tiranë';
+const canvas=document.getElementById('canvasShi'), ctx=canvas.getContext('2d');
+let W,H,pika=[];
+function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+window.addEventListener('resize',resize); resize();
+function krijoPika(n,lloji){
+  pika=[];
+  for(let i=0;i<n;i++) pika.push({x:Math.random()*W,y:Math.random()*H,v:4+Math.random()*6,s:1+Math.random()*2, lloji});
+}
+function vizato(){
+  ctx.clearRect(0,0,W,H);
+  if(moti==='shi'||moti==='stuhi'){
+    ctx.strokeStyle='rgba(255,255,255,.7)'; ctx.lineWidth=1.5;
+    pika.forEach(p=>{ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-2,p.y+18); ctx.stroke(); p.y+=p.v; p.x-=1; if(p.y>H){p.y=-20;p.x=Math.random()*W;} });
+  }
+  if(moti==='bore'){
+    ctx.fillStyle='#fff';
+    pika.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill(); p.y+=p.v*0.5; p.x+=Math.sin(p.y/20)*0.5; if(p.y>H){p.y=-10;p.x=Math.random()*W;} });
+  }
+  requestAnimationFrame(vizato);
+}
+vizato();
+
+function ndryshoMot(m){
+  moti=m;
+  const scene=document.getElementById('scene');
+  const njeriu=document.getElementById('njeriu');
+  const trupi=document.getElementById('trupi');
+  const fjala=document.getElementById('fjala');
+  const statusi=document.getElementById('statusiTekst');
+  const statusiShi=document.getElementById('statusiShi');
+  scene.className='scene '+m;
+  document.getElementById('dielli').style.display = m==='diell' ? 'block' : 'none';
+  document.getElementById('hena').style.display = m==='nate' ? 'block' : 'none';
+  document.getElementById('re1').style.display = (m==='re'||m==='shi'||m==='stuhi') ? 'block' : 'none';
+  document.getElementById('re2').style.display = (m==='re'||m==='shi'||m==='stuhi') ? 'block' : 'none';
+
+  // RIVENDOS
+  njeriu.className='njeriu ecen';
+  njeriu.classList.remove('me-cadra','laget');
+  document.getElementById('cadra').innerText='☂️';
+
+  if(m==='diell'){
+    trupi.innerText='🚶‍♂️'; fjala.innerText='☀️ Ditë e mirë, po ecën SABI!';
+    statusi.innerText='🚶‍♂️ SABI po ecën ngadalë...'; statusiShi.innerText='☀️ 0% Shi';
+    krijoPika(0);
+  }
+  if(m==='re'){
+    trupi.innerText='🚶‍♂️'; fjala.innerText='☁️ Pak re, por prapë po ecën!';
+    statusi.innerText='🚶‍♂️ SABI po ecën...'; statusiShi.innerText='☁️ 10% Shi';
+    krijoPika(0);
+  }
+  if(m==='shi'){
+    // HAP CADREN, ECEN ME CADRA
+    njeriu.classList.add('me-cadra');
+    trupi.innerText='🚶‍♂️'; fjala.innerText='🌧️ Hapa çadrën! Po bie shi!';
+    statusi.innerText='☂️ SABI hapi çadrën dhe po ecën...'; statusiShi.innerText='🌧️ 70% Shi';
+    krijoPika(80,'shi');
+  }
+  if(m==='stuhi'){
+    // SHUME SHI -> Vrapon + Cadra fluturon + Rrufe
+    njeriu.className='njeriu vrapon me-cadra';
+    trupi.innerText='🏃‍♂️'; fjala.innerText='⛈️ Shumë shi! Po vrapoj SABI!';
+    statusi.innerText='🏃‍♂️ SABI po Vrapon! Stuhi e fortë!'; statusiShi.innerText='⛈️ 95% Shi';
+    krijoPika(180,'shi');
+    // Rrufe cdo 2 sekonda
+    setInterval(()=>{ if(moti!=='stuhi') return; const r=document.getElementById('rrufe'); const f=document.getElementById('flash'); r.classList.remove('show'); f.classList.remove('show'); void r.offsetWidth; r.classList.add('show'); f.classList.add('show'); }, 2200);
+    // Pas 4 sekondash cadra fluturon
+    setTimeout(()=>{ if(moti==='stuhi'){ document.getElementById('cadra').innerText='🌂💨'; fjala.innerText='💨 Era ma mori çadrën!'; njeriu.classList.add('laget'); trupi.innerText='🏃‍♂️💦'; statusi.innerText='💦 SABI u lag! Po vrapon në shtëpi!'; } }, 4000);
+  }
+  if(m==='bore'){
+    trupi.innerText='🚶‍♂️'; fjala.innerText='❄️ Po bie borë! Sa bukur!';
+    statusi.innerText='❄️ SABI po ecën në borë...'; statusiShi.innerText='❄️ Borë';
+    krijoPika(90,'bore');
+  }
+  if(m==='nate'){
+    trupi.innerText='🚶‍♂️'; fjala.innerText='🌙 Natë e qetë, po ecën SABI!';
+    statusi.innerText='🌙 SABI po ecën natën...'; statusiShi.innerText='🌙 Natë';
+    krijoPika(0);
+  }
+}
+
+// MOTI REAL - e lidh videon me motin e vertete
+async function merrMotinReal(){
+  try{
+    const r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,weather_code,precipitation_probability&hourly=precipitation_probability&daily=precipitation_probability_max&timezone=auto&forecast_days=1`);
+    const d=await r.json(); const k=d.current.weather_code; const shi=d.daily.precipitation_probability_max[0]||0;
+    document.getElementById('temp').innerText=Math.round(d.current.temperature_2m);
+    document.getElementById('qytet').innerText=qyteti;
+    let m='diell', txt='Diell';
+    if(d.current.weather_code===0){m='diell';txt='Diell i plotë'}
+    else if(k<=3){m='re';txt='Me re'}
+    else if(k>=71&&k<=77){m='bore';txt='Borë'}
+    else if(k>=95){m='stuhi';txt='Stuhi'}
+    else if(k>=51){m='shi';txt='Shi'}
+    document.getElementById('cond').innerText=txt+' • '+qyteti;
+    document.getElementById('statusiShi').innerText='🌧️ '+shi+'% Shi';
+    ndryshoMot(m);
+  }catch(e){ document.getElementById('cond').innerText='Pa internet - Provo butonat lart'; }
+}
+function ndryshoQytet(){
+  const v=document.getElementById('qytetSelect').value.split(',');
+  lat=parseFloat(v[0]); lon=parseFloat(v[1]); qyteti=v[2]; merrMotinReal();
+}
+ndryshoMot('diell');
+merrMotinReal();
+</script>
+</body>
+</html>
