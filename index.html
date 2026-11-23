@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Moti 7 Ditë - Tiranë</title>
+<style>
+  *{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif}
+  body{background:linear-gradient(180deg,#0f2027,#203a43,#2c5364);color:white;min-height:100vh;padding:20px}
+  .container{max-width:900px;margin:auto}
+  h1{text-align:center;font-size:28px;margin-bottom:5px}
+  p.sub{text-align:center;opacity:.8;margin-bottom:20px}
+  .search{display:flex;gap:10px;justify-content:center;margin-bottom:25px;flex-wrap:wrap}
+  input{padding:12px 16px;border-radius:30px;border:none;outline:none;width:260px;font-size:15px;color:#333}
+  button{padding:12px 22px;border-radius:30px;border:none;background:#ffcc00;font-weight:bold;cursor:pointer;font-size:15px}
+  button:hover{background:#ffd83d}
+  .cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(130px,1fr));gap:14px}
+  .card{background:rgba(255,255,255,.12);backdrop-filter:blur(10px);border-radius:20px;padding:18px 10px;text-align:center;border:1px solid rgba(255,255,255,.2)}
+  .card.sot{background:#ffcc00;color:#222;transform:scale(1.03)}
+  .card .dita{font-weight:bold;font-size:16px}
+  .card .data{font-size:12px;opacity:.8;margin-bottom:10px}
+  .card .emoji{font-size:42px;margin:8px 0}
+  .card .temp{font-size:20px;font-weight:bold}
+  .card .minmax{font-size:13px;opacity:.9}
+  .card .detaje{font-size:12px;margin-top:10px;line-height:1.6;opacity:.9}
+  .loading{text-align:center;margin-top:30px;font-size:18px}
+  .footer{text-align:center;margin-top:25px;font-size:12px;opacity:.6}
+</style>
+</head>
+<body>
+<div class="container">
+  <h1>🌤️ Moti 7 Ditë</h1>
+  <p class="sub" id="qyteti">Tiranë, Shqipëri</p>
+
+  <div class="search">
+    <input id="cityInput" type="text" placeholder="Shkruaj qytetin... p.sh Durrës" value="Tiranë">
+    <button onclick="kerkoQytetin()">Kërko</button>
+    <button onclick="merrVendndodhjen()">📍 Vendndodhja Ime</button>
+  </div>
+
+  <div id="rezultati"><div class="loading">Duke ngarkuar motin...</div></div>
+  <div class="footer">Të dhëna falas nga Open-Meteo • Pa API Key</div>
+</div>
+
+<script>
+const ditet = ["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"];
+const muajt = ["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
+
+function emojiMoti(kodi){
+  if(kodi===0) return "☀️";
+  if(kodi===1||kodi===2) return "🌤️";
+  if(kodi===3) return "☁️";
+  if(kodi===45||kodi===48) return "🌫️";
+  if(kodi>=51&&kodi<=57) return "🌦️";
+  if(kodi>=61&&kodi<=67) return "🌧️";
+  if(kodi>=71&&kodi<=77) return "❄️";
+  if(kodi>=80&&kodi<=82) return "🌧️";
+  if(kodi>=95) return "⛈️";
+  return "🌤️";
+}
+function pershkrimi(kodi){
+  if(kodi===0) return "Diell";
+  if(kodi===1) return "Pjesërisht me diell";
+  if(kodi===2) return "Pak re";
+  if(kodi===3) return "Me re";
+  if(kodi===45||kodi===48) return "Mjegull";
+  if(kodi>=51&&kodi<=57) return "Shi i lehtë";
+  if(kodi>=61&&kodi<=67) return "Shi";
+  if(kodi>=71&&kodi<=77) return "Borë";
+  if(kodi>=80&&kodi<=82) return "Shi i fortë";
+  if(kodi>=95) return "Stuhi";
+  return "Mot i ndryshueshëm";
+}
+
+async function merrMotin(lat, lon, emri){
+  document.getElementById('qyteti').innerText = emri;
+  document.getElementById('rezultati').innerHTML = '<div class="loading">Duke ngarkuar...</div>';
+  const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,windspeed_10m_max,weathercode&timezone=auto&forecast_days=7`;
+  const res = await fetch(url);
+  const data = await res.json();
+  let html = '<div class="cards">';
+  data.daily.time.forEach((d,i)=>{
+    const date = new Date(d+'T12:00:00');
+    const dita = ditet[date.getDay()];
+    const dataStr = date.getDate()+' '+muajt[date.getMonth()];
+    html += `
+    <div class="card ${i===0?'sot':''}">
+      <div class="dita">${i===0?'SOT - '+dita:dita}</div>
+      <div class="data">${dataStr}</div>
+      <div class="emoji">${emojiMoti(data.daily.weathercode[i])}</div>
+      <div>${pershkrimi(data.daily.weathercode[i])}</div>
+      <div class="temp">${Math.round(data.daily.temperature_2m_max[i])}° / ${Math.round(data.daily.temperature_2m_min[i])}°</div>
+      <div class="detaje">🌧️ ${data.daily.precipitation_probability_max[i]||0}% shi<br>💨 ${Math.round(data.daily.windspeed_10m_max[i])} km/h</div>
+    </div>`;
+  });
+  html += '</div>';
+  document.getElementById('rezultati').innerHTML = html;
+}
+
+async function kerkoQytetin(){
+  const q = document.getElementById('cityInput').value;
+  if(!q) return;
+  const res = await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`);
+  const data = await res.json();
+  if(data.results && data.results.length>0){
+    const r = data.results[0];
+    merrMotin(r.latitude, r.longitude, r.name + ', ' + (r.country||''));
+  } else {
+    alert('Qyteti nuk u gjet!');
+  }
+}
+
+function merrVendndodhjen(){
+  navigator.geolocation.getCurrentPosition(pos=>{
+    merrMotin(pos.coords.latitude, pos.coords.longitude, 'Vendndodhja Ime');
+  }, ()=> alert('Lejo vendndodhjen në browser'));
+}
+
+// Ngarkimi fillestar - Tiranë
+merrMotin(41.3275, 19.8187, 'Tiranë, Shqipëri');
+</script>
+</body>
+</html>
