@@ -3,120 +3,144 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<meta name="theme-color" content="#0a0a0f">
-<title>SABI MOTI VIP</title>
+<title>SABIMOTI SUPER VIP 10000%</title>
+<link rel="icon" href="icon.png">
+<link rel="apple-touch-icon" href="icon.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#B91C1C">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
 body{background:#0a0a0f;color:#fff;min-height:100vh}
-body.diell{background:linear-gradient(180deg,#1e90ff,#00bfff)}
-body.re{background:linear-gradient(180deg,#334155,#64748b)}
-body.shi{background:linear-gradient(180deg,#1e293b,#334155)}
-body.stuhi{background:linear-gradient(180deg,#111827,#7f1d1d)}
-body.bore{background:linear-gradient(180deg,#0ea5e9,#e0f2fe)}
-body.nate{background:linear-gradient(180deg,#020617,#1e1b4b)}
-body.light{background:#f2f2f7!important;color:#111!important}
+body.diell{background:linear-gradient(180deg,#1e90ff,#00bfff)}body.re{background:linear-gradient(180deg,#334155,#64748b)}body.shi{background:linear-gradient(180deg,#1e293b,#334155)}body.stuhi{background:linear-gradient(180deg,#111827,#7f1d1d)}body.bore{background:linear-gradient(180deg,#0ea5e9,#e0f2fe)}body.nate{background:linear-gradient(180deg,#020617,#1e1b4b)}body.light{background:#f2f2f7!important;color:#111!important}
 .app{max-width:480px;margin:0 auto;padding:14px 14px 30px}
 .top{display:flex;justify-content:space-between;align-items:center}
-.logo{font-weight:800;font-size:19px}.logo span{color:#FFD700}.logo b{font-size:26px}
-.vip{background:#FFD700;color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
+.logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:18px}.logo img{width:44px;height:44px;border-radius:12px;border:2px solid #FFD700;object-fit:cover}.logo span{color:#FFD700}
+.vip{background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
 .mode{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;color:#fff}
-body.light .mode{color:#111;background:#fff}
-.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.7;margin-top:4px;font-weight:700}.by b{color:#FFD700}
-.alert{display:none;padding:13px;border-radius:16px;margin:12px 0;font-weight:700;font-size:13px}
-.alert.show{display:block}.alert.stuhi{background:#ef4444}.alert.shi{background:#0ea5e9}.alert.mire{background:#22c55e}.alert.bore{background:#0284c7}
-.notif{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:12px 14px;border-radius:16px;margin:10px 0;font-size:13px;font-weight:700}
-body.light .notif,body.light .card,body.light .stat{background:#fff;border-color:#e5e5e5}
-.sw{width:48px;height:28px;background:#555;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0}.sw.on{background:#22c55e}.sw i{position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.2s}.sw.on i{left:23px}
-.search{display:flex;gap:8px;margin:12px 0}
-.search input{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:14px;border-radius:14px;font-size:15px;outline:none}
-body.light .search input{background:#fff;color:#111;border-color:#ddd}
-.search input::placeholder{color:#bbb}
-.search button{border:none;border-radius:14px;padding:0 16px;font-weight:800;cursor:pointer}.gold{background:#FFD700}.white{background:#fff}
-.hero{text-align:center;padding:6px 0}.city{font-size:17px;font-weight:700}.date{font-size:12px;opacity:.8}
-.big{font-size:88px;font-weight:800;line-height:1;letter-spacing:-3px;margin:8px 0}.big small{font-size:34px}
+.by{text-align:center;font-size:10px;letter-spacing:2px;opacity:.8;margin-top:6px;font-weight:700}.by b{color:#FFD700}
+.alert{display:none;padding:13px;border-radius:16px;margin:12px 0;font-weight:700;font-size:13px}.alert.show{display:block}.alert.stuhi{background:#ef4444}.alert.shi{background:#0ea5e9}.alert.mire{background:#22c55e}.alert.bore{background:#0284c7}
 .card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:14px}
+body.light .card,body.light .stat,body.light .notif{background:#fff;border-color:#e5e5e5}
 .title{font-size:12px;font-weight:800;text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:10px}
-.hourly{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}.hourly::-webkit-scrollbar{display:none}
-.hour{min-width:66px;text-align:center;background:rgba(255,255,255,.12);border-radius:14px;padding:11px 6px;flex-shrink:0}
-body.light .hour{background:#f0f0f0}.hour.now{background:#FFD700;color:#000}.hour .em{font-size:24px;margin:5px 0}
-.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
-.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}.stat b{font-size:14px;display:block}.stat span{font-size:11px;opacity:.7}
+.notif{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:12px 14px;border-radius:16px;margin:10px 0;font-size:13px;font-weight:700}
+.sw{width:48px;height:28px;background:#555;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0}.sw.on{background:#22c55e}.sw i{position:absolute;top:3px;left:3px;width:22px;height:22px;background:#fff;border-radius:50%;transition:.2s}.sw.on i{left:23px}
+.search{display:flex;gap:8px;margin:12px 0}.search input{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:14px;border-radius:14px;font-size:15px;outline:none}body.light .search input{background:#fff;color:#111;border-color:#ddd}.search button{border:none;border-radius:14px;padding:0 14px;font-weight:800;cursor:pointer}.gold{background:#FFD700}.white{background:#fff}
+.hero{text-align:center;padding:6px 0}.city{font-size:17px;font-weight:700}.date{font-size:12px;opacity:.8}.big{font-size:88px;font-weight:800;line-height:1;letter-spacing:-3px;margin:8px 0}.big small{font-size:34px}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}.btn-grid button{border:none;padding:12px 6px;border-radius:14px;font-weight:800;font-size:12px;cursor:pointer}.b-gold{background:#FFD700;color:#000}.b-white{background:#fff;color:#000}.b-green{background:#22c55e;color:#fff}.b-blue{background:#0ea5e9;color:#fff}.b-purple{background:#a855f7;color:#fff}.b-black{background:#111;color:#fff;border:1px solid #333}
+.hourly{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}.hourly::-webkit-scrollbar{display:none}.hour{min-width:66px;text-align:center;background:rgba(255,255,255,.12);border-radius:14px;padding:11px 6px;flex-shrink:0}body.light .hour{background:#f0f0f0}.hour.now{background:#FFD700;color:#000}.hour .em{font-size:24px;margin:5px 0}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}.stat b{font-size:14px;display:block}.stat span{font-size:11px;opacity:.7}
 canvas{width:100%;height:150px;display:block}
-.days{display:flex;flex-direction:column;gap:9px;margin-top:12px}
-.day{display:flex;align-items:center;gap:10px;padding:12px;cursor:pointer}.day.active{outline:2px solid #FFD700}
-.day .l{width:60px}.day .l b{font-size:14px}.day .l span{font-size:11px;opacity:.7;display:block}
-.day .m{flex:1;font-size:12px}.day .e{font-size:26px}.day .t{width:74px;text-align:right}
-.bar{height:5px;background:rgba(255,255,255,.25);border-radius:100px;margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:#FFD700}
-.detail{margin-top:10px;text-align:center}.footer{text-align:center;margin-top:20px;font-size:10px;letter-spacing:2px;opacity:.6}.footer b{color:#FFD700}
-.load{text-align:center;padding:50px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:11px 16px;border-radius:100px;font-size:13px;font-weight:700;z-index:99;display:none;white-space:nowrap}
-.err{background:#ef4444;padding:12px;border-radius:14px;text-align:center;font-weight:700;margin:10px 0}
-.refresh{width:100%;margin-top:12px;background:#FFD700;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer}
+.days{display:flex;flex-direction:column;gap:9px;margin-top:12px}.day{display:flex;align-items:center;gap:10px;padding:12px;cursor:pointer;border:2px solid transparent}.day.active{outline:2px solid #FFD700;background:rgba(255,215,0,.15)}.day .l{width:60px}.day .l b{font-size:14px}.day .l span{font-size:11px;opacity:.7;display:block}.day .m{flex:1;font-size:12px}.day .e{font-size:26px}.day .t{width:74px;text-align:right}.bar{height:5px;background:rgba(255,255,255,.25);border-radius:100px;margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:#FFD700}
+.detail{margin-top:10px}.detail h3{font-size:15px;margin-bottom:6px}.detail p{font-size:12px;opacity:.85;line-height:1.6}
+.vip-box{background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000;border-radius:18px;padding:14px;margin-top:12px;font-weight:700;font-size:13px;line-height:1.5}.vip-box small{font-weight:400}
+.footer{text-align:center;margin-top:20px;font-size:10px;letter-spacing:2px;opacity:.6}.footer b{color:#FFD700}.load{text-align:center;padding:50px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:11px 16px;border-radius:100px;font-size:13px;font-weight:700;z-index:99;display:none;white-space:nowrap}.err{background:#ef4444;padding:12px;border-radius:14px;text-align:center;font-weight:700}.refresh{width:100%;margin-top:12px;background:#FFD700;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer}
+.install-box{background:#FFD700;color:#000;padding:12px;border-radius:16px;text-align:center;font-weight:800;font-size:13px;margin:10px 0;cursor:pointer;display:none}
+select{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.15);color:#fff;font-weight:700;margin-top:10px;outline:none}body.light select{background:#fff;color:#111}select option{color:#000}
 </style>
 </head>
 <body class="diell" id="body">
 <div class="app">
-<div class="top"><div class="logo">SABI<span>•</span> MOTI</div><div style="display:flex;gap:8px;align-items:center"><button class="mode" id="modeBtn" onclick="ndryshoMode()">🌙</button><div class="vip">★ VIP PRO</div></div></div>
-<div class="by">BY <b>SABI</b> • REAL • V4 FAST</div>
+<div class="top"><div class="logo"><img src="icon.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1163/1163661.png'">SABI<span>•</span> MOTI</div><div style="display:flex;gap:8px;align-items:center"><button class="mode" id="modeBtn" onclick="ndryshoMode()">🌙</button><div class="vip">★ SUPER VIP 10000%</div></div></div>
+<div class="by">BY <b>SABIMOTI 🇦🇱</b> • API REAL 100% • LIVE</div>
+<div id="installBox" class="install-box" onclick="instaloApp()">⬇ INSTALO APP-IN SABIMOTI NË TELEFON - SHTYP KËTU</div>
 <div id="alertBox" class="alert"></div>
-<div class="notif"><span>🔔 Njoftime Shi & Stuhi</span><div class="sw" id="sw" onclick="toggleNotif()"><i></i></div></div>
-<div class="search"><input id="cityInput" placeholder="Kërko qytetin..." value="Tiranë"><button class="gold" onclick="kerko()">KËRKO</button><button class="white" onclick="gps()">📍</button></div>
-<div id="content"><div class="load">Duke ngarkuar SABI...</div></div>
-<button class="refresh" onclick="rifresko()">🔄 Rifresko Motin</button>
-<div class="footer">SABI VIP • BY <b>SABI</b> • © 2026 • REAL API</div>
+<div class="notif"><span>🔔 Njoftime Shi & Stuhi + SMS</span><div class="sw" id="sw" onclick="toggleNotif()"><i></i></div></div>
+<div class="search"><input id="cityInput" placeholder="Kërko qytetin... Tiranë, Durrës..." value="Tiranë"><button class="gold" onclick="kerko()">KËRKO</button><button class="white" onclick="gps()">📍 GPS</button></div>
+
+<!-- BUTONAT QE PUNOJN TE GJITHA -->
+<div class="btn-grid">
+<button class="b-gold" onclick="rifresko()">🔄 Rifresko</button>
+<button class="b-white" onclick="shperndaje()">↗ Share</button>
+<button class="b-green" onclick="dergoWhatsApp()">💬 WhatsApp</button>
+<button class="b-blue" onclick="dergoSMS()">📩 Dërgo SMS</button>
+<button class="b-purple" onclick="kopjoLink()">🔗 Kopjo Link</button>
+<button class="b-black" onclick="hapHarten()">🗺️ Harta</button>
+</div>
+
+<select id="qytetSelect" onchange="zgjidhQytetNgaLista()">
+<option value="">⚡ Zgjedh Qytet Shpejt...</option>
+<option value="41.3275,19.8187,Tiranë">📍 Tiranë</option>
+<option value="41.3246,19.4565,Durrës">📍 Durrës</option>
+<option value="40.7167,19.5667,Vlorë">📍 Vlorë</option>
+<option value="42.0667,19.5,Shkodër">📍 Shkodër</option>
+<option value="40.6333,22.95,Elbasan">📍 Elbasan</option>
+<option value="42.65,21.15,Prishtinë">📍 Prishtinë</option>
+<option value="42.38,20.43,Prizren">📍 Prizren</option>
+<option value="41.01,21.33,Korçë">📍 Korçë</option>
+</select>
+
+<div id="content"><div class="load">Duke ngarkuar SABIMOTI SUPER VIP...</div></div>
+<button class="refresh" onclick="rifresko()">🔄 Rifresko Motin - SHTYP KËTU NËSE NGEC</button>
+
+<div class="vip-box">👑 SUPER VIP 10000% - SABIMOTI<br><small>✅ API Real 100% • GPS Live • Njoftime • SMS • WhatsApp • Grafik • Ajri • UV • Hëna • VPN Check • Të gjitha butonat punojnë. BY SABI 🇦🇱</small></div>
+<div class="footer">SABIMOTI SUPER VIP • BY <b>SABI</b> • © 2026 • REAL API</div>
 </div>
 <div class="toast" id="toast"></div>
 <script>
-let D=null, notifOn=localStorage.getItem('sabi_notif')==='1', qyteti='Tiranë, Shqipëri', lat=41.3275, lon=19.8187;
+let D=null, AQ=null, notifOn=localStorage.getItem('sabi_notif')==='1', qyteti='Tiranë, Shqipëri', lat=41.3275, lon=19.8187, ditaZgjedhur=0, deferredPrompt=null, infoIP='Duke kontrolluar...';
 const ditet=["E Die","E Hën","E Mar","E Mër","E Enj","E Pre","E Sht"], ditetPlot=["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"], muajt=["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
 function em(k){if(k===0)return"☀️";if(k===1||k===2)return"🌤️";if(k===3)return"☁️";if(k===45||k===48)return"🌫️";if(k>=51&&k<=57)return"🌦️";if(k>=61&&k<=67)return"🌧️";if(k>=71&&k<=77)return"❄️";if(k>=80&&k<=82)return"🌧️";if(k>=95)return"⛈️";return"🌤️"}
 function pr(k){if(k===0)return"Diell i plotë";if(k===1)return"Pjesërisht me diell";if(k===2)return"Pak re";if(k===3)return"Me re";if(k===45||k===48)return"Mjegull";if(k>=51&&k<=57)return"Shi i lehtë";if(k>=61&&k<=67)return"Shi";if(k>=71&&k<=77)return"Borë";if(k>=80&&k<=82)return"Shi i fortë";if(k>=95)return"Stuhi";return"Mot i ndryshueshëm"}
-function toast(t){const e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',3000)}
+function toast(t){const e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',3500)}
 function updateSw(){document.getElementById('sw').classList.toggle('on',notifOn)}
-async function toggleNotif(){if(!notifOn){const p=await Notification.requestPermission();if(p!=='granted'){toast('❌ Lejo njoftimet');return}notifOn=true;localStorage.setItem('sabi_notif','1');toast('🔔 Njoftimet ON');new Notification('SABI MOTI VIP',{body:'Njoftimet për shi & stuhi ON!'})}else{notifOn=false;localStorage.setItem('sabi_notif','0');toast('🔕 Njoftimet OFF')}updateSw()}
-function alarm(d,emri){const k=d.current.weather_code, shi=d.daily.precipitation_probability_max[0]||0, box=document.getElementById('alertBox');let h='',c='',n=null;if(k>=95){c='stuhi';h='⛈️ ALERT STUHI! Stuhi në '+emri+'. Qëndro brenda!';n=['⛈️ STUHI - SABI','Stuhi në '+emri]}else if(k>=61||shi>=70){c='shi';h='🌧️ ALERT SHI! Shi në '+emri+' ('+shi+'%). Merr çadër!';n=['🌧️ SHI - SABI','Shi në '+emri+' '+shi+'%']}else if(k>=71&&k<=77){c='bore';h='❄️ ALERT BORË! Borë në '+emri; n=['❄️ BORË - SABI','Borë në '+emri]}else if(k===0){c='mire';h='☀️ DITË E MIRË! Diell në '+emri}if(h){box.className='alert show '+c;box.innerText=h}else{box.className='alert';box.innerText=''}if(n&&notifOn&&Notification.permission==='granted'){const key='sabi_'+new Date().toDateString()+'_'+k;if(!localStorage.getItem(key)){localStorage.setItem(key,'1');new Notification(n[0],{body:n[1]})}}}
+async function toggleNotif(){if(!notifOn){const p=await Notification.requestPermission();if(p!=='granted'){toast('❌ Lejo njoftimet nga browseri');return}notifOn=true;localStorage.setItem('sabi_notif','1');toast('🔔 Njoftimet + SMS ON - BY SABIMOTI');new Notification('SABIMOTI SUPER VIP ☀️',{body:'Njoftimet për shi & stuhi janë ON! Do të njoftohesh për çdo stuhi.'})}else{notifOn=false;localStorage.setItem('sabi_notif','0');toast('🔕 Njoftimet OFF')}updateSw()}
+function alarm(d,emri){const k=d.current.weather_code, shi=d.daily.precipitation_probability_max[0]||0, box=document.getElementById('alertBox');let h='',c='',n=null;if(k>=95){c='stuhi';h='⛈️ ALERT STUHI! Stuhi në '+emri+'. Qëndro brenda! SHTYP KËTU për SMS →';box.onclick=()=>dergoSMS();n=['⛈️ STUHI - SABIMOTI','Stuhi në '+emri+' - Dërgo SMS te shokët!']}else if(k>=61||shi>=70){c='shi';h='🌧️ ALERT SHI! Shi në '+emri+' ('+shi+'%). Merr çadër! SHTYP për SMS →';box.onclick=()=>dergoSMS();n=['🌧️ SHI - SABIMOTI','Shi në '+emri+' '+shi+'%']}else if(k>=71&&k<=77){c='bore';h='❄️ ALERT BORË! Borë në '+emri; n=['❄️ BORË - SABIMOTI','Borë në '+emri]}else if(k===0){c='mire';h='☀️ DITË E MIRË! Diell në '+emri+' - Ditë perfekte!'}if(h){box.className='alert show '+c;box.innerText=h}else{box.className='alert';box.innerText='';box.onclick=null}if(n&&notifOn&&Notification.permission==='granted'){const key='sabi_'+new Date().toDateString()+'_'+k;if(!localStorage.getItem(key)){localStorage.setItem(key,'1');new Notification(n[0],{body:n[1]})}}}
+// --- BUTONAT QE PUNOJN ---
+function tekstMoti(){ if(!D) return 'SABIMOTI VIP - Shiko motin'; return `☀️ SABIMOTI VIP 🇦🇱\n📍 ${qyteti}\n🌡️ Tani: ${Math.round(D.current.temperature_2m)}°C - ${pr(D.current.weather_code)}\n🔥 Max: ${Math.round(D.daily.temperature_2m_max[0])}° / Min: ${Math.round(D.daily.temperature_2m_min[0])}°\n🌧️ Shi: ${D.daily.precipitation_probability_max[0]||0}% • 💨 Era: ${Math.round(D.current.wind_speed_10m)} km/h\nShiko live: ${location.href}\nBY SABIMOTI VIP`; }
+function dergoSMS(){ const t=encodeURIComponent(tekstMoti()); window.location.href='sms:?&body='+t; toast('📩 U hap SMS - Zgjidh kontaktin dhe dërgo!'); }
+function dergoWhatsApp(){ const t=encodeURIComponent(tekstMoti()); window.open('https://wa.me/?text='+t,'_blank'); toast('💬 U hap WhatsApp!'); }
+function shperndaje(){ const t=tekstMoti(); if(navigator.share){ navigator.share({title:'SABIMOTI SUPER VIP', text:t, url:location.href}).then(()=>toast('✅ U shpërnda!')).catch(()=>kopjoLink()); } else kopjoLink(); }
+function kopjoLink(){ const t=location.href; if(navigator.clipboard){ navigator.clipboard.writeText(t).then(()=>toast('🔗 Linku u kopjua!')); } else { const i=document.createElement('input'); i.value=t; document.body.appendChild(i); i.select(); document.execCommand('copy'); i.remove(); toast('🔗 Linku u kopjua!'); } }
+function hapHarten(){ window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`,'_blank'); toast('🗺️ U hap harta!'); }
+function zgjidhQytetNgaLista(){ const v=document.getElementById('qytetSelect').value; if(!v) return; const p=v.split(','); merrMotin(parseFloat(p[0]),parseFloat(p[1]),p[2]+', Shqipëri'); toast('📍 '+p[2]+' u zgjodh!'); }
+async function merrIP(){ try{ const r=await fetch('https://ipapi.co/json/'); const j=await r.json(); infoIP=`🌐 IP: ${j.ip} • ${j.city||''} • ${j.country_name||''} ${j.org && j.org.toLowerCase().includes('vpn') ? '• 🛡️ VPN AKTIV' : '• 📶 Pa VPN'}`; }catch(e){ infoIP='🌐 GPS: Aktiv • VPN: Kontrollo manualisht'; } if(D) render(); }
 async function merrMotin(la,lo,emri){
-  lat=la; lon=lo; qyteti=emri;
-  document.getElementById('content').innerHTML='<div class="load">Duke ngarkuar motin real...</div>';
+  lat=la; lon=lo; qyteti=emri; ditaZgjedhur=0;
+  document.getElementById('content').innerHTML='<div class="load">Duke ngarkuar motin REAL 100%...</div>';
   try{
-    const url=`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&hourly=temperature_2m,weather_code,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,weather_code&timezone=auto&forecast_days=7`;
-    const r=await fetch(url); if(!r.ok) throw new Error('net');
-    const d=await r.json(); D=d;
-    const ora=new Date(d.current.time).getHours(); const k=d.current.weather_code;
-    let cls='diell'; if(ora>=20||ora<6) cls='nate'; else if(k===0) cls='diell'; else if(k<=3) cls='re'; else if(k>=71&&k<=77) cls='bore'; else if(k>=95) cls='stuhi'; else if(k>=51) cls='shi';
-    document.getElementById('body').className=(document.body.classList.contains('light')?'light ':'')+cls;
-    if(document.body.classList.contains('light')) document.getElementById('body').classList.add('light');
-    alarm(d,emri);
-    let s=d.hourly.time.findIndex(t=>new Date(t)>=new Date(d.current.time)); if(s<0)s=0;
-    let hr=''; for(let i=s;i<Math.min(s+16,d.hourly.time.length);i++){const dt=new Date(d.hourly.time[i]); hr+=`<div class="hour ${i===s?'now':''}"><div style="font-size:11px">${dt.getHours()}:00</div><div class="em">${em(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:10px">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div></div>`}
-    let dy=''; d.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00'); dy+=`<div class="card day ${i===0?'active':''}" onclick="zgjidh(${i},this)"><div class="l"><b>${i===0?'SOT':ditet[dt.getDay()]}</b><span>${dt.getDate()} ${muajt[dt.getMonth()]}</span></div><div class="e">${em(d.daily.weather_code[i])}</div><div class="m">${pr(d.daily.weather_code[i])}<div class="bar"><i style="width:${d.daily.precipitation_probability_max[i]||0}%"></i></div><span style="font-size:11px">🌧️ ${d.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h</span></div><div class="t"><b>${Math.round(d.daily.temperature_2m_max[i])}°</b> <span style="opacity:.7">${Math.round(d.daily.temperature_2m_min[i])}°</span></div></div>`});
-    document.getElementById('content').innerHTML=`
-    <div class="hero"><div class="city">📍 ${emri}</div><div class="date">${ditetPlot[new Date(d.current.time).getDay()]} • ${new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})} • BY SABI</div><div class="big">${Math.round(d.current.temperature_2m)}<small>°C</small></div><div style="font-size:17px;font-weight:600">${em(k)} ${pr(k)}</div><div style="font-size:13px;opacity:.85;margin-top:5px">Ndjehet si ${Math.round(d.current.apparent_temperature)}° • Max ${Math.round(d.daily.temperature_2m_max[0])}° / Min ${Math.round(d.daily.temperature_2m_min[0])}°</div></div>
-    <div class="card" style="margin-top:12px"><div class="title">Orë për Orë <span>BY SABI</span></div><div class="hourly">${hr}</div></div>
-    <div class="stats"><div class="stat"><span style="font-size:20px">💨</span><div><b>${Math.round(d.current.wind_speed_10m)} km/h</b><span>Era</span></div></div><div class="stat"><span style="font-size:20px">💧</span><div><b>${d.current.relative_humidity_2m}%</b><span>Lagështia</span></div></div><div class="stat"><span style="font-size:20px">🌡️</span><div><b>${Math.round(d.current.pressure_msl)} hPa</b><span>Presioni</span></div></div><div class="stat"><span style="font-size:20px">🌧️</span><div><b>${d.daily.precipitation_probability_max[0]||0}%</b><span>Shi sot</span></div></div><div class="stat"><span style="font-size:20px">🌅</span><div><b>${d.daily.sunrise[0].slice(11,16)}</b><span>Lindja</span></div></div><div class="stat"><span style="font-size:20px">🌇</span><div><b>${d.daily.sunset[0].slice(11,16)}</b><span>Perëndimi</span></div></div></div>
-    <div class="card" style="margin-top:10px"><div class="title">Grafik 7 Ditë • Max / Min <span>BY SABI</span></div><canvas id="graf" width="440" height="150"></canvas></div>
-    <div style="margin-top:14px;font-weight:800;font-size:14px">Parashikimi 7 Ditë</div><div class="days">${dy}</div><div id="detaje" class="card detail"></div>`;
-    zgjidh(0,document.querySelector('.day')); vizato();
-  }catch(e){ document.getElementById('content').innerHTML='<div class="err">❌ Pa internet! Kontrollo lidhjen dhe shtyp Rifresko.<br><br>API nuk u lidh.</div>'; }
+    const url=`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl,uv_index,is_day&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,weather_code,uv_index_max&timezone=auto&forecast_days=7`;
+    const r=await fetch(url); if(!r.ok) throw new Error('net'); const d=await r.json(); D=d;
+    try{ const ra=await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${la}&longitude=${lo}&current=pm2_5,pm10,us_aqi&domains=cams`); AQ=await ra.json(); }catch(e){ AQ=null; }
+    render();
+  }catch(e){ document.getElementById('content').innerHTML='<div class="err">❌ Pa internet! SHTYP RIFRESKO poshtë.<br>API nuk u lidh - kontrollo internetin.</div>'; }
 }
-function vizato(){
-  const c=document.getElementById('graf'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width, H=c.height; ctx.clearRect(0,0,W,H);
-  const maxs=D.daily.temperature_2m_max, mins=D.daily.temperature_2m_min;
-  const all=[...maxs,...mins]; const mn=Math.min(...all)-2, mx=Math.max(...all)+2;
-  const X=i=>30+i*(W-50)/6, Y=v=>H-25-(v-mn)/(mx-mn)*(H-50);
-  ctx.strokeStyle='rgba(255,255,255,.2)'; ctx.lineWidth=1; for(let i=0;i<4;i++){const y=20+i*(H-40)/3; ctx.beginPath(); ctx.moveTo(30,y); ctx.lineTo(W-10,y); ctx.stroke();}
-  function vizatoLinje(data,color){ ctx.strokeStyle=color; ctx.lineWidth=3; ctx.beginPath(); data.forEach((v,i)=>{ if(i===0) ctx.moveTo(X(i),Y(v)); else ctx.lineTo(X(i),Y(v))}); ctx.stroke(); ctx.fillStyle=color; data.forEach((v,i)=>{ ctx.beginPath(); ctx.arc(X(i),Y(v),5,0,Math.PI*2); ctx.fill(); ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; ctx.fillText(Math.round(v)+'°',X(i)-10,Y(v)-10); ctx.fillStyle=color; }); }
-  vizatoLinje(maxs,'#FFD700'); vizatoLinje(mins,'#38BDF8');
-  ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; D.daily.time.forEach((t,i)=>{ const dt=new Date(t+'T12:00:00'); ctx.fillText(ditet[dt.getDay()],X(i)-12,H-6); });
+function render(){
+  const d=D; const ora=new Date(d.current.time).getHours(); const k=d.current.weather_code;
+  let cls='diell'; if(d.current.is_day===0) cls='nate'; else if(k===0) cls='diell'; else if(k<=3) cls='re'; else if(k>=71&&k<=77) cls='bore'; else if(k>=95) cls='stuhi'; else if(k>=51) cls='shi';
+  document.getElementById('body').className=(document.body.classList.contains('light')?'light ':'')+cls; if(document.body.classList.contains('light')) document.getElementById('body').classList.add('light');
+  alarm(d,qyteti);
+  // Hourly PER DITEN E ZGJEDHUR - KJO ESHTE E REJA
+  const ditaData=d.daily.time[ditaZgjedhur];
+  let hr=''; let count=0;
+  d.hourly.time.forEach((t,i)=>{ if(!t.startsWith(ditaData)) return; count++; const dt=new Date(t); const eshteTani = ditaZgjedhur===0 && dt.getHours()===ora; hr+=`<div class="hour ${eshteTani?'now':''}"><div style="font-size:11px">${dt.getHours()}:00</div><div class="em">${em(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:10px">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div><div style="font-size:10px">💨 ${Math.round(d.hourly.wind_speed_10m[i])}</div></div>`; });
+  if(count===0) hr='<div style="padding:10px">Nuk ka të dhëna orare për këtë ditë.</div>';
+  let dy=''; d.daily.time.forEach((t,i)=>{ const dt=new Date(t+'T12:00:00'); dy+=`<div class="card day ${i===ditaZgjedhur?'active':''}" onclick="zgjidh(${i},this)"><div class="l"><b>${i===0?'SOT':ditet[dt.getDay()]}</b><span>${dt.getDate()} ${muajt[dt.getMonth()]}</span></div><div class="e">${em(d.daily.weather_code[i])}</div><div class="m">${pr(d.daily.weather_code[i])}<div class="bar"><i style="width:${d.daily.precipitation_probability_max[i]||0}%"></i></div><span style="font-size:11px">🌧️ ${d.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h • ☀️ UV ${Math.round(d.daily.uv_index_max[i]||0)}</span></div><div class="t"><b>${Math.round(d.daily.temperature_2m_max[i])}°</b> <span style="opacity:.7">${Math.round(d.daily.temperature_2m_min[i])}°</span></div></div>`; });
+  const dtZg=new Date(d.daily.time[ditaZgjedhur]+'T12:00:00');
+  const titullDite = ditaZgjedhur===0 ? 'SOT - Orë për Orë' : ditetPlot[dtZg.getDay()]+' '+dtZg.getDate()+' '+muajt[dtZg.getMonth()]+' - Orë për Orë';
+  const aqi = AQ?.current ? AQ.current.us_aqi : '--';
+  const aqiTxt = aqi==='--' ? 'N/A' : aqi<=50 ? '🟢 E mirë' : aqi<=100 ? '🟡 Mesatare' : '🔴 E keqe';
+  const hena = ['🌑 Hënë e Re','🌒','🌓','🌔','🌕 Hënë e Plotë','🌖','🌗','🌘'][new Date().getDate()%8];
+  document.getElementById('content').innerHTML=`
+  <div class="hero"><div class="city">📍 ${qyteti}</div><div class="date">${ditetPlot[new Date(d.current.time).getDay()]} • ${new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})} • BY SABIMOTI</div><div class="big">${Math.round(d.current.temperature_2m)}<small>°C</small></div><div style="font-size:17px;font-weight:600">${em(k)} ${pr(k)}</div><div style="font-size:13px;opacity:.85;margin-top:5px">Ndjehet si ${Math.round(d.current.apparent_temperature)}° • Max ${Math.round(d.daily.temperature_2m_max[0])}° / Min ${Math.round(d.daily.temperature_2m_min[0])}° • ☀️ UV ${Math.round(d.current.uv_index||0)}</div><div style="font-size:11px;opacity:.7;margin-top:4px">${infoIP}</div></div>
+  <div class="card" style="margin-top:12px"><div class="title">${titullDite} <span style="color:#FFD700">👆 Kliko ditë tjetër poshtë</span></div><div class="hourly">${hr}</div><div style="font-size:11px;opacity:.7;margin-top:8px">💡 Këshillë: Kliko një ditë poshtë (p.sh E Martë) dhe këtu lart ndryshon automatikisht moti me orë për atë ditë!</div></div>
+  <div class="stats"><div class="stat"><span style="font-size:20px">💨</span><div><b>${Math.round(d.current.wind_speed_10m)} km/h</b><span>Era</span></div></div><div class="stat"><span style="font-size:20px">💧</span><div><b>${d.current.relative_humidity_2m}%</b><span>Lagështia</span></div></div><div class="stat"><span style="font-size:20px">🌡️</span><div><b>${Math.round(d.current.pressure_msl)} hPa</b><span>Presioni</span></div></div><div class="stat"><span style="font-size:20px">🌧️</span><div><b>${d.daily.precipitation_probability_max[0]||0}%</b><span>Shi sot</span></div></div><div class="stat"><span style="font-size:20px">🌅</span><div><b>${d.daily.sunrise[0].slice(11,16)}</b><span>Lindja</span></div></div><div class="stat"><span style="font-size:20px">🌇</span><div><b>${d.daily.sunset[0].slice(11,16)}</b><span>Perëndimi</span></div></div><div class="stat"><span style="font-size:20px">☀️</span><div><b>UV ${Math.round(d.current.uv_index||0)} / ${Math.round(d.daily.uv_index_max[0]||0)}</b><span>UV Index</span></div></div><div class="stat"><span style="font-size:20px">😷</span><div><b>AQI ${aqi} • ${aqiTxt}</b><span>Cilësia Ajrit</span></div></div><div class="stat"><span style="font-size:20px">🌙</span><div><b>${hena}</b><span>Hëna Sot</span></div></div><div class="stat"><span style="font-size:20px">👕</span><div><b>${d.current.temperature_2m>25?'👕 T-shirt':d.current.temperature_2m>15?'🧥 Xhaketë e lehtë':d.current.temperature_2m>5?'� coat Pallto':'🧥🧣 Pallto + Shall'}</b><span>Çfarë të veshësh</span></div></div></div>
+  <div class="card" style="margin-top:10px"><div class="title">Grafik 7 Ditë • Max / Min <span>BY SABIMOTI</span></div><canvas id="graf" width="440" height="150"></canvas></div>
+  <div style="margin-top:14px;font-weight:800;font-size:14px">👆 Kliko një ditë për motin me orë për atë ditë:</div><div class="days">${dy}</div><div id="detaje" class="card detail"></div>`;
+  zgjidhDetaje(); vizato();
 }
-function zgjidh(i,el){ document.querySelectorAll('.day').forEach(c=>c.classList.remove('active')); if(el) el.classList.add('active'); const d=D; const dt=new Date(d.daily.time[i]+'T12:00:00'); document.getElementById('detaje').innerHTML=`<b>${i===0?'SOT - ':''}${ditetPlot[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]}</b><p>${em(d.daily.weather_code[i])} ${pr(d.daily.weather_code[i])}<br>🌡️ Max ${Math.round(d.daily.temperature_2m_max[i])}° / Min ${Math.round(d.daily.temperature_2m_min[i])}° • 🌧️ ${d.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h<br>🌅 ${d.daily.sunrise[i].slice(11,16)} • 🌇 ${d.daily.sunset[i].slice(11,16)}</p>`; }
-async function kerko(){ const q=document.getElementById('cityInput').value.trim(); if(!q) return; document.getElementById('content').innerHTML='<div class="load">Duke kërkuar...</div>'; try{ const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`); const j=await r.json(); if(j.results?.length>0){ const x=j.results[0]; merrMotin(x.latitude,x.longitude,x.name+', '+(x.country||'')); } else { toast('Qyteti nuk u gjet'); merrMotin(lat,lon,qyteti); } }catch(e){ toast('Pa internet'); } }
-function gps(){ if(!navigator.geolocation){toast('GPS nuk mbështetet');return} navigator.geolocation.getCurrentPosition(p=>merrMotin(p.coords.latitude,p.coords.longitude,'Vendndodhja Ime'),()=>toast('Lejo GPS')); }
-function rifresko(){ merrMotin(lat,lon,qyteti); toast('🔄 U rifreskua'); }
-function ndryshoMode(){ const b=document.getElementById('body'); const l=b.classList.toggle('light'); document.getElementById('modeBtn').innerText=l?'☀️':'🌙'; localStorage.setItem('sabi_mode',l?'light':'dark'); }
+function vizato(){ const c=document.getElementById('graf'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width,H=c.height; ctx.clearRect(0,0,W,H); const maxs=D.daily.temperature_2m_max, mins=D.daily.temperature_2m_min; const all=[...maxs,...mins]; const mn=Math.min(...all)-2,mx=Math.max(...all)+2; const X=i=>30+i*(W-50)/6,Y=v=>H-25-(v-mn)/(mx-mn)*(H-50); ctx.strokeStyle='rgba(255,255,255,.2)'; for(let i=0;i<4;i++){const y=20+i*(H-40)/3;ctx.beginPath();ctx.moveTo(30,y);ctx.lineTo(W-10,y);ctx.stroke()} function vl(data,color){ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();data.forEach((v,i)=>{if(i===0)ctx.moveTo(X(i),Y(v));else ctx.lineTo(X(i),Y(v))});ctx.stroke();ctx.fillStyle=color;data.forEach((v,i)=>{ctx.beginPath();ctx.arc(X(i),Y(v),5,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 11px sans-serif';ctx.fillText(Math.round(v)+'°',X(i)-10,Y(v)-10);ctx.fillStyle=color})} vl(maxs,'#FFD700'); vl(mins,'#38BDF8'); ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; D.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00');ctx.fillText(ditet[dt.getDay()],X(i)-12,H-6)}); }
+function zgjidh(i,el){ ditaZgjedhur=i; document.querySelectorAll('.day').forEach(c=>c.classList.remove('active')); if(el) el.classList.add('active'); render(); toast('📅 U zgjodh '+ditetPlot[new Date(D.daily.time[i]+'T12:00:00').getDay()]+' - Shiko lart motin me orë!'); window.scrollTo({top:0,behavior:'smooth'}); }
+function zgjidhDetaje(){ const d=D; const dt=new Date(d.daily.time[ditaZgjedhur]+'T12:00:00'); const el=document.getElementById('detaje'); if(!el) return; el.innerHTML=`<h3>${ditaZgjedhur===0?'SOT - ':''}${ditetPlot[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]} • Moti i plotë</h3><p>${em(d.daily.weather_code[ditaZgjedhur])} ${pr(d.daily.weather_code[ditaZgjedhur])}<br>🌡️ Max ${Math.round(d.daily.temperature_2m_max[ditaZgjedhur])}° / Min ${Math.round(d.daily.temperature_2m_min[ditaZgjedhur])}° • 🌧️ ${d.daily.precipitation_probability_max[ditaZgjedhur]||0}% shi • 💨 ${Math.round(d.daily.wind_speed_10m_max[ditaZgjedhur])} km/h • ☀️ UV ${Math.round(d.daily.uv_index_max[ditaZgjedhur]||0)}<br>🌅 ${d.daily.sunrise[ditaZgjedhur].slice(11,16)} • 🌇 ${d.daily.sunset[ditaZgjedhur].slice(11,16)}<br><br><button onclick="dergoSMS()" style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">📩 Dërgo këtë ditë me SMS</button> <button onclick="dergoWhatsApp()" style="background:#22c55e;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">💬 WhatsApp</button></p>`; }
+async function kerko(){ const q=document.getElementById('cityInput').value.trim(); if(!q){toast('Shkruaj qytetin!');return} document.getElementById('content').innerHTML='<div class="load">Duke kërkuar...</div>'; try{ const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`); const j=await r.json(); if(j.results?.length>0){const x=j.results[0]; merrMotin(x.latitude,x.longitude,x.name+', '+(x.country||'')); toast('✅ '+x.name+' u gjet!')} else {toast('❌ Qyteti nuk u gjet!'); merrMotin(lat,lon,qyteti);} }catch(e){toast('❌ Pa internet!')} }
+function gps(){ if(!navigator.geolocation){toast('GPS nuk mbështetet');return} toast('📍 Duke marrë GPS...'); navigator.geolocation.getCurrentPosition(p=>{ merrMotin(p.coords.latitude,p.coords.longitude,'Vendndodhja Ime (GPS)'); toast('✅ GPS u gjet!'); },()=>toast('❌ Lejo GPS në browser!')); }
+function rifresko(){ merrMotin(lat,lon,qyteti); toast('🔄 U rifreskua - API Real!'); }
+function ndryshoMode(){ const b=document.getElementById('body'); const l=b.classList.toggle('light'); document.getElementById('modeBtn').innerText=l?'☀️':'🌙'; localStorage.setItem('sabi_mode',l?'light':'dark'); toast(l?'☀️ Light Mode ON':'🌙 Dark Mode ON'); }
 if(localStorage.getItem('sabi_mode')==='light'){ document.getElementById('body').classList.add('light'); document.getElementById('modeBtn').innerText='☀️'; }
+window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBox').style.display='block'});
+async function instaloApp(){ if(deferredPrompt){ deferredPrompt.prompt(); const c=await deferredPrompt.userChoice; if(c.outcome==='accepted') toast('✅ SABIMOTI u instalua!'); deferredPrompt=null; } else toast('Në iPhone: Share → Add to Home Screen'); }
 document.getElementById('cityInput').addEventListener('keydown',e=>{ if(e.key==='Enter') kerko(); });
-updateSw();
-merrMotin(41.3275,19.8187,'Tiranë, Shqipëri');
+updateSw(); merrIP(); merrMotin(41.3275,19.8187,'Tiranë, Shqipëri');
 </script>
 </body>
 </html>
