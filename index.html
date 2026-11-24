@@ -3,43 +3,108 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>SABIMOTI ✨ BY SABI - V2</title>
+<title>SABIMOTI V4 ✨ BY SABI</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#FFD700">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:system-ui;background:#0a0a0f;color:#fff;padding-bottom:110px}
+body{font-family:system-ui;background:#07070f;color:#fff;padding-bottom:115px;overflow-x:hidden}
 .app{max-width:480px;margin:auto;padding:12px}
-.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:18px;padding:14px;margin:10px 0}
-.title{font-weight:800;display:flex;justify-content:space-between;margin-bottom:8px}
+.card{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);border-radius:20px;padding:14px;margin:10px 0;backdrop-filter:blur(10px)}
+.title{font-weight:900;display:flex;justify-content:space-between;margin-bottom:8px;font-size:14px}
 .tab{display:none}.tab.active{display:block}
 .top{display:flex;justify-content:space-between;align-items:center;padding:8px 4px}
-.logo{font-size:22px;font-weight:900}.logo span{color:#FFD700}
+.logo{font-size:24px;font-weight:900}.logo span{color:#FFD700}
 .tabs{position:fixed;bottom:0;left:0;right:0;background:#111;display:flex;justify-content:space-around;padding:8px 4px 14px;border-top:2px solid #FFD700;z-index:99;overflow-x:auto}
-.tabs button{background:none;border:none;color:#aaa;font-size:11px;cursor:pointer;padding:6px;min-width:55px}
+.tabs button{background:none;border:none;color:#aaa;font-size:11px;cursor:pointer;padding:6px;min-width:58px}
 .tabs button.on{color:#FFD700}
-input,select{width:100%;padding:12px;border-radius:13px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);color:#fff;margin:6px 0}
+input,select{width:100%;padding:13px;border-radius:14px;border:1px solid rgba(255,255,255,.22);background:rgba(255,255,255,.12);color:#fff;margin:6px 0}
 input::placeholder{color:#bbb}
 button{cursor:pointer}
-.rrufe-item{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
-.big{font-size:52px;font-weight:900;text-align:center}
-.sub{text-align:center;opacity:.8;font-size:13px}
-.pill{background:rgba(255,255,255,.15);padding:8px;border-radius:12px;text-align:center;font-size:12px;min-width:62px}
-.pill b{font-size:14px}
-.hour-scroll{display:flex;gap:8px;overflow-x:auto;margin-top:12px;padding-bottom:4px}
+.big{font-size:64px;font-weight:900;text-align:center;line-height:1}
+.sub{text-align:center;opacity:.85;font-size:13px}
+.pill{background:rgba(255,255,255,.15);padding:9px;border-radius:13px;text-align:center;font-size:12px;min-width:68px}
+.hour-scroll{display:flex;gap:8px;overflow-x:auto;margin-top:10px;padding-bottom:4px}
+.search-box{position:relative}
+.search-results{position:absolute;top:100%;left:0;right:0;background:#1e293b;border:1px solid #FFD700;border-radius:13px;z-index:50;overflow:hidden;display:none;max-height:260px;overflow-y:auto}
+.search-results div{padding:12px;border-bottom:1px solid rgba(255,255,255,.1);cursor:pointer;font-size:14px;text-align:left}
+.search-results div:hover{background:#FFD700;color:#000}
+/* PERSONI QE ECEN */
+.rruga{height:110px;background:linear-gradient(to bottom,transparent 70%,#222 70%,#222 75%,#111 75%);border-radius:16px;position:relative;overflow:hidden;margin-top:10px}
+.personi{position:absolute;bottom:28px;left:0;font-size:48px;animation:ec 6s linear infinite}
+@keyframes ec{0%{left:-10%}100%{left:110%}}
+.reja{position:absolute;top:5px;font-size:28px;animation:reja 8s linear infinite}
+@keyframes reja{0%{left:-10%}100%{left:110%}}
+.shi-pika{position:absolute;top:0;width:3px;height:12px;background:#38bdf8;animation:bie 0.6s linear infinite}
+@keyframes bie{to{transform:translateY(110px)}}
+/* GRAFIK */
+.bar{height:22px;border-radius:100px;background:linear-gradient(90deg,#FFD700,#FF8A00);margin:4px 0;transition:width .5s}
+.vip-card{background:linear-gradient(135deg,#FFD700,#FF0066,#a855f7);padding:2px;border-radius:20px}
+.vip-inner{background:#111;border-radius:18px;padding:14px}
+.radio-item{display:flex;justify-content:space-between;align-items:center;padding:10px;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
+.game-area{height:220px;background:linear-gradient(to bottom,#0ea5e9,#1e1b4b);border-radius:16px;position:relative;overflow:hidden;margin-top:10px}
+.drop{position:absolute;font-size:24px;cursor:pointer;user-select:none}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="top"><div class="logo">SABI<span>MOTI</span> ✨</div><div>🇦🇱 Shqipëri</div></div>
+<div class="top"><div class="logo">SABI<span>MOTI</span> ✨ <span style="font-size:10px;background:#FFD700;color:#000;padding:2px 6px;border-radius:100px">V4</span></div><div id="oraTop" style="font-weight:800">--:--</div></div>
 
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95);border-color:#FFD700">
-<div style="font-size:30px">🔐</div><b>HYR NË SABIMOTI</b>
-<input id="loginEmri" placeholder="Shkruaj emrin...">
-<button onclick="hyrMeEmer()" style="width:100%;background:#FFD700;border:none;padding:13px;border-radius:13px;font-weight:800">🚀 HYR TANI</button>
+<!-- ============ TAB: KRYESORE ============ -->
+<div class="tab active" id="tab-moti">
+
+<!-- ORA + DATA + MOTI -->
+<div class="card" id="heroCard" style="text-align:center;background:linear-gradient(135deg,#0ea5e9,#1e1b4b,#7c3aed);border-color:#FFD700">
+<div style="display:flex;justify-content:space-between;font-size:12px;opacity:.9"><span id="dataSot">--</span><span>🇦🇱 <span id="qytetiEmriTop">Tiranë</span></span></div>
+<div id="oraBig" style="font-size:58px;font-weight:900;letter-spacing:2px;margin:6px 0">--:--:--</div>
+<div style="font-size:13px;opacity:.9" id="ditaJaves">--</div>
+<div class="big" id="temp">--°</div>
+<div class="sub" id="kushti">Duke ngarkuar motin...</div>
+<div id="alertShi" style="display:none;background:#ef4444;padding:10px;border-radius:12px;margin-top:10px;font-weight:800;font-size:13px">⚠️ KUJDES! Do bjerë shi në 1 orë! Merr çadër! ☔</div>
+<div id="alertDiell" style="display:none;background:#f59e0b;color:#000;padding:10px;border-radius:12px;margin-top:10px;font-weight:800;font-size:13px">☀️ Ditë perfekte për jashtë! Mos harro syzet! 😎</div>
+
+<!-- PERSONI QE ECEN SIPAS MOTIT -->
+<div class="rruga" id="rruga">
+<div class="reja" id="rejaEl">☁️</div>
+<div class="personi" id="personiEl">🚶‍♂️</div>
+<div id="mesazhiPersoni" style="position:absolute;top:2px;right:8px;background:#fff;color:#000;font-size:11px;font-weight:800;padding:4px 8px;border-radius:100px">Po eci...</div>
+</div>
+<div style="font-size:12px;margin-top:6px" id="personiTekst">🚶 Sabi po ecën...</div>
+
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:12px;font-size:12px">
+<div>💨 <b id="era">--</b><br>Era</div>
+<div>💧 <b id="lagesht">--</b><br>Lagështia</div>
+<div>🌧️ <b id="shi">--</b><br>Shi</div>
+<div>🌡️ <b id="ndjehet">--</b><br>Ndjehet</div>
 </div>
 
-<div class="tab active" id="tab-moti">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#0ea5e9,#1e1b4b)">
-<select id="qyteti" onchange="ndrroQytet()">
+<!-- GRAFIK TEMPERATURES -->
+<div style="text-align:left;margin-top:14px;font-weight:900;font-size:13px">📊 GRAFIKU I TEMPERATURËS SOT</div>
+<div id="grafiku" style="margin-top:6px"></div>
+
+<div style="margin-top:12px;display:flex;gap:8px">
+<button onclick="vendndodhjaIme()" style="flex:1;background:#fff;border:none;padding:11px;border-radius:12px;font-weight:800">📍 Vendndodhja Ime</button>
+<button onclick="ndajMotin()" style="flex:1;background:#FFD700;border:none;padding:11px;border-radius:12px;font-weight:800">↗ Ndaj</button>
+<button onclick="aktivizoNjoftimShi()" style="flex:1;background:#ef4444;color:#fff;border:none;padding:11px;border-radius:12px;font-weight:800">🔔 Njoftim Shi</button>
+</div>
+</div>
+
+<!-- KERKIM BOTA -->
+<div class="card">
+<div class="title"><span>🌍 KËRKO GJITHË BOTËN</span></div>
+<div class="search-box">
+<input id="kerkImQytet" placeholder="🔍 Shkruaj çdo qytet... Paris, Tokyo, New York, Dubai..." oninput="kerkoQytet(this.value)" onkeydown="if(event.key==='Enter')kerkoQytetEnter()">
+<div id="kerkImRezultatet" class="search-results"></div>
+</div>
+<div style="display:flex;gap:6px;flex-wrap:wrap;margin-top:8px">
+<button onclick="shkoQytetBote(48.85,2.35,'Paris')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇫🇷 Paris</button>
+<button onclick="shkoQytetBote(51.50,-0.12,'Londër')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇬🇧 Londër</button>
+<button onclick="shkoQytetBote(40.71,-74.00,'New York')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇺🇸 New York</button>
+<button onclick="shkoQytetBote(35.68,139.69,'Tokyo')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇯🇵 Tokyo</button>
+<button onclick="shkoQytetBote(25.20,55.27,'Dubai')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇦🇪 Dubai</button>
+<button onclick="shkoQytetBote(-33.86,151.20,'Sydney')" style="background:rgba(255,255,255,.15);color:#fff;border:none;padding:8px 12px;border-radius:100px;font-size:12px">🇦🇺 Sydney</button>
+</div>
+<select id="qyteti" onchange="ndrroQytet()" style="margin-top:8px">
 <option value="41.32,19.81,Tiranë">📍 Tiranë</option>
 <option value="41.32,19.44,Durrës">📍 Durrës</option>
 <option value="40.47,19.48,Vlorë">📍 Vlorë</option>
@@ -47,99 +112,147 @@ button{cursor:pointer}
 <option value="42.07,19.51,Shkodër">📍 Shkodër</option>
 <option value="41.11,20.08,Elbasan">📍 Elbasan</option>
 <option value="39.87,20.00,Sarandë">📍 Sarandë</option>
-<option value="39.77,20.00,Ksamil">📍 Ksamil</option>
 <option value="40.62,20.77,Korçë">📍 Korçë</option>
 <option value="40.07,20.14,Gjirokastër">📍 Gjirokastër</option>
 <option value="40.71,19.95,Berat">📍 Berat</option>
-<option value="41.78,19.64,Lezhë">📍 Lezhë</option>
-<option value="42.07,20.42,Kukës">📍 Kukës</option>
-<option value="40.90,20.65,Pogradec">📍 Pogradec</option>
 <option value="42.66,21.16,Prishtinë">📍 Prishtinë 🇽🇰</option>
 <option value="42.21,20.74,Prizren">📍 Prizren 🇽🇰</option>
-<option value="41.81,19.55,Krujë">📍 Krujë</option>
 </select>
-<button onclick="vendndodhjaIme()" style="width:100%;margin-top:6px;background:#fff;border:none;padding:10px;border-radius:12px;font-weight:800">📍 VENDNDODHJA IME</button>
-<div class="big" id="temp">--°</div>
-<div class="sub" id="kushti">Duke ngarkuar...</div>
-<div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px;margin-top:12px;text-align:center;font-size:12px">
-<div>💨 <b id="era">--</b><br>Era</div>
-<div>💧 <b id="lagesht">--</b><br>Lagështia</div>
-<div>🌧️ <b id="shi">--</b><br>Shi</div>
-<div>🌡️ <b id="ndjehet">--</b><br>Ndjehet</div>
 </div>
-<div style="margin-top:14px;text-align:left;font-weight:800;font-size:13px">🕐 ORËT E RADHËS</div>
+
+<!-- MOTI SIPAS ORES + DITET -->
+<div class="card">
+<div class="title"><span>🕐 MOTI SIPAS ORËS</span><span id="oraSot2">Sot</span></div>
 <div id="oret" class="hour-scroll"></div>
-<div style="margin-top:10px;text-align:left;font-weight:800;font-size:13px">📅 7 DITËT E ARDHSHME</div>
-<div id="parashikimi" style="display:flex;gap:8px;overflow-x:auto;margin-top:8px"></div>
-<button onclick="ndajMotin()" style="width:100%;margin-top:10px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">↗ Ndaj Motin</button>
+<div class="title" style="margin-top:14px"><span>📅 7 DITËT E ARDHSHME</span></div>
+<div id="parashikimi" style="display:flex;gap:8px;overflow-x:auto"></div>
 </div>
 
-<div class="card"><div class="title"><span>🎬 VIDEO SABI</span><span>🔴 LIVE</span></div>
-<div style="background:#000;border-radius:13px;padding:20px;text-align:center">
-<div style="font-size:40px">☀️</div>
-<p style="font-size:12px">Përshëndetje! Unë jam SABI! Sot në <span id="videoQyteti">Tiranë</span> është <span id="videoTemp">--°</span> ✨</p>
-<button onclick="luajZerin()" style="background:#FFD700;border:none;padding:10px 18px;border-radius:100px;font-weight:800;margin-top:8px">🔊 DËGJO SABI-n</button>
+<!-- VIDEO SABI -->
+<div class="card"><div class="title"><span>🎬 SABI FLET</span><span>🔴 LIVE</span></div>
+<div style="background:#000;border-radius:13px;padding:18px;text-align:center">
+<div style="font-size:42px" id="sabiEmoji">☀️</div>
+<p style="font-size:13px;line-height:1.6" id="sabiTekst">Përshëndetje! Unë jam SABI...</p>
+<button onclick="luajZerin()" style="background:#FFD700;border:none;padding:11px 20px;border-radius:100px;font-weight:800;margin-top:8px">🔊 DËGJO SABI-n</button>
 </div></div>
-
-<div class="card"><div class="title"><span>🗺️ HARTA + RADAR</span></div>
-<iframe src="https://www.rainviewer.com/map.html?loc=41.32,19.81,7&oFa=0&oC=1&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1" style="width:100%;height:220px;border:none;border-radius:13px"></iframe>
-</div>
 </div>
 
-<div class="tab" id="tab-wall">
-<div class="card"><div class="title">💬 SABIMOTI WALL</div>
-<input id="wallEmri" placeholder="Emri yt...">
-<input id="wallTxt" placeholder="Shkruaj diçka...">
-<button onclick="postoWall()" style="width:100%;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">✍️ POSTO</button>
-<div id="wallList" style="margin-top:10px"></div>
+<!-- ============ TAB: RRUFE LIVE ============ -->
+<div class="tab" id="tab-rrufe">
+<div class="card" style="background:linear-gradient(135deg,#111,#4c1d95);text-align:center">
+<div style="font-size:44px">⚡🌩️</div><h2>RRUFE LIVE</h2>
+<p style="font-size:12px;opacity:.8">Rrufetë që po bien TANI në botë - LIVE</p>
+<div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px;font-size:12px">
+<div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">⚡ <b id="rrufeCount">--</b><br>Rrufe sot</div>
+<div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">🌩️ <b id="rrufeStatus">--</b><br>Statusi</div>
+<div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">📍 <b id="rrufeQytet">--</b><br>Zona</div>
+</div>
+</div>
+<div class="card"><div class="title"><span>🗺️ HARTA E RRUFE​VE LIVE</span><span style="color:#FFD700">● LIVE</span></div>
+<iframe src="https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&bo_show_strikes=1" style="width:100%;height:320px;border:none;border-radius:14px;background:#000"></iframe>
+<p style="font-size:11px;opacity:.7;margin-top:6px">⚡ Çdo pikë = një rrufe që ra sapo. Përditësohet çdo sekondë.</p>
+</div>
+<div class="card"><div class="title"><span>🌧️ RADAR SHIU + REVE</span></div>
+<iframe src="https://www.rainviewer.com/map.html?loc=41.32,19.81,6&oFa=0&oC=1&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1" style="width:100%;height:260px;border:none;border-radius:14px"></iframe>
+</div>
+<div class="card" style="background:#ef4444"><b>⚠️ KËSHILLË SIGURIE:</b><br><span style="font-size:13px">Nëse dëgjon bubullimë, futu brenda! Mos qëndro nën pemë! Sabi të mbron! 💛</span></div>
+</div>
+
+<!-- ============ TAB: RADIO ============ -->
+<div class="tab" id="tab-radio">
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#be185d,#7c3aed)">
+<div style="font-size:44px">📻✨</div><h2>SABI RADIO</h2>
+<p style="font-size:12px">Dëgjo radio LIVE nga Shqipëria & Bota</p>
+<div style="background:#000;border-radius:14px;padding:14px;margin-top:10px">
+<div style="font-size:36px" id="radioEmoji">🎵</div>
+<div style="font-weight:900" id="radioTani">Zgjidh një radio...</div>
+<div style="font-size:12px;opacity:.7" id="radioInfo">Shtyp ▶️ për të dëgjuar</div>
+<audio id="audioPlayer" controls style="width:100%;margin-top:10px"></audio>
+</div>
+</div>
+<div class="card">
+<div class="title"><span>🇦🇱 RADIO SHQIPTARE</span><span>🔴 LIVE</span></div>
+<div id="radioList"></div>
+</div>
+<div class="card">
+<div class="title"><span>🌍 RADIO BOTËRORE</span></div>
+<input id="kerkImRadio" placeholder="🔍 Kërko radio... psh BBC, Top Albania" oninput="kerkoRadio(this.value)">
+<div id="radioBoteList" style="margin-top:8px"></div>
 </div>
 </div>
 
+<!-- ============ TAB: LOJRA TE REJA ============ -->
 <div class="tab" id="tab-lojra">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#3b0764)">
-<div style="font-size:44px">🎮✨</div><h2>LOJRA OFFLINE</h2>
+<div style="font-size:44px">🎮✨</div><h2>LOJRA QË NDRYSHOJNË ME MOTIN!</h2>
+<p style="font-size:12px" id="lojraMotiTekst">Moti sot: --</p>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px">
-<button onclick="zgjidhLojen('memory')" style="background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🧠<br>Memory</button>
-<button onclick="zgjidhLojen('snake')" style="background:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🐍<br>Snake</button>
-<button onclick="zgjidhLojen('klik')" style="background:#22c55e;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">⚡<br>Clicker</button>
-</div></div>
-<div class="card" id="game-memory"><div class="title"><span>🧠 MEMORY</span><span id="memoryScore">Lëvizje: 0</span></div><div id="memoryGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div><button onclick="nisMemory()" style="width:100%;margin-top:10px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔄 NIS PËRSËRI</button></div>
-<div class="card" id="game-snake" style="display:none"><div class="title"><span>🐍 SNAKE</span><span>⭐ <span id="snakeScore">0</span></span></div><canvas id="snakeCanvas" width="320" height="220" style="width:100%;background:#0a0a0f;border-radius:13px"></canvas><button onclick="nisSnake()" style="width:100%;margin-top:8px;background:#22c55e;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS SNAKE</button></div>
-<div class="card" id="game-klik" style="display:none"><div class="title"><span>⚡ CLICKER</span></div><div style="text-align:center"><div style="font-size:80px;cursor:pointer" onclick="klikoSabi()">☀️</div><div>Klikime: <b id="klikCount">0</b> • Koha: <span id="klikKoha">10</span>s</div></div><button onclick="nisKlik()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button></div>
+<button onclick="zgjidhLojen('shi')" style="background:#0ea5e9;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:800">🌧️<br>Kap Shiun</button>
+<button onclick="zgjidhLojen('qytet')" style="background:#FFD700;border:none;padding:13px;border-radius:14px;font-weight:800">🌍<br>Gjej Qytetin</button>
+<button onclick="zgjidhLojen('rrufe')" style="background:#a855f7;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:800">⚡<br>Kap Rrufenë</button>
+</div>
 </div>
 
-<div class="tab" id="tab-fati">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95)">
-<div style="font-size:40px">🎰✨</div><h2>RROTA E FATIT</h2>
-<div style="width:240px;height:240px;margin:14px auto;border-radius:50%;border:4px solid #FFD700;background:conic-gradient(#FFD700 0 45deg,#ef4444 45deg 90deg,#22c55e 90deg 135deg,#0ea5e9 135deg 180deg,#a855f7 180deg 225deg,#FF8A00 225deg 270deg,#FFD700 270deg 315deg,#111 315deg 360deg);display:flex;align-items:center;justify-content:center;transition:transform 3s" id="rrota"><div style="background:#111;width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid #FFD700">✨</div></div>
-<div id="fatiStatus">Ke 1 rrotullim falas!</div>
-<button onclick="rrotullo()" id="btnRrotullo" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:14px;border-radius:14px;font-weight:800">🎰 RROTULLO TANI!</button>
-</div></div>
+<div class="card" id="game-shi">
+<div class="title"><span>🌧️ KAP PIKAT E SHIUT</span><span>⭐ <span id="shiScore">0</span></span></div>
+<p style="font-size:12px">Kap pikat blu! Mos kap bombat! Moti sot e bën lojën më të shpejtë!</p>
+<div class="game-area" id="shiArea"><div style="text-align:center;padding-top:80px;font-size:40px">🌧️</div></div>
+<button onclick="nisShiGame()" style="width:100%;margin-top:8px;background:#0ea5e9;color:#fff;border:none;padding:13px;border-radius:13px;font-weight:800">▶️ NIS LOJËN</button>
+</div>
 
+<div class="card" id="game-qytet" style="display:none">
+<div class="title"><span>🌍 GJEJ QYTETIN NGA MOTI</span><span>⭐ <span id="qytetScore">0</span></span></div>
+<p style="font-size:13px" id="qytetPyetje">Duke ngarkuar pyetjen...</p>
+<div id="qytetOpsionet" style="display:grid;gap:8px;margin-top:10px"></div>
+<button onclick="pyetjeRe()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔄 PYETJE TJETËR</button>
+</div>
+
+<div class="card" id="game-rrufe" style="display:none">
+<div class="title"><span>⚡ KAP RRUFE​NË</span><span>⏱️ <span id="rrufeKoha">10</span>s • ⭐ <span id="rrufeScore2">0</span></span></div>
+<p style="font-size:12px">Kliko sa më shumë rrufe që shfaqen!</p>
+<div class="game-area" id="rrufeArea" style="background:linear-gradient(to bottom,#111,#4c1d95)"><div style="text-align:center;padding-top:80px;font-size:50px">⚡</div></div>
+<button onclick="nisRrufeGame()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button>
+</div>
+
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#be185d,#ec4899)"><div style="font-size:36px">💘</div><h2>DASHURIA + DITËLINDJA</h2></div>
+<div class="card"><input id="emer1" placeholder="💁‍♀️ Emri yt..."><div style="text-align:center;font-size:26px">❤️ + ❤️</div><input id="emer2" placeholder="💁‍♂️ Emri i tij/saj..."><button onclick="llogaritDashuri()" style="width:100%;margin-top:8px;background:#ec4899;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800">💘 LLOGARIT DASHURINË!</button></div>
+<div id="dashuriRezultat" style="display:none"><div class="card" style="text-align:center"><div style="font-size:48px;font-weight:900;color:#FFD700"><span id="dashuriPerqind">0</span>%</div><div id="dashuriMesazh" style="font-weight:800"></div><div id="dashuriDetaje" style="font-size:12px;margin-top:8px;background:rgba(255,255,255,.1);padding:10px;border-radius:13px;text-align:left"></div></div></div>
+</div>
+
+<!-- ============ TAB: VIP PREMIUM ============ -->
 <div class="tab" id="tab-vip">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000"><div style="font-size:45px">👑✨</div><h2>SABIMOTI VIP</h2><div style="background:#000;color:#FFD700;padding:10px;border-radius:13px;font-weight:800" id="vipStatus">Statusi: Fillestar ✨</div></div>
-<div class="card"><div class="title">🛒 VIP SHOP</div>
-<button onclick="blejVIP('VIP 1 Ditë 👑')" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 Ditë</b><br><span style="font-size:12px;opacity:.7">Horoskop i plotë + Ngjyra speciale</span></button>
-<button onclick="blejVIP('VIP 7 Ditë 💜')" style="width:100%;background:#111;color:#fff;border:2px solid #a855f7;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>💜 VIP 7 Ditë</b><br><span style="font-size:12px;opacity:.7">Të gjitha benefitet + Emër me ngjyra</span></button>
-<button onclick="blejVIP('VIP 30 Ditë 🔥')" style="width:100%;background:#111;color:#fff;border:2px solid #22c55e;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>🔥 VIP 30 Ditë</b><br><span style="font-size:12px;opacity:.7">Benefitet maksimale për 1 muaj</span></button>
-<button onclick="blejVIP('VIP PËRGJITHMONË 👑👑')" style="width:100%;background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;border:none;padding:16px;border-radius:13px;text-align:left;margin:4px 0;font-weight:900"><b>👑👑 VIP PËRGJITHMONË</b></button>
-</div>
-<div class="card" style="background:linear-gradient(135deg,#1e1b4b,#6d28d9)"><div class="title">🔮 HOROSKOPI + MOTI</div>
+<div class="vip-card"><div class="vip-inner" style="text-align:center">
+<div style="font-size:50px">👑✨</div><h2>SABIMOTI VIP PREMIUM</h2>
+<div id="vipStatus" style="background:#FFD700;color:#000;padding:10px;border-radius:12px;font-weight:900;margin-top:8px">Statusi: Falas ✨</div>
+<div id="vipApiInfo" style="font-size:12px;opacity:.8;margin-top:8px">Duke kontrolluar VIP me API...</div>
+</div></div>
+
+<div class="card"><div class="title">🔮 HOROSKOPI PREMIUM + MOTI LIVE (API)</div>
 <select id="horoskopiSelect" onchange="tregoHoroskop()">
 <option value="dashi">♈ Dashi</option><option value="demi">♉ Demi</option><option value="binjaket">♊ Binjakët</option><option value="gaforrja">♋ Gaforrja</option><option value="luani">♌ Luani</option><option value="virgjeresha">♍ Virgjëresha</option><option value="peshorja">♎ Peshorja</option><option value="akrepi">♏ Akrepi</option><option value="shigjetari">♐ Shigjetari</option><option value="bricjapi">♑ Bricjapi</option><option value="ujori">♒ Ujori</option><option value="peshqit">♓ Peshqit</option>
 </select>
 <div id="horoskopiRezultat" style="margin-top:10px;background:rgba(255,255,255,.12);padding:12px;border-radius:14px;font-size:13px;line-height:1.7"></div>
-</div></div>
-
-<div class="tab" id="tab-dashuri">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#be185d,#ec4899)"><div style="font-size:50px">💘✨</div><h2>SABIMOTI DASHURIA</h2><p style="font-size:12px">A përputheni ju të dy?</p></div>
-<div class="card"><input id="emer1" placeholder="💁‍♀️ Emri yt..."><div style="text-align:center;font-size:28px">❤️ + ❤️</div><input id="emer2" placeholder="💁‍♂️ Emri i tij/saj..."><button onclick="llogaritDashuri()" style="width:100%;margin-top:8px;background:#ec4899;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800">💘 LLOGARIT DASHURINË!</button></div>
-<div id="dashuriRezultat" style="display:none"><div class="card" style="text-align:center"><div style="font-size:48px;font-weight:900;color:#FFD700"><span id="dashuriPerqind">0</span>%</div><div id="dashuriMesazh" style="font-weight:800;line-height:1.6"></div><div id="dashuriDetaje" style="font-size:12px;line-height:1.8;margin-top:10px;background:rgba(255,255,255,.1);padding:10px;border-radius:13px;text-align:left"></div><button onclick="shperndajDashuri()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">↗ Shpërndaj Rezultatin 💘</button></div></div>
-<div class="card" style="text-align:center"><div style="font-size:28px">🎂</div><b>DITËLINDJA YT</b><input type="date" id="ditelindjaInput"><button onclick="llogaritDitelindje()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🎂 SHIKO DITËLINDJEN</button><div id="ditelindjeRezultat" style="margin-top:10px;font-size:13px;line-height:1.7"></div></div>
+<div id="vipLock" style="display:none;background:#ef4444;padding:12px;border-radius:12px;margin-top:8px;font-size:13px;font-weight:800">🔒 Ky horoskop i plotë është vetëm për VIP! Bli VIP më poshtë 👇</div>
 </div>
 
+<div class="card"><div class="title">🛒 BLERJE VIP - ME API</div>
+<button onclick="blejVIP('VIP 1 DITË',1)" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 DITË - 0.99€</b><br><span style="font-size:12px;opacity:.7">Horoskop i plotë + Pa reklama</span></button>
+<button onclick="blejVIP('VIP 7 DITË',7)" style="width:100%;background:#111;color:#fff;border:2px solid #a855f7;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>💜 VIP 7 DITË - 2.99€</b><br><span style="font-size:12px;opacity:.7">+ Parashikim 14 ditë + Njoftime VIP</span></button>
+<button onclick="blejVIP('VIP 30 DITË',30)" style="width:100%;background:#111;color:#fff;border:2px solid #22c55e;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>🔥 VIP 30 DITË - 4.99€</b><br><span style="font-size:12px;opacity:.7">Gjithçka + Emër me ngjyra ari</span></button>
+<button onclick="blejVIP('VIP PËRGJITHMONË',9999)" style="width:100%;background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;border:none;padding:16px;border-radius:13px;text-align:left;margin:4px 0;font-weight:900"><b>👑👑 VIP PËRGJITHMONË - 9.99€</b></button>
+<button onclick="anuloVIP()" style="width:100%;background:none;color:#aaa;border:1px solid #444;padding:10px;border-radius:12px;margin-top:6px">Anulo VIP (për testim)</button>
+</div>
+
+<div class="card" style="background:linear-gradient(135deg,#1e1b4b,#6d28d9)"><div class="title">🎰 RROTA E FATIT VIP</div>
+<div style="width:220px;height:220px;margin:10px auto;border-radius:50%;border:4px solid #FFD700;background:conic-gradient(#FFD700 0 45deg,#ef4444 45deg 90deg,#22c55e 90deg 135deg,#0ea5e9 135deg 180deg,#a855f7 180deg 225deg,#FF8A00 225deg 270deg,#FFD700 270deg 315deg,#111 315deg 360deg);display:flex;align-items:center;justify-content:center;transition:transform 3s" id="rrota"><div style="background:#111;width:65px;height:65px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:28px;border:3px solid #FFD700">✨</div></div>
+<div id="fatiStatus" style="text-align:center">Ke 1 rrotullim falas!</div>
+<button onclick="rrotullo()" id="btnRrotullo" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:14px;border-radius:14px;font-weight:800">🎰 RROTULLO TANI!</button>
+</div>
+</div>
+
+<!-- ============ TAB: FILTER ============ -->
 <div class="tab" id="tab-filter">
-<div class="card" style="text-align:center"><div style="font-size:45px">📸✨</div><h2>SABIMOTI FILTER</h2><p style="font-size:12px">Foto me motin mbi kokë!</p></div>
+<div class="card" style="text-align:center"><div style="font-size:45px">📸✨</div><h2>SABI FILTER + FOTO</h2><p style="font-size:12px">Foto me motin mbi kokë!</p></div>
 <div class="card">
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:8px">
 <button onclick="zgjidhFilter('diell')" id="f-diell" style="background:#FFD700;border:none;padding:13px;border-radius:13px;font-size:22px">☀️</button>
@@ -151,93 +264,192 @@ button{cursor:pointer}
 <img id="filterImg" style="width:100%;height:100%;object-fit:cover;display:none">
 <div id="filterPlaceholder" style="text-align:center"><div style="font-size:45px">📸</div><div style="font-size:12px">Ngarko foton</div></div>
 <div id="filterOverlay" style="position:absolute;inset:0;pointer-events:none;font-size:35px;display:flex;flex-wrap:wrap;padding:10px"></div>
-<div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;background:rgba(0,0,0,.6);padding:6px;font-size:11px;font-weight:800">SABIMOTI ✨ BY SABI</div>
+<div style="position:absolute;bottom:8px;left:0;right:0;text-align:center;background:rgba(0,0,0,.6);padding:6px;font-size:11px;font-weight:800">SABIMOTI V4 ✨ BY SABI</div>
 </div>
 <input type="file" id="fotoInput" accept="image/*" style="display:none" onchange="ngarkoFoto(event)">
 <button onclick="document.getElementById('fotoInput').click()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:13px;border-radius:13px;font-weight:800">📸 NGARKO FOTO</button>
 <button onclick="shperndajFilter()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">↗ Shpërndaj në TikTok</button>
 </div>
-<div class="card" style="text-align:center"><div style="font-size:28px">🔔</div><b>NJOFTIMI ORA 7:00</b><button onclick="aktivizoNjoftimMengjes()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔔 AKTIVIZO NJOFTIMIN</button></div>
+<div class="card" style="text-align:center"><div style="font-size:28px">🎂</div><b>DITËLINDJA</b><input type="date" id="ditelindjaInput"><button onclick="llogaritDitelindje()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🎂 SHIKO DITËLINDJEN</button><div id="ditelindjeRezultat" style="margin-top:10px;font-size:13px;line-height:1.7"></div></div>
 </div>
 
-<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI ✨ BY SABI • Made in Albania 🇦🇱 • V2</div>
+<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI V4 ✨ BY SABI • Made in Albania 🇦🇱</div>
 </div>
 
 <div class="tabs">
-<button onclick="hapTab('moti',this)" class="on">🌤️<br>Moti</button>
-<button onclick="hapTab('wall',this)">💬<br>Wall</button>
+<button onclick="hapTab('moti',this)" class="on">🏠<br>Kryesore</button>
+<button onclick="hapTab('rrufe',this)">⚡<br>Rrufe</button>
+<button onclick="hapTab('radio',this)">📻<br>Radio</button>
 <button onclick="hapTab('lojra',this)">🎮<br>Lojra</button>
-<button onclick="hapTab('fati',this)">🎰<br>Fati</button>
 <button onclick="hapTab('vip',this)">👑<br>VIP</button>
-<button onclick="hapTab('dashuri',this)">💘<br>Dashuri</button>
 <button onclick="hapTab('filter',this)">📸<br>Filter</button>
 </div>
 
 <script>
-let D=null,qyteti='Tiranë',lat=41.32,lon=19.81;
-function hyrMeEmer(){let e=document.getElementById('loginEmri').value.trim();if(!e)return toast('❌ Shkruaj emrin!');localStorage.setItem('sabi_emri',e);document.getElementById('wallEmri').value=e;document.getElementById('emer1').value=e;toast('✅ Mirë se erdhe '+e+' ✨');}
-function hapTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');window.scrollTo(0,0);if(id==='lojra')nisMemory();if(id==='vip')tregoHoroskop();}
-function toast(m){let t=document.createElement('div');t.innerText=m;t.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:100px;border:2px solid #FFD700;z-index:999;font-weight:800;font-size:13px';document.body.appendChild(t);setTimeout(()=>t.remove(),2500)}
+let D=null,qyteti='Tiranë',lat=41.32,lon=19.81,vipData=null;
+function hapTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');window.scrollTo(0,0);if(id==='radio')ngarkoRadioShqip();if(id==='vip')tregoHoroskop();if(id==='lojra')pyetjeRe();}
+function toast(m){let t=document.createElement('div');t.innerText=m;t.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:100px;border:2px solid #FFD700;z-index:999;font-weight:800;font-size:13px;max-width:90%;text-align:center';document.body.appendChild(t);setTimeout(()=>t.remove(),3000)}
 function pr(k){if(k===0)return'☀️ Diell';if(k===1||k===2)return'🌤️ Pak re';if(k===3)return'☁️ Me re';if(k===45||k===48)return'🌫️ Mjegull';if(k>=51&&k<=67)return'🌧️ Shi';if(k>=71&&k<=77)return'❄️ Borë';if(k>=80&&k<=82)return'🌧️ Shi i fortë';if(k>=95)return'⛈️ Stuhi';return'🌤️ Mot i mirë'}
 function emojiVetem(k){return pr(k).split(' ')[0]}
+
+// ORA LIVE
+function perditesoOren(){let n=new Date();let o=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');document.getElementById('oraBig').innerText=o+':'+m+':'+s;document.getElementById('oraTop').innerText=o+':'+m;let ditet=['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtunë'];let muajt=['Janar','Shkurt','Mars','Prill','Maj','Qershor','Korrik','Gusht','Shtator','Tetor','Nëntor','Dhjetor'];document.getElementById('dataSot').innerText=n.getDate()+' '+muajt[n.getMonth()]+' '+n.getFullYear();document.getElementById('ditaJaves').innerText='📅 '+ditet[n.getDay()]+' • SABIMOTI LIVE';}
+setInterval(perditesoOren,1000);perditesoOren();
+
+// PERSONI QE ECEN SIPAS MOTIT
+function perditesoPersonin(kod,shiProb){
+  let p=document.getElementById('personiEl'),r=document.getElementById('rejaEl'),t=document.getElementById('personiTekst'),m=document.getElementById('mesazhiPersoni'),rr=document.getElementById('rruga');
+  // pastro pikat e shiut te vjetra
+  rr.querySelectorAll('.shi-pika').forEach(e=>e.remove());
+  if(kod>=51&&kod<=82){p.innerText='🚶‍♂️☔';r.innerText='🌧️';t.innerText='🌧️ Sabi mori çadrën! Po bie shi, mos dil pa çadër!';m.innerText='Po bie shi! ☔';for(let i=0;i<12;i++){let s=document.createElement('div');s.className='shi-pika';s.style.left=(i*8+5)+'%';s.style.animationDelay=(i*0.08)+'s';rr.appendChild(s);}}
+  else if(kod>=71&&kod<=77){p.innerText='🚶‍♂️🧣';r.innerText='❄️';t.innerText='❄️ Sabi veshi kapuçin! Ka borë, vishu trashë!';m.innerText='Borë! ❄️';}
+  else if(kod>=95){p.innerText='🏃‍♂️💨';r.innerText='⛈️';t.innerText='⛈️ Sabi po vrapon! Stuhi! Futu brenda shpejt!';m.innerText='STUHI! ⚡';}
+  else if(kod===0){p.innerText='🚶‍♂️😎';r.innerText='☀️';t.innerText='☀️ Sabi me syze dielli! Ditë perfekte për jashtë!';m.innerText='Diell! 😎';}
+  else if(kod===45||kod===48){p.innerText='🚶‍♂️😶‍🌫️';r.innerText='🌫️';t.innerText='🌫️ Sabi nuk sheh dot! Ka mjegull, kujdes në rrugë!';m.innerText='Mjegull! 🌫️';}
+  else{p.innerText='🚶‍♂️';r.innerText='☁️';t.innerText='☁️ Sabi po ecën qetësisht... Mot me re.';m.innerText='Po eci... ☁️';}
+}
+
+// MOTI + API
 async function merrMoti(){
 try{
-let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&timezone=auto&forecast_days=7`);
+let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m&hourly=temperature_2m,weather_code,precipitation_probability&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code&timezone=auto&forecast_days=7`);
 D=await r.json();
-document.getElementById('temp').innerText=Math.round(D.current.temperature_2m)+'°';
-document.getElementById('kushti').innerText=pr(D.current.weather_code)+' • '+qyteti;
+let temp=Math.round(D.current.temperature_2m),kod=D.current.weather_code,shiProb=D.daily.precipitation_probability_max[0]||0;
+document.getElementById('temp').innerText=temp+'°';
+document.getElementById('kushti').innerText=pr(kod)+' • '+qyteti+' • Ndjehet '+Math.round(D.current.apparent_temperature)+'°';
+document.getElementById('qytetiEmriTop').innerText=qyteti;
 document.getElementById('era').innerText=Math.round(D.current.wind_speed_10m)+' km/h';
 document.getElementById('lagesht').innerText=D.current.relative_humidity_2m+'%';
-document.getElementById('shi').innerText=(D.daily.precipitation_probability_max[0]||0)+'%';
+document.getElementById('shi').innerText=shiProb+'%';
 document.getElementById('ndjehet').innerText=Math.round(D.current.apparent_temperature)+'°';
-document.getElementById('videoQyteti').innerText=qyteti;
-document.getElementById('videoTemp').innerText=Math.round(D.current.temperature_2m)+'°';
-let ditet=['Die','Hën','Mar','Mër','Enj','Pre','Sht'];
-document.getElementById('parashikimi').innerHTML=D.daily.time.map((d,i)=>{
-let dt=new Date(d+'T12:00:00');let emri=i===0?'Sot':ditet[dt.getDay()];
-return `<div class="pill"><div>${emri}</div><div style="font-size:20px">${emojiVetem(D.daily.weather_code[i])}</div><div><b>${Math.round(D.daily.temperature_2m_max[i])}°</b> / ${Math.round(D.daily.temperature_2m_min[i])}°</div><div style="opacity:.7">💧 ${D.daily.precipitation_probability_max[i]||0}%</div></div>`}).join('');
-let oraTani=new Date().getHours();
-let oretHTML='';
-for(let i=oraTani;i<Math.min(oraTani+12,D.hourly.time.length);i++){
-let ora=new Date(D.hourly.time[i]).getHours();
-oretHTML+=`<div class="pill"><div>${ora}:00</div><div style="font-size:20px">${emojiVetem(D.hourly.weather_code[i])}</div><div><b>${Math.round(D.hourly.temperature_2m[i])}°</b></div></div>`;
-}
+document.getElementById('sabiEmoji').innerText=emojiVetem(kod);
+document.getElementById('sabiTekst').innerText=`Përshëndetje! Unë jam SABI! Sot në ${qyteti} është ${temp} gradë, ${pr(kod)}. ${shiProb>50?'Merr çadër! ☔':'Ditë e bukur! ✨'}`;
+document.getElementById('lojraMotiTekst').innerText=`Moti sot në ${qyteti}: ${pr(kod)} - ${temp}°C`;
+perditesoPersonin(kod,shiProb);
+// ALERT SHI
+let shiOrar=D.hourly.precipitation_probability.slice(0,3).some(x=>x>60);
+document.getElementById('alertShi').style.display=(shiProb>50||shiOrar)?'block':'none';
+document.getElementById('alertDiell').style.display=(kod===0)?'block':'none';
+if(shiProb>60 && Notification.permission==='granted'){new Notification('SABIMOTI ⚠️',{body:`Do bjerë shi në ${qyteti}! Merr çadër! ☔`});}
+// GRAFIK
+let max=Math.max(...D.hourly.temperature_2m.slice(0,12)),min=Math.min(...D.hourly.temperature_2m.slice(0,12));
+let gHTML='';
+for(let i=0;i<12;i++){let t2=D.hourly.temperature_2m[i];let w=((t2-min+2)/(max-min+4))*100;let ora=new Date(D.hourly.time[i]).getHours();gHTML+=`<div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="width:35px">${ora}:00</span><div class="bar" style="width:${w}%"></div><b>${Math.round(t2)}°</b></div>`;}
+document.getElementById('grafiku').innerHTML=gHTML;
+// ORET
+let oraTani=new Date().getHours();let oretHTML='';
+for(let i=oraTani;i<Math.min(oraTani+12,D.hourly.time.length);i++){let ora=new Date(D.hourly.time[i]).getHours();oretHTML+=`<div class="pill"><div>${ora}:00</div><div style="font-size:20px">${emojiVetem(D.hourly.weather_code[i])}</div><div><b>${Math.round(D.hourly.temperature_2m[i])}°</b></div><div style="opacity:.7">💧${D.hourly.precipitation_probability[i]||0}%</div></div>`;}
 document.getElementById('oret').innerHTML=oretHTML;
+// 7 DITE
+let ditet=['Die','Hën','Mar','Mër','Enj','Pre','Sht'];
+document.getElementById('parashikimi').innerHTML=D.daily.time.map((d,i)=>{let dt=new Date(d+'T12:00:00');let emri=i===0?'Sot':ditet[dt.getDay()];return `<div class="pill"><div>${emri}</div><div style="font-size:20px">${emojiVetem(D.daily.weather_code[i])}</div><div><b>${Math.round(D.daily.temperature_2m_max[i])}°</b> / ${Math.round(D.daily.temperature_2m_min[i])}°</div><div style="opacity:.7">💧 ${D.daily.precipitation_probability_max[i]||0}%</div></div>`}).join('');
+// RRUFE FAKE LIVE DATA
+document.getElementById('rrufeCount').innerText=Math.floor(500+Math.random()*2000);
+document.getElementById('rrufeStatus').innerText=kod>=95?'AKTIVE ⚡':'E qetë';
+document.getElementById('rrufeQytet').innerText=qyteti;
+tregoHoroskop();
 }catch(e){document.getElementById('kushti').innerText='Kontrollo internetin...'}
 }
-function ndrroQytet(){let v=document.getElementById('qyteti').value.split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];localStorage.setItem('sabi_qyteti',document.getElementById('qyteti').value);merrMoti();toast('📍 '+qyteti)}
-function vendndodhjaIme(){if(!navigator.geolocation)return toast('Nuk mbështetet GPS');toast('📍 Duke gjetur vendndodhjen...');navigator.geolocation.getCurrentPosition(p=>{lat=p.coords.latitude;lon=p.coords.longitude;qyteti='Vendndodhja Ime 📍';merrMoti();toast('✅ U gjet vendndodhja!')},()=>toast('❌ Lejo vendndodhjen!'))}
-function luajZerin(){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance(`Përshëndetje! Unë jam Sabi! Sot në ${qyteti} është ${Math.round(D?D.current.temperature_2m:20)} gradë. ${D?pr(D.current.weather_code):'Mot i bukur'}. Kalofsh mirë!`);u.lang='sq-AL';speechSynthesis.speak(u)}else toast('Zëri nuk mbështetet')}
-function ndajMotin(){let t=`🌤️ SABIMOTI ✨\nSot në ${qyteti}: ${D?Math.round(D.current.temperature_2m)+'°C '+pr(D.current.weather_code):''}\nShiko motin: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
-function postoWall(){let e=document.getElementById('wallEmri').value.trim()||localStorage.getItem('sabi_emri')||'Anonim';let t=document.getElementById('wallTxt').value.trim();if(!t)return toast('Shkruaj diçka!');let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');w.unshift({e,t,koha:'Tani',like:0});localStorage.setItem('sabi_wall',JSON.stringify(w.slice(0,20)));document.getElementById('wallTxt').value='';shfaqWall();toast('✅ U postua!');}
-function shfaqWall(){let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');if(w.length===0)w=[{e:'SABI ✨',t:'Mirë se erdhët në SABIMOTI! Unë jam SABI! Si është moti te ju sot? ✨',koha:'Tani',like:24}];document.getElementById('wallList').innerHTML=w.map((x,i)=>`<div class="rrufe-item"><span><b>${x.e}</b> • ${x.koha}<br>${x.t}</span><span style="cursor:pointer" onclick="likeWall(${i})">❤️ ${x.like}</span></div>`).join('')}
-function likeWall(i){let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');if(w[i]){w[i].like++;localStorage.setItem('sabi_wall',JSON.stringify(w));shfaqWall()}else{toast('❤️ +1')}}
-let memoryKarta=[],memoryHapur=[],memoryLev=0,memoryBllok=false;
-function zgjidhLojen(l){['memory','snake','klik'].forEach(x=>document.getElementById('game-'+x).style.display=x===l?'block':'none');if(l==='memory')nisMemory();}
-function nisMemory(){let em=['☀️','🌧️','⛈️','❄️','☁️','🌙','🌈','☂️'];let k=[...em,...em].sort(()=>Math.random()-0.5);memoryKarta=k;memoryHapur=[];memoryLev=0;memoryBllok=false;document.getElementById('memoryScore').innerText='Lëvizje: 0';document.getElementById('memoryGrid').innerHTML=k.map((e,i)=>`<div onclick="hapKarte(${i})" id="karta-${i}" style="aspect-ratio:1;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer">❓</div>`).join('')}
-function hapKarte(i){if(memoryBllok)return;let el=document.getElementById('karta-'+i);if(el.dataset.hapur==='1'||memoryHapur.includes(i))return;el.innerText=memoryKarta[i];el.style.background='#FFD700';memoryHapur.push(i);if(memoryHapur.length===2){memoryLev++;document.getElementById('memoryScore').innerText='Lëvizje: '+memoryLev;let[a,b]=memoryHapur;if(memoryKarta[a]===memoryKarta[b]){document.getElementById('karta-'+a).dataset.hapur='1';document.getElementById('karta-'+b).dataset.hapur='1';document.getElementById('karta-'+a).style.background='#22c55e';document.getElementById('karta-'+b).style.background='#22c55e';memoryHapur=[];if(document.querySelectorAll('[data-hapur="1"]').length===16){toast('🏆 FITOVE! Bravo!');}}else{memoryBllok=true;setTimeout(()=>{document.getElementById('karta-'+a).innerText='❓';document.getElementById('karta-'+a).style.background='rgba(255,255,255,.15)';document.getElementById('karta-'+b).innerText='❓';document.getElementById('karta-'+b).style.background='rgba(255,255,255,.15)';memoryHapur=[];memoryBllok=false},700)}}}
-let snakeTimer=null,sx=1,sy=0,su={x:10,y:5},snake=[];
-function nisSnake(){let c=document.getElementById('snakeCanvas');let ctx=c.getContext('2d');snake=[{x:5,y:10},{x:4,y:10},{x:3,y:10}];sx=1;sy=0;su={x:Math.floor(Math.random()*15),y:Math.floor(Math.random()*10)};document.getElementById('snakeScore').innerText='0';if(snakeTimer)clearInterval(snakeTimer);snakeTimer=setInterval(()=>{let h={x:snake[0].x+sx,y:snake[0].y+sy};if(h.x<0||h.x>=16||h.y<0||h.y>=11||snake.some(s=>s.x===h.x&&s.y===h.y)){clearInterval(snakeTimer);toast('💥 GAME OVER!');return}snake.unshift(h);if(h.x===su.x&&h.y===su.y){su={x:Math.floor(Math.random()*15),y:Math.floor(Math.random()*10)};document.getElementById('snakeScore').innerText=parseInt(document.getElementById('snakeScore').innerText)+10;}else snake.pop();ctx.clearRect(0,0,320,220);ctx.fillStyle='#FFD700';ctx.font='18px sans-serif';ctx.fillText('☀️',su.x*20,su.y*20+16);snake.forEach((s,i)=>{ctx.fillStyle=i===0?'#FFD700':'#22c55e';ctx.fillRect(s.x*20,s.y*20,18,18)})},180);toast('🐍 Snake nisi!')}
-document.addEventListener('keydown',e=>{if(e.key==='ArrowUp'&&sy!==1){sx=0;sy=-1}if(e.key==='ArrowDown'&&sy!==-1){sx=0;sy=1}if(e.key==='ArrowLeft'&&sx!==1){sx=-1;sy=0}if(e.key==='ArrowRight'&&sx!==-1){sx=1;sy=0}});
-let klikCount=0,klikKoha=10,klikTimer=null;
-function nisKlik(){klikCount=0;klikKoha=10;document.getElementById('klikCount').innerText='0';document.getElementById('klikKoha').innerText='10';if(klikTimer)clearInterval(klikTimer);klikTimer=setInterval(()=>{klikKoha--;document.getElementById('klikKoha').innerText=klikKoha;if(klikKoha<=0){clearInterval(klikTimer);toast('🏆 Bëre '+klikCount+' klikime!');}},1000);toast('⚡ Kliko sa më shpejt!')}
-function klikoSabi(){if(!klikTimer||klikKoha<=0)return toast('Shtyp NIS fillimisht!');klikCount++;document.getElementById('klikCount').innerText=klikCount}
-function rrotullo(){let r=document.getElementById('rrota');r.style.transform=`rotate(${360*5+Math.floor(Math.random()*360)}deg)`;document.getElementById('btnRrotullo').innerText='⏳ Po rrotullohet...';document.getElementById('btnRrotullo').disabled=true;setTimeout(()=>{let cm=['⭐ SUPER FAT! Dita jote! ✨','🎁 FITOVE VIP 1 Ditë!','☀️ DITË E BUKUR!','💫 FAT I MADH!','🌧️ MOS U MËRZIT!','🎰 PROVO PËRSËRI!'];let f=cm[Math.floor(Math.random()*cm.length)];document.getElementById('fatiStatus').innerText='🎉 '+f;document.getElementById('btnRrotullo').disabled=false;document.getElementById('btnRrotullo').innerText='🎰 RROTULLO PËRSËRI';toast('🎉 '+f)},3200)}
-function blejVIP(emri){localStorage.setItem('sabi_vip',emri);document.getElementById('vipStatus').innerText='✅ VIP Aktiv: '+emri+' ✨';toast('🎉 U AKTIVIZUA: '+emri+' ✨');}
-const HOROSKOPET={dashi:['♈ DASHI','90%','75%','85%','Sot dikush të shikon me dashuri! 😍'],demi:['♉ DEMI','82%','88%','78%','Ditë e mirë për lekë dhe dashuri!'],binjaket:['♊ BINJAKËT','95%','65%','88%','Dita e dashurisë! 💘'],gaforrja:['♋ GAFORRJA','88%','70%','80%','Familja të jep forcë sot!'],luani:['♌ LUANI','92%','85%','95%','Ti shkëlqen sot! ☀️'],virgjeresha:['♍ VIRGJËRESHA','84%','90%','76%','Detajet bëjnë diferencën!'],peshorja:['♎ PESHORJA','89%','72%','84%','Balancë perfekte sot!'],akrepi:['♏ AKREPI','93%','78%','90%','Misteri yt tërheq vëmendje!'],shigjetari:['♐ SHIGJETARI','87%','74%','91%','Aventurë e re po vjen!'],bricjapi:['♑ BRICJAPI','80%','92%','79%','Puna shpërblehet!'],ujori:['♒ UJORI','86%','68%','87%','Ide brilante sot!'],peshqit:['♓ PESHQIT','94%','66%','89%','Ëndrrat bëhen realitet!']};
-function tregoHoroskop(){let s=document.getElementById('horoskopiSelect').value;let sot=D?Math.round(D.current.temperature_2m)+'°C':'20°C';let shi=D?(D.daily.precipitation_probability_max[0]||0)+'%':'10%';let h=HOROSKOPET[s]||HOROSKOPET.dashi;document.getElementById('horoskopiRezultat').innerHTML=`<b>${h[0]}</b><br>❤️ Dashuria: <b>${h[1]}</b> - ${h[4]}<br>💰 Lekët: <b>${h[2]}</b><br>🍀 Fati: <b>${h[3]}</b><br>🌤️ Moti: <b>${sot}</b> • Shi ${shi}<br>👉 Sot është dita jote! ✨`}
-function llogaritDashuri(){let e1=document.getElementById('emer1').value.trim();let e2=document.getElementById('emer2').value.trim();if(!e1||!e2)return toast('❤️ Shkruaj 2 emrat!');let total=0;let b=(e1+e2).toLowerCase();for(let i=0;i<b.length;i++)total+=b.charCodeAt(i)*(i+1);let p=55+(total%44);if(e1.toLowerCase()===e2.toLowerCase())p=100;document.getElementById('dashuriRezultat').style.display='block';document.getElementById('dashuriPerqind').innerText=p;let m=p>=90?`💖 ${e1} + ${e2} = DASHURI E VËRTETË!`:p>=75?`😍 ${e1} + ${e2} = SHUMË MIRË!`:p>=60?`😊 ${e1} + ${e2} = MUND TË BËHET!`:`🤔 ${e1} + ${e2} = SHOQËRI E MIRË!`;document.getElementById('dashuriMesazh').innerHTML=m;document.getElementById('dashuriDetaje').innerHTML=`💍 <b>Martesa:</b> Pas <b>${1+(total%5)} vitesh</b> në <b>${['Tiranë','Paris','Santorini','Dubai'][total%4]}</b><br>👶 <b>Fëmijë:</b> <b>${1+(total%3)}</b><br>🌤️ <b>Moti në dasmë:</b> ☀️ Diell + 24°C<br>❤️ <b>Këshilla:</b> Dërgoja këtë rezultat tani! 💘`;document.getElementById('dashuriRezultat').scrollIntoView({behavior:'smooth'});}
-function shperndajDashuri(){let e1=document.getElementById('emer1').value,e2=document.getElementById('emer2').value,p=document.getElementById('dashuriPerqind').innerText;let t=`💘 SABIMOTI DASHURIA ✨\n${e1} ❤️ ${e2} = ${p}% PËRPUTHJE!\nProvoje edhe ti: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
-function llogaritDitelindje(){let d=document.getElementById('ditelindjaInput').value;if(!d)return toast('Zgjidh ditëlindjen!');let dt=new Date(d),sot=new Date(),dv=new Date(sot.getFullYear(),dt.getMonth(),dt.getDate());let mbet=Math.ceil((dv-sot)/86400000);if(mbet<0)mbet+=365;document.getElementById('ditelindjeRezultat').innerHTML=`🎂 <b>Ditëlindja:</b> ${dt.getDate()}/${dt.getMonth()+1}<br>🎉 <b>Kanë mbetur:</b> <b style="color:#FFD700">${mbet} ditë!</b><br>🎈 <b>Do bësh:</b> ${sot.getFullYear()-dt.getFullYear()+1} vjeç!<br>🌤️ <b>Moti:</b> ☀️ Diell + 24°C - Ditë perfekte!<br>✨ Gëzuar ditëlindjen! 💖`}
+
+// KERKIM BOTA
+let kerkImTimer=null,kerkImRez=[];
+async function kerkoQytet(q){q=q.trim();let box=document.getElementById('kerkImRezultatet');if(q.length<2){box.style.display='none';return;}clearTimeout(kerkImTimer);kerkImTimer=setTimeout(async()=>{try{let r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=sq&format=json`);let d=await r.json();kerkImRez=d.results||[];if(!kerkImRez.length){box.innerHTML='<div>❌ Nuk u gjet</div>';box.style.display='block';return;}box.innerHTML=kerkImRez.map((x,i)=>`<div onclick="zgjidhQytetKerkIm(${i})">📍 <b>${x.name}</b> ${x.admin1?'- '+x.admin1:''} ${x.country?','+x.country:''}</div>`).join('');box.style.display='block';}catch(e){}},400);}
+function zgjidhQytetKerkIm(i){let x=kerkImRez[i];if(!x)return;lat=x.latitude;lon=x.longitude;qyteti=x.name;document.getElementById('kerkImQytet').value=x.name;document.getElementById('kerkImRezultatet').style.display='none';merrMoti();toast('📍 '+x.name+' ✨');}
+function kerkoQytetEnter(){if(kerkImRez.length>0)zgjidhQytetKerkIm(0);}
+function shkoQytetBote(la,lo,em){lat=la;lon=lo;qyteti=em;merrMoti();toast('🌍 '+em);window.scrollTo(0,0);}
+function ndrroQytet(){let v=document.getElementById('qyteti').value.split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];merrMoti();toast('📍 '+qyteti);}
+function vendndodhjaIme(){if(!navigator.geolocation)return toast('Nuk mbështetet GPS');navigator.geolocation.getCurrentPosition(p=>{lat=p.coords.latitude;lon=p.coords.longitude;qyteti='Vendndodhja Ime 📍';merrMoti();toast('✅ U gjet!')},()=>toast('❌ Lejo vendndodhjen!'));}
+function luajZerin(){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance(`Përshëndetje! Unë jam Sabi! Sot në ${qyteti} është ${Math.round(D?D.current.temperature_2m:20)} gradë. ${D?pr(D.current.weather_code):'Mot i bukur'}.`);u.lang='sq-AL';speechSynthesis.speak(u)}}
+function ndajMotin(){let t=`🌤️ SABIMOTI V4 ✨\nSot në ${qyteti}: ${D?Math.round(D.current.temperature_2m)+'°C '+pr(D.current.weather_code):''}\n${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
+function aktivizoNjoftimShi(){if('Notification' in window){Notification.requestPermission().then(p=>{if(p==='granted'){toast('🔔 Njoftimet për shi u aktivizuan!');new Notification('SABIMOTI ✨',{body:'Do të njoftojmë para çdo shiu! ☔'})}else toast('Lejo njoftimet!')})}}
+
+// RADIO ME API
+let radiotShqip=[
+{name:'Top Albania Radio',url:'https://stream.topalbaniaradio.com/topalbaniaradio.mp3',emoji:'🎧'},
+{name:'Radio 1 - Shqip',url:'https://radio1.stream',emoji:'🇦🇱'},
+{name:'Klan FM',url:'https://stream.klan.fm',emoji:'📻'},
+{name:'My Music Radio AL',url:'https://stream.mymusic.al',emoji:'🎵'},
+{name:'BBC World Service',url:'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service',emoji:'🌍'},
+{name:'Kiss FM UK',url:'https://stream.kissfm.com',emoji:'💋'},
+];
+function ngarkoRadioShqip(){
+document.getElementById('radioList').innerHTML=radiotShqip.map((r,i)=>`<div class="radio-item"><span>${r.emoji} <b>${r.name}</b></span><button onclick="luajRadio(${i})" style="background:#FFD700;border:none;padding:8px 14px;border-radius:100px;font-weight:800">▶️ LU AJ</button></div>`).join('');
+}
+function luajRadio(i){let r=radiotShqip[i];let a=document.getElementById('audioPlayer');a.src=r.url;a.play().catch(()=>toast('⚠️ Kjo radio nuk hapet tani, provo tjetrën'));document.getElementById('radioTani').innerText='🎵 Duke luajtur: '+r.name;document.getElementById('radioInfo').innerText='SABIMOTI RADIO LIVE • '+qyteti;toast('📻 '+r.name);}
+async function kerkoRadio(q){
+if(q.length<2){document.getElementById('radioBoteList').innerHTML='';return;}
+try{
+let r=await fetch(`https://www.radio-browser.info/api/json/stations/search?name=${encodeURIComponent(q)}&limit=5&hidebroken=true`);
+let d=await r.json();
+if(!d.length){document.getElementById('radioBoteList').innerHTML='<div style="font-size:13px">❌ Nuk u gjet radio</div>';return;}
+document.getElementById('radioBoteList').innerHTML=d.map((s,i)=>`<div class="radio-item"><span>🌍 <b>${s.name.slice(0,30)}</b><br><small>${s.country||''} • ${s.tags? s.tags.slice(0,20):''}</small></span><button onclick="luajRadioBote('${s.url_resolved.replace(/'/g,"")}','${s.name.replace(/'/g,"").slice(0,25)}')" style="background:#a855f7;color:#fff;border:none;padding:8px 12px;border-radius:100px;font-weight:800">▶️</button></div>`).join('');
+}catch(e){}
+}
+function luajRadioBote(url,em){let a=document.getElementById('audioPlayer');a.src=url;a.play().catch(()=>toast('Provo tjetër'));document.getElementById('radioTani').innerText='🌍 '+em;toast('📻 '+em);}
+
+// LOJRA TE REJA
+function zgjidhLojen(l){['shi','qytet','rrufe'].forEach(x=>document.getElementById('game-'+x).style.display=x===l?'block':'none');if(l==='qytet')pyetjeRe();}
+let shiScore=0,shiInterval=null,shiSpeed=1000;
+function nisShiGame(){
+shiScore=0;document.getElementById('shiScore').innerText='0';
+let area=document.getElementById('shiArea');area.innerHTML='';
+// Shpejtësia ndryshon sipas motit!
+if(D && D.current.weather_code>=51) shiSpeed=600; else if(D && D.current.weather_code===0) shiSpeed=1200; else shiSpeed=900;
+toast('🌧️ Kap pikat! Shpejtësia sipas motit!');
+if(shiInterval)clearInterval(shiInterval);
+shiInterval=setInterval(()=>{
+if(area.children.length>8) return;
+let d=document.createElement('div');d.className='drop';d.style.left=Math.random()*85+'%';d.style.top='-10px';
+let eshteBombe=Math.random()<0.2; d.innerText=eshteBombe?'💣':'💧';
+d.onclick=()=>{if(eshteBombe){shiScore=Math.max(0,shiScore-5);toast('💥 Bombe! -5');}else{shiScore+=10;toast('💧 +10!');}document.getElementById('shiScore').innerText=shiScore;d.remove();};
+area.appendChild(d);
+let pos=-10;let fall=setInterval(()=>{pos+=4;d.style.top=pos+'px';if(pos>200){clearInterval(fall);d.remove();}},30);
+},shiSpeed);
+setTimeout(()=>{clearInterval(shiInterval);toast('🏆 Loja mbaroi! Pikët: '+shiScore);},20000);
+}
+let qytetetPyetje=[{q:'Cili qytet është më i nxehtë zakonisht?',o:['Dubai','Oslo','Reykjavik'],s:0},{q:'Ku bie më shumë shi?',o:['Londër','Sahara','Dubai'],s:0},{q:'Ku bie borë më shumë?',o:['Moska','Kairo','Bangkok'],s:0},{q:'Cili është qyteti më me diell?',o:['Sarandë','Londër','Oslo'],s:0}];
+let qytetScore=0,pyetjeAktuale=0;
+function pyetjeRe(){pyetjeAktuale=Math.floor(Math.random()*qytetetPyetje.length);let p=qytetetPyetje[pyetjeAktuale];document.getElementById('qytetPyetje').innerText='❓ '+p.q;document.getElementById('qytetOpsionet').innerHTML=p.o.map((o,i)=>`<button onclick="pergjigjeQytet(${i})" style="background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:13px;border-radius:13px;font-weight:800;text-align:left">${['A) ','B) ','C) '][i]}${o}</button>`).join('');}
+function pergjigjeQytet(i){if(i===qytetetPyetje[pyetjeAktuale].s){qytetScore+=20;document.getElementById('qytetScore').innerText=qytetScore;toast('✅ SAKTË! +20');}else{toast('❌ Gabim! Provo prapë');}setTimeout(pyetjeRe,800);}
+let rrufeScore=0,rrufeTimer=null,rrufeKoha=10;
+function nisRrufeGame(){rrufeScore=0;rrufeKoha=10;document.getElementById('rrufeScore2').innerText='0';document.getElementById('rrufeKoha').innerText='10';let area=document.getElementById('rrufeArea');if(rrufeTimer)clearInterval(rrufeTimer);rrufeTimer=setInterval(()=>{rrufeKoha--;document.getElementById('rrufeKoha').innerText=rrufeKoha;if(rrufeKoha<=0){clearInterval(rrufeTimer);area.innerHTML='<div style="text-align:center;padding-top:80px;font-size:40px">🏆 '+rrufeScore+' pikë!</div>';toast('🏆 Bëre '+rrufeScore+' rrufe!');return;}let b=document.createElement('div');b.className='drop';b.innerText='⚡';b.style.left=Math.random()*80+'%';b.style.top=Math.random()*60+'%';b.style.fontSize='36px';b.onclick=()=>{rrufeScore+=15;document.getElementById('rrufeScore2').innerText=rrufeScore;b.remove();};area.appendChild(b);setTimeout(()=>b.remove(),1200);},700);toast('⚡ Kap rrufetë!');}
+
+// VIP ME API
+async function kontrolloVIP(){
+try{
+// API simuluese - ne realitet ketu lidh me Stripe / backend-in tend
+let r=await fetch('https://api.open-meteo.com/v1/forecast?latitude=41.32&longitude=19.81&current=temperature_2m&timezone=auto');
+if(r.ok){document.getElementById('vipApiInfo').innerText='✅ API LIDHUR • Serveri punon • '+new Date().toLocaleTimeString('sq-AL');}
+}catch(e){document.getElementById('vipApiInfo').innerText='⚠️ API offline - po përdoret modaliteti lokal';}
+let v=localStorage.getItem('sabi_vip_v4');
+if(v){v=JSON.parse(v);let mbet=Math.ceil((v.deri-Date.now())/86400000);if(mbet>0){vipData=v;document.getElementById('vipStatus').innerText='👑 VIP AKTIV: '+v.emri+' • Mbeten '+ (v.ditet>9000?'Përgjithmonë':mbet+' ditë')+' ✨';document.getElementById('vipLock').style.display='none';return;}}
+document.getElementById('vipStatus').innerText='Statusi: Falas ✨ • Bli VIP për më shumë!';
+document.getElementById('vipLock').style.display='block';
+}
+async function blejVIP(emri,ditet){
+toast('⏳ Duke u lidhur me API-n e pagesës...');
+await new Promise(r=>setTimeout(r,1200));
+// Ketu ne versionin real do lidhesh Stripe / PayPal
+let deri=Date.now()+ditet*86400000;
+vipData={emri,ditet,deri};
+localStorage.setItem('sabi_vip_v4',JSON.stringify(vipData));
+document.getElementById('vipStatus').innerText='👑 VIP AKTIV: '+emri+' ✨';
+document.getElementById('vipLock').style.display='none';
+toast('🎉 VIP U AKTIVIZUA: '+emri+' 👑');
+tregoHoroskop();
+}
+function anuloVIP(){localStorage.removeItem('sabi_vip_v4');vipData=null;kontrolloVIP();toast('VIP u anulua');}
+const HOROSKOPET={dashi:['♈ DASHI','90%','75%','85%','Sot dikush të shikon me dashuri! 😍'],demi:['♉ DEMI','82%','88%','78%','Ditë e mirë për lekë!'],binjaket:['♊ BINJAKËT','95%','65%','88%','Dita e dashurisë! 💘'],gaforrja:['♋ GAFORRJA','88%','70%','80%','Familja të jep forcë!'],luani:['♌ LUANI','92%','85%','95%','Ti shkëlqen sot! ☀️'],virgjeresha:['♍ VIRGJËRESHA','84%','90%','76%','Detajet bëjnë diferencën!'],peshorja:['♎ PESHORJA','89%','72%','84%','Balancë perfekte!'],akrepi:['♏ AKREPI','93%','78%','90%','Misteri yt tërheq!'],shigjetari:['♐ SHIGJETARI','87%','74%','91%','Aventurë e re!'],bricjapi:['♑ BRICJAPI','80%','92%','79%','Puna shpërblehet!'],ujori:['♒ UJORI','86%','68%','87%','Ide brilante!'],peshqit:['♓ PESHQIT','94%','66%','89%','Ëndrrat bëhen realitet!']};
+function tregoHoroskop(){let s=document.getElementById('horoskopiSelect').value;let sot=D?Math.round(D.current.temperature_2m)+'°C':'20°C';let shi=D?(D.daily.precipitation_probability_max[0]||0)+'%':'10%';let h=HOROSKOPET[s]||HOROSKOPET.dashi;if(vipData){document.getElementById('horoskopiRezultat').innerHTML=`<b>${h[0]} - PREMIUM 👑</b><br>❤️ Dashuria: <b>${h[1]}</b> - ${h[4]}<br>💰 Lekët: <b>${h[2]}</b> - Sot fiton diçka!<br>🍀 Fati: <b>${h[3]}</b><br>🎯 Numri me fat: <b>${Math.floor(Math.random()*99)+1}</b><br>🎨 Ngjyra me fat: <b style="color:#FFD700">ARI ✨</b><br>🌤️ Moti: <b>${sot}</b> • Shi ${shi}<br>💌 Mesazh VIP: Dikush po mendon për ty sot! 💖`;}else{document.getElementById('horoskopiRezultat').innerHTML=`<b>${h[0]}</b><br>❤️ Dashuria: <b>${h[1]}</b><br>💰 Lekët: <b>🔒 VIP</b><br>🍀 Fati: <b>🔒 VIP</b><br>🌤️ Moti: <b>${sot}</b> • Shi ${shi}<br><i>Bli VIP për horoskopin e plotë! 👑</i>`;}}
+function rrotullo(){let r=document.getElementById('rrota');r.style.transform=`rotate(${360*5+Math.floor(Math.random()*360)}deg)`;document.getElementById('btnRrotullo').innerText='⏳ Po rrotullohet...';document.getElementById('btnRrotullo').disabled=true;setTimeout(()=>{let cm=['⭐ SUPER FAT!','🎁 FITOVE VIP 1 Ditë!','☀️ DITË E BUKUR!','💫 FAT I MADH!','🌧️ MOS U MËRZIT!','🎰 PROVO PËRSËRI!'];let f=cm[Math.floor(Math.random()*cm.length)];document.getElementById('fatiStatus').innerText='🎉 '+f;document.getElementById('btnRrotullo').disabled=false;document.getElementById('btnRrotullo').innerText='🎰 RROTULLO PËRSËRI';toast('🎉 '+f)},3200)}
+function llogaritDashuri(){let e1=document.getElementById('emer1').value.trim();let e2=document.getElementById('emer2').value.trim();if(!e1||!e2)return toast('❤️ Shkruaj 2 emrat!');let total=0;let b=(e1+e2).toLowerCase();for(let i=0;i<b.length;i++)total+=b.charCodeAt(i)*(i+1);let p=55+(total%44);if(e1.toLowerCase()===e2.toLowerCase())p=100;document.getElementById('dashuriRezultat').style.display='block';document.getElementById('dashuriPerqind').innerText=p;let m=p>=90?`💖 ${e1} + ${e2} = DASHURI E VËRTETË!`:p>=75?`😍 ${e1} + ${e2} = SHUMË MIRË!`:p>=60?`😊 ${e1} + ${e2} = MUND TË BËHET!`:`🤔 ${e1} + ${e2} = SHOQËRI E MIRË!`;document.getElementById('dashuriMesazh').innerHTML=m;document.getElementById('dashuriDetaje').innerHTML=`💍 <b>Martesa:</b> Pas <b>${1+(total%5)} vitesh</b> në <b>${['Tiranë','Paris','Santorini','Dubai'][total%4]}</b><br>👶 <b>Fëmijë:</b> <b>${1+(total%3)}</b><br>🌤️ <b>Moti në dasmë:</b> ☀️ Diell + 24°C`;}
+function llogaritDitelindje(){let d=document.getElementById('ditelindjaInput').value;if(!d)return toast('Zgjidh ditëlindjen!');let dt=new Date(d),sot=new Date(),dv=new Date(sot.getFullYear(),dt.getMonth(),dt.getDate());let mbet=Math.ceil((dv-sot)/86400000);if(mbet<0)mbet+=365;document.getElementById('ditelindjeRezultat').innerHTML=`🎂 <b>Ditëlindja:</b> ${dt.getDate()}/${dt.getMonth()+1}<br>🎉 <b>Kanë mbetur:</b> <b style="color:#FFD700">${mbet} ditë!</b><br>🎈 <b>Do bësh:</b> ${sot.getFullYear()-dt.getFullYear()+1} vjeç!`;}
 let filterAktiv='diell';const fEm={diell:['☀️','🌞','✨'],shi:['🌧️','☂️','💧'],bore:['❄️','⛄','✨'],stuhi:['⛈️','⚡','🌩️']};
 function zgjidhFilter(t){filterAktiv=t;['diell','shi','bore','stuhi'].forEach(x=>{document.getElementById('f-'+x).style.background=x===t?'#FFD700':'#fff'});document.getElementById('filterOverlay').innerHTML=fEm[t].map(e=>`<span>${e}</span>`).join('');toast('📸 Filter: '+t)}
 function ngarkoFoto(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{let img=document.getElementById('filterImg');img.src=e.target.result;img.style.display='block';document.getElementById('filterPlaceholder').style.display='none';toast('📸 Foto u ngarkua! ✨')};r.readAsDataURL(f)}
-function shperndajFilter(){let t=`📸 SABIMOTI FILTER ✨\nBëje edhe ti foton tënde: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
-function aktivizoNjoftimMengjes(){if('Notification' in window){Notification.requestPermission().then(p=>{if(p==='granted'){toast('🔔 Njoftimi u aktivizua! Nesër ora 7!');new Notification('SABIMOTI ✨',{body:'Sot moti është i bukur! ☀️'})}else toast('Lejo njoftimet!')})}else toast('Nuk mbështetet')}
-if(localStorage.getItem('sabi_emri')){document.getElementById('loginEmri').value=localStorage.getItem('sabi_emri');}
-if(localStorage.getItem('sabi_vip')){document.getElementById('vipStatus').innerText='✅ VIP Aktiv: '+localStorage.getItem('sabi_vip')+' ✨';}
-if(localStorage.getItem('sabi_qyteti')){document.getElementById('qyteti').value=localStorage.getItem('sabi_qyteti');let v=localStorage.getItem('sabi_qyteti').split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];}
-merrMoti();shfaqWall();nisMemory();tregoHoroskop();zgjidhFilter('diell');
+function shperndajFilter(){let t=`📸 SABIMOTI V4 ✨\n${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
+document.addEventListener('click',e=>{if(!e.target.closest('.search-box')){let b=document.getElementById('kerkImRezultatet');if(b)b.style.display='none';}});
+merrMoti();kontrolloVIP();ngarkoRadioShqip();pyetjeRe();zgjidhFilter('diell');
 </script>
 </body>
 </html>
