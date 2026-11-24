@@ -3,8 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
-<title>SABIMOTI PRO ✨</title>
-<link rel="manifest" href="manifest.json">
+<title>SABIMOTI PRO ✨ VIP</title>
 <meta name="theme-color" content="#0f172a">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
@@ -34,8 +33,6 @@ button{cursor:pointer}
 .stat div{background:rgba(255,255,255,.07);padding:10px 4px;border-radius:13px}
 .stat b{font-size:15px;display:block}
 .bar{height:20px;border-radius:100px;background:linear-gradient(90deg,#38bdf8,#22c55e);margin:3px 0}
-.vij{height:8px;background:#1e293b;border-radius:100px;overflow:hidden;margin:6px 0}
-.vij div{height:100%;background:linear-gradient(90deg,#38bdf8,#22c55e,#f59e0b)}
 .radio-item{display:flex;justify-content:space-between;align-items:center;padding:11px;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
 .chip{background:#1e293b;border:1px solid rgba(255,255,255,.15);color:#fff;padding:8px 12px;border-radius:100px;font-size:12px}
 .chip.on{background:#38bdf8;color:#000;font-weight:800}
@@ -43,25 +40,60 @@ button{cursor:pointer}
 .drop{position:absolute;font-size:26px;cursor:pointer}
 .dita-detail{background:#0f172a;border:1px solid #38bdf8;border-radius:16px;padding:12px;margin-top:10px}
 .offline-dot{width:9px;height:9px;border-radius:50%;display:inline-block}
+/* === SABI NJERIU === */
+.sabi-wrap{text-align:center;margin:12px 0}
+.sabi-scena{height:200px;position:relative;overflow:hidden;background:linear-gradient(to bottom,#0ea5e9,#1e1b4b);border-radius:18px;border:1px solid rgba(255,255,255,.2)}
+.sabi-scena.nate{background:linear-gradient(to bottom,#0f172a,#312e81)}
+.sabi-scena.shi{background:linear-gradient(to bottom,#334155,#0f172a)}
+.sabi-scena.bore{background:linear-gradient(to bottom,#e0f2fe,#94a3b8)}
+.sabi-scena.stuhi{background:linear-gradient(to bottom,#111827,#000)}
+.sabi-njeri{position:absolute;bottom:14px;left:50%;transform:translateX(-50%);font-size:72px;line-height:1;z-index:3}
+.sabi-njeri.kercej{animation:kercej .7s infinite}
+.sabi-njeri.vrapo{animation:vrapo .5s infinite}
+.sabi-njeri.dridhet{animation:dridhet .2s infinite}
+.sabi-njeri.trembet{animation:trembet .4s infinite}
+@keyframes kercej{0%,100%{transform:translateX(-50%) translateY(0) rotate(-5deg)}50%{transform:translateX(-50%) translateY(-18px) rotate(5deg)}}
+@keyframes vrapo{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-46%) translateY(-8px)}}
+@keyframes dridhet{0%,100%{transform:translateX(-50%)}25%{transform:translateX(-52%)}75%{transform:translateX(-48%)}}
+@keyframes trembet{0%,100%{transform:translateX(-50%) scale(1)}50%{transform:translateX(-50%) scale(.92)}}
+.sabi-flluska{background:#fff;color:#111;padding:11px 14px;border-radius:16px;border-bottom-left-radius:2px;font-size:13px;font-weight:700;line-height:1.5;min-height:44px;margin-top:8px;text-align:left}
+.pika-shi{position:absolute;top:-10px;color:#38bdf8;font-size:20px;animation:bie .9s linear infinite}
+@keyframes bie{to{transform:translateY(210px)}}
+.dielli-rrotull{position:absolute;top:12px;right:16px;font-size:44px;animation:rrotullo 8s linear infinite}
+@keyframes rrotullo{to{transform:rotate(360deg)}}
+.sabi-kembet{position:absolute;bottom:2px;left:50%;transform:translateX(-50%);font-size:22px;letter-spacing:8px}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="top"><div class="logo">SABI<span>MOTI</span> <small>PRO</small></div><div style="font-size:12px;text-align:right"><span id="oraTop">--:--</span><br><span id="statusOnline" style="font-size:11px"><span class="offline-dot" style="background:#22c55e"></span> Online</span></div></div>
+<div class="top"><div class="logo">SABI<span>MOTI</span> <small>PRO VIP</small></div><div style="font-size:12px;text-align:right"><span id="oraTop">--:--</span><br><span id="statusOnline" style="font-size:11px"><span class="offline-dot" style="background:#22c55e"></span> Online</span></div></div>
 
-<!-- ============ KRYESORE ============ -->
+<!-- KRYESORE -->
 <div class="tab active" id="tab-moti">
-
 <div class="card" id="heroCard" style="text-align:center;background:linear-gradient(135deg,#0ea5e9,#1e1b4b);border-color:#38bdf8">
 <div style="display:flex;justify-content:space-between;font-size:12px;opacity:.9"><span id="dataSot">--</span><span>📍 <span id="qytetiEmriTop">Tiranë</span></span></div>
 <div id="oraBig" style="font-size:52px;font-weight:900;margin:6px 0">--:--:--</div>
 <div style="font-size:13px;opacity:.9" id="ditaJaves">--</div>
 <div class="big" id="temp">--°</div>
 <div class="sub" id="kushti">Duke ngarkuar...</div>
+
+<!-- SABI NJERIU I GJALLE -->
+<div class="sabi-wrap">
+<div class="sabi-scena" id="sabiScena">
+<div id="sabiEfekte"></div>
+<div class="sabi-njeri" id="sabiNjeri">🧍‍♂️</div>
+<div class="sabi-kembet" id="sabiKembet">🦶🦶</div>
+</div>
+<div class="sabi-flluska" id="sabiFlluska">Përshëndetje! Unë jam SABI 👋 Po shikoj motin për ty...</div>
+<div style="display:flex;gap:8px;margin-top:8px">
+<button onclick="sabiFlet(true)" style="flex:1;background:#38bdf8;border:none;padding:11px;border-radius:12px;font-weight:800">🔊 SABI FLET</button>
+<button onclick="sabiKercen()" style="flex:1;background:#22c55e;border:none;padding:11px;border-radius:12px;font-weight:800">💃 KËRCE SABI</button>
+</div>
+</div>
+
 <div id="alertShi" style="display:none;background:#ef4444;padding:11px;border-radius:12px;margin-top:10px;font-weight:800;font-size:13px">⚠️ KUJDES! Shi në orët e ardhshme! Merr çadër ☔</div>
 <div id="alertEra" style="display:none;background:#f59e0b;color:#000;padding:11px;border-radius:12px;margin-top:10px;font-weight:800;font-size:13px">💨 ERA E FORTË! Kujdes në rrugë!</div>
 
-<!-- SI TE VISHEMI -->
 <div id="veshjaBox" style="margin-top:12px;background:rgba(0,0,0,.35);border-radius:14px;padding:12px;text-align:left">
 <div style="font-weight:900;font-size:13px">👕 SI TË VISHESH SOT?</div>
 <div id="veshjaTekst" style="font-size:13px;line-height:1.6;margin-top:4px">Duke llogaritur...</div>
@@ -76,7 +108,7 @@ button{cursor:pointer}
 </div>
 <div class="stat" style="grid-template-columns:1fr 1fr 1fr">
 <div>👁️ <b id="dukshmeria">--</b>Dukshmëria</div>
-<div>☀️ <b id="uv">--</b>Indeksi UV</div>
+<div>☀️ <b id="uv">--</b>UV</div>
 <div>📊 <b id="presioni">--</b>Presioni</div>
 </div>
 <div style="display:flex;gap:8px;margin-top:12px">
@@ -86,9 +118,8 @@ button{cursor:pointer}
 </div>
 </div>
 
-<!-- KERKIM -->
 <div class="card">
-<div class="title"><span>🌍 KËRKO ÇDO QYTET NË BOTË</span></div>
+<div class="title"><span>🌍 KËRKO ÇDO QYTET</span></div>
 <div class="search-box">
 <input id="kerkImQytet" placeholder="🔍 Shkruaj qytet... Paris, Tokyo, Elbasan..." oninput="kerkoQytet(this.value)" onkeydown="if(event.key==='Enter')kerkoQytetEnter()">
 <div id="kerkImRezultatet" class="search-results"></div>
@@ -106,28 +137,23 @@ button{cursor:pointer}
 </select>
 </div>
 
-<!-- KRHASIM QYTETESH - PREMIUM -->
 <div class="card">
 <div class="title"><span>⚖️ KRAHASO QYTETE</span><span style="background:#22c55e;color:#000;font-size:10px;padding:2px 7px;border-radius:100px">PRO</span></div>
 <div id="krahasimi" style="font-size:13px;line-height:1.8">Duke krahasuar...</div>
 <button onclick="krahasoQytete()" style="width:100%;margin-top:8px;background:#1e293b;color:#fff;border:1px solid rgba(255,255,255,.25);padding:11px;border-radius:12px;font-weight:800">🔄 Rifresko Krahasimin</button>
 </div>
 
-<!-- DITET + DETAJI I DITES -->
 <div class="card">
 <div class="title"><span>📅 PARASHIKIMI - KLIKO NJË DITË</span><span>14 ditë</span></div>
 <div id="parashikimi" style="display:flex;gap:8px;overflow-x:auto"></div>
-<!-- DETAJI I DITES QE ZGJEDH -->
 <div id="ditaDetail" class="dita-detail" style="display:none">
 <div style="display:flex;justify-content:space-between;font-weight:900"><span id="ditaDetailTitull">E Mërkurë</span><button onclick="mbyllDitaDetail()" style="background:none;border:none;color:#fff;font-size:18px">✕</button></div>
 <div id="ditaDetailPermbajtje" style="margin-top:8px;font-size:13px;line-height:1.7"></div>
-<div style="margin-top:10px;font-weight:900;font-size:12px">🕐 ORË PËR ORË - NGA MËNGJESI DERI NË DARKË</div>
+<div style="margin-top:10px;font-weight:900;font-size:12px">🕐 ORË PËR ORË</div>
 <div id="ditaDetailOret" class="hour-scroll"></div>
 </div>
-<div style="font-size:12px;opacity:.7;margin-top:8px">👆 Kliko një ditë sipër për të parë si do shkojë koha orë për orë, çfarë të veshësh, dhe nëse do bjerë shi.</div>
 </div>
 
-<!-- ORET E SOTME -->
 <div class="card">
 <div class="title"><span>🕐 SOT - ORË PËR ORË</span></div>
 <div id="oret" class="hour-scroll"></div>
@@ -135,16 +161,15 @@ button{cursor:pointer}
 <div id="grafiku" style="margin-top:6px"></div>
 </div>
 
-<!-- SABI FLET -->
 <div class="card"><div class="title"><span>🎙️ SABI TË TREGON</span><span>🔴 LIVE</span></div>
 <div style="background:#000;border-radius:13px;padding:16px;text-align:center">
 <div style="font-size:40px" id="sabiEmoji">☀️</div>
 <p style="font-size:13px;line-height:1.6" id="sabiTekst">Duke ngarkuar...</p>
-<button onclick="luajZerin()" style="background:#38bdf8;border:none;padding:11px 20px;border-radius:100px;font-weight:800;margin-top:8px">🔊 DËGJO SABI-n</button>
+<button onclick="sabiFlet(true)" style="background:#38bdf8;border:none;padding:11px 20px;border-radius:100px;font-weight:800;margin-top:8px">🔊 DËGJO SABI-n</button>
 </div></div>
 </div>
 
-<!-- ============ RRUFE + HARTA ============ -->
+<!-- RRUFE -->
 <div class="tab" id="tab-rrufe">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95)">
 <div style="font-size:44px">⚡🌩️</div><h2>RRUFE LIVE</h2>
@@ -152,46 +177,37 @@ button{cursor:pointer}
 <div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">⚡ <b id="rrufeCount">--</b><br>Rrufe sot</div>
 <div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">🌩️ <b id="rrufeStatus">--</b><br>Statusi</div>
 <div style="background:rgba(255,255,255,.15);padding:10px;border-radius:12px">📍 <b id="rrufeQytet">--</b><br>Zona</div>
-</div>
-</div>
+</div></div>
 <div class="card"><div class="title"><span>🗺️ HARTA E RRUFE​VE LIVE</span><span style="color:#facc15">● LIVE</span></div>
-<iframe src="https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&bo_show_strikes=1" style="width:100%;height:320px;border:none;border-radius:14px;background:#000"></iframe>
-</div>
+<iframe src="https://www.lightningmaps.org/blitzortung/europe/index.php?bo_page=map&bo_show_strikes=1" style="width:100%;height:320px;border:none;border-radius:14px;background:#000"></iframe></div>
 <div class="card"><div class="title"><span>🌧️ RADAR SHIU</span></div>
-<iframe src="https://www.rainviewer.com/map.html?loc=41.32,19.81,6&oFa=0&oC=1&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1" style="width:100%;height:260px;border:none;border-radius:14px"></iframe>
-</div>
+<iframe src="https://www.rainviewer.com/map.html?loc=41.32,19.81,6&oFa=0&oC=1&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1" style="width:100%;height:260px;border:none;border-radius:14px"></iframe></div>
 </div>
 
-<!-- ============ RADIO - E RREGULLUAR ============ -->
+<!-- RADIO -->
 <div class="tab" id="tab-radio">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#0f172a,#1e3a8a)">
-<div style="font-size:44px">📻</div><h2>SABI RADIO</h2>
-<p style="font-size:12px;opacity:.8">Punon edhe offline - ruhet stacioni i fundit</p>
+<div style="font-size:44px">📻</div><h2>SABI RADIO VIP</h2>
+<p style="font-size:12px;opacity:.8">Punon edhe kur ndërron tab - ruhet stacioni i fundit</p>
 <div style="background:#000;border-radius:14px;padding:14px;margin-top:10px">
 <div style="font-size:36px" id="radioEmoji">🎵</div>
 <div style="font-weight:900" id="radioTani">Zgjidh një radio poshtë...</div>
-<div style="font-size:12px;opacity:.7" id="radioInfo">Shtyp ▶️ LU AJ</div>
+<div style="font-size:12px;opacity:.7" id="radioInfo">Shtyp ▶️ LUAJ</div>
 <audio id="audioPlayer" controls preload="none" style="width:100%;margin-top:10px"></audio>
 <div style="display:flex;gap:8px;margin-top:8px">
 <button onclick="ndaloRadio()" style="flex:1;background:#ef4444;color:#fff;border:none;padding:10px;border-radius:10px;font-weight:800">⏹️ NDALO</button>
 <button onclick="riprovoRadio()" style="flex:1;background:#38bdf8;border:none;padding:10px;border-radius:10px;font-weight:800">🔄 RIPROVO</button>
 </div>
 <div id="radioStatus" style="font-size:12px;margin-top:8px;opacity:.8"></div>
-</div>
-</div>
-<div class="card">
-<div class="title"><span>🇦🇱 RADIO SHQIPTARE - TESTUAR</span><span style="color:#22c55e">● LIVE</span></div>
-<div id="radioList"></div>
-</div>
-<div class="card">
-<div class="title"><span>🌍 KËRKO RADIO BOTËRORE</span></div>
+</div></div>
+<div class="card"><div class="title"><span>🇦🇱 RADIO SHQIPTARE</span><span style="color:#22c55e">● LIVE</span></div><div id="radioList"></div></div>
+<div class="card"><div class="title"><span>🌍 KËRKO RADIO BOTËRORE</span></div>
 <input id="kerkImRadio" placeholder="🔍 Shkruaj... BBC, Kiss, Top..." oninput="kerkoRadio(this.value)">
 <div id="radioBoteList" style="margin-top:8px"></div>
-<p style="font-size:11px;opacity:.6;margin-top:6px">Të dhënat nga Radio Browser API - mbi 30,000 stacione.</p>
-</div>
+<p style="font-size:11px;opacity:.6;margin-top:6px">Të dhënat nga Radio Browser API - mbi 30,000 stacione.</p></div>
 </div>
 
-<!-- ============ LOJRA + HOROSKOPI ============ -->
+<!-- LOJRA -->
 <div class="tab" id="tab-lojra">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#3b0764)">
 <div style="font-size:40px">🎮✨</div><h2>LOJRA & HOROSKOPI</h2>
@@ -202,47 +218,30 @@ button{cursor:pointer}
 <button class="chip" id="btn-lojra-rrufe" onclick="zgjidhLojen('rrufe')">⚡ Kap Rrufenë</button>
 <button class="chip" id="btn-lojra-horoskop" onclick="zgjidhLojen('horoskop')">🔮 Horoskopi</button>
 <button class="chip" id="btn-lojra-dashuri" onclick="zgjidhLojen('dashuri')">💘 Dashuria</button>
-</div>
-</div>
-
-<div id="game-shi" class="card">
-<div class="title"><span>🌧️ KAP PIKAT E SHIUT</span><span>⭐ <span id="shiScore">0</span></span></div>
+</div></div>
+<div id="game-shi" class="card"><div class="title"><span>🌧️ KAP PIKAT E SHIUT</span><span>⭐ <span id="shiScore">0</span></span></div>
 <p style="font-size:12px">Kap pikat blu! Shpejtësia ndryshon sipas motit real sot!</p>
 <div class="game-area" id="shiArea"><div style="text-align:center;padding-top:80px;font-size:40px">🌧️</div></div>
-<button onclick="nisShiGame()" style="width:100%;margin-top:8px;background:#0ea5e9;color:#fff;border:none;padding:13px;border-radius:13px;font-weight:800">▶️ NIS LOJËN</button>
-</div>
-
-<div id="game-qytet" class="card" style="display:none">
-<div class="title"><span>🌍 GJEJ QYTETIN NGA MOTI</span><span>⭐ <span id="qytetScore">0</span></span></div>
-<p style="font-size:13px" id="qytetPyetje">Duke ngarkuar...</p>
-<div id="qytetOpsionet" style="display:grid;gap:8px;margin-top:10px"></div>
-<button onclick="pyetjeRe()" style="width:100%;margin-top:8px;background:#38bdf8;border:none;padding:12px;border-radius:13px;font-weight:800">🔄 PYETJE TJETËR</button>
-</div>
-
-<div id="game-rrufe" class="card" style="display:none">
-<div class="title"><span>⚡ KAP RRUFE​NË</span><span>⏱️ <span id="rrufeKoha">10</span>s • ⭐ <span id="rrufeScore2">0</span></span></div>
+<button onclick="nisShiGame()" style="width:100%;margin-top:8px;background:#0ea5e9;color:#fff;border:none;padding:13px;border-radius:13px;font-weight:800">▶️ NIS LOJËN</button></div>
+<div id="game-qytet" class="card" style="display:none"><div class="title"><span>🌍 GJEJ QYTETIN NGA MOTI</span><span>⭐ <span id="qytetScore">0</span></span></div>
+<p style="font-size:13px" id="qytetPyetje">Duke ngarkuar...</p><div id="qytetOpsionet" style="display:grid;gap:8px;margin-top:10px"></div>
+<button onclick="pyetjeRe()" style="width:100%;margin-top:8px;background:#38bdf8;border:none;padding:12px;border-radius:13px;font-weight:800">🔄 PYETJE TJETËR</button></div>
+<div id="game-rrufe" class="card" style="display:none"><div class="title"><span>⚡ KAP RRUFE​NË</span><span>⏱️ <span id="rrufeKoha">10</span>s • ⭐ <span id="rrufeScore2">0</span></span></div>
 <div class="game-area" id="rrufeArea" style="background:linear-gradient(to bottom,#111,#4c1d95)"><div style="text-align:center;padding-top:80px;font-size:50px">⚡</div></div>
-<button onclick="nisRrufeGame()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button>
-</div>
-
+<button onclick="nisRrufeGame()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button></div>
 <div id="game-horoskop" class="card" style="display:none;background:linear-gradient(135deg,#1e1b4b,#6d28d9)">
 <div class="title"><span>🔮 HOROSKOPI + MOTI</span><span>OFFLINE ✅</span></div>
 <select id="horoskopiSelect" onchange="tregoHoroskop()">
 <option value="dashi">♈ Dashi</option><option value="demi">♉ Demi</option><option value="binjaket">♊ Binjakët</option><option value="gaforrja">♋ Gaforrja</option><option value="luani">♌ Luani</option><option value="virgjeresha">♍ Virgjëresha</option><option value="peshorja">♎ Peshorja</option><option value="akrepi">♏ Akrepi</option><option value="shigjetari">♐ Shigjetari</option><option value="bricjapi">♑ Bricjapi</option><option value="ujori">♒ Ujori</option><option value="peshqit">♓ Peshqit</option>
 </select>
-<div id="horoskopiRezultat" style="margin-top:10px;background:rgba(255,255,255,.12);padding:12px;border-radius:14px;font-size:13px;line-height:1.7"></div>
-<p style="font-size:11px;opacity:.7;margin-top:6px">Horoskopi llogaritet lokalisht, punon edhe pa internet.</p>
-</div>
-
-<div id="game-dashuri" class="card" style="display:none">
-<div class="title"><span>💘 DASHURIA</span></div>
-<input id="emer1" placeholder="💁‍♀️ Emri yt..."><div style="text-align:center;font-size:26px">❤️ + ❤️</div><input id="emer2" placeholder="💁‍♂️ Emri i tij/saj..."><button onclick="llogaritDashuri()" style="width:100%;margin-top:8px;background:#ec4899;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800">💘 LLOGARIT!</button>
+<div id="horoskopiRezultat" style="margin-top:10px;background:rgba(255,255,255,.12);padding:12px;border-radius:14px;font-size:13px;line-height:1.7"></div></div>
+<div id="game-dashuri" class="card" style="display:none"><div class="title"><span>💘 DASHURIA</span></div>
+<input id="emer1" placeholder="Emri yt..."><div style="text-align:center;font-size:26px">❤️ + ❤️</div><input id="emer2" placeholder="Emri i tij/saj...">
+<button onclick="llogaritDashuri()" style="width:100%;margin-top:8px;background:#ec4899;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800">💘 LLOGARIT!</button>
 <div id="dashuriRezultat" style="display:none;margin-top:10px;text-align:center"><div style="font-size:44px;font-weight:900;color:#facc15"><span id="dashuriPerqind">0</span>%</div><div id="dashuriMesazh" style="font-weight:800"></div><div id="dashuriDetaje" style="font-size:12px;margin-top:8px;background:rgba(255,255,255,.1);padding:10px;border-radius:13px;text-align:left"></div></div>
-<div style="text-align:center;margin-top:12px"><div style="font-size:26px">🎂</div><b>DITËLINDJA</b><input type="date" id="ditelindjaInput"><button onclick="llogaritDitelindje()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🎂 SHIKO</button><div id="ditelindjeRezultat" style="margin-top:10px;font-size:13px;line-height:1.7"></div></div>
+<div style="text-align:center;margin-top:12px"><div style="font-size:26px">🎂</div><b>DITËLINDJA</b><input type="date" id="ditelindjaInput"><button onclick="llogaritDitelindje()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🎂 SHIKO</button><div id="ditelindjeRezultat" style="margin-top:10px;font-size:13px;line-height:1.7"></div></div></div>
 </div>
-</div>
-
-<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI PRO ✨ • Made in Albania 🇦🇱 • Punon Offline</div>
+<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI PRO VIP ✨ • Made in Albania 🇦🇱 • Punon Offline</div>
 </div>
 
 <div class="tabs">
@@ -260,40 +259,67 @@ function pr(k){if(k===0)return'☀️ Diell';if(k===1||k===2)return'🌤️ Pak 
 function emojiVetem(k){return pr(k).split(' ')[0]}
 function perditesoOren(){let n=new Date();let o=String(n.getHours()).padStart(2,'0'),m=String(n.getMinutes()).padStart(2,'0'),s=String(n.getSeconds()).padStart(2,'0');document.getElementById('oraBig').innerText=o+':'+m+':'+s;document.getElementById('oraTop').innerText=o+':'+m;let ditet=['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtunë'];let muajt=['Janar','Shkurt','Mars','Prill','Maj','Qershor','Korrik','Gusht','Shtator','Tetor','Nëntor','Dhjetor'];document.getElementById('dataSot').innerText=n.getDate()+' '+muajt[n.getMonth()]+' '+n.getFullYear();document.getElementById('ditaJaves').innerText='📅 '+ditet[n.getDay()];}
 setInterval(perditesoOren,1000);perditesoOren();
-function perditesoOnline(){let on=navigator.onLine;document.getElementById('statusOnline').innerHTML=`<span class="offline-dot" style="background:${on?'#22c55e':'#ef4444'}"></span> ${on?'Online':'Offline - Modaliteti lokal'}`;}
+function perditesoOnline(){let on=navigator.onLine;document.getElementById('statusOnline').innerHTML=`<span class="offline-dot" style="background:${on?'#22c55e':'#ef4444'}"></span> ${on?'Online':'Offline'}`;}
 window.addEventListener('online',perditesoOnline);window.addEventListener('offline',perditesoOnline);perditesoOnline();
 
-// SI TE VISHEMI
 function llogaritVeshjen(temp,kod,era,shiProb){
 let v='',e='';
-if(temp<0){v='🧥 Xhup shumë i trashë, kapuç, dorashka, shall dhe çizme të ngrohta. Mos harro kapelen!';e='🧥🧣🧤';}
+if(temp<0){v='🧥 Xhup shumë i trashë, kapuç, dorashka, shall dhe çizme të ngrohta.';e='🧥🧣🧤';}
 else if(temp<8){v='🧥 Xhup i trashë + triko + pantallona të gjata. Merr edhe shall.';e='🧥🧣';}
-else if(temp<15){v='[STRIPPED 3 bytes] jacket e lehtë / xhup + bluzë me mëngë të gjata. Mirë të kesh edhe një xhaketë.';e='[STRIPPED 3 bytes] jacket 👕';}
-else if(temp<22){v='👕 Bluzë + xhaketë e lehtë. Pantallona të gjata, këpucë të mbyllura.';e='👕🧥';}
-else if(temp<28){v='👕 T-shirt + pantallona të shkurtra / fustan. Këpucë të lehta.';e='👕🩳😎';}
+else if(temp<15){v='🧥 Xhaketë e lehtë / xhup + bluzë me mëngë të gjata.';e='🧥👕';}
+else if(temp<22){v='👕 Bluzë + xhaketë e lehtë. Pantallona të gjata.';e='👕🧥';}
+else if(temp<28){v='👕 T-shirt + pantallona të shkurtra / fustan.';e='👕🩳😎';}
 else{v='🎽 Rroba shumë të lehta, kapele dielli, syze dielli dhe krem dielli! Pi shumë ujë!';e='🎽🧢😎';}
-if(kod>=51&&kod<=82){v+=' ☔ MOS HARRO ÇADRËN! Merr edhe xhaketë anti-shi dhe këpucë që nuk lagen.';e='☔'+e;}
+if(kod>=51&&kod<=82){v+=' ☔ MOS HARRO ÇADRËN!';e='☔'+e;}
 if(kod>=71&&kod<=77){v+=' ❄️ Këpucë anti-rrëshqitje!';}
-if(era>35){v+=' 💨 Era e fortë - vishu me xhaketë që nuk e kalon era!';}
-if(kod===0&&temp>22){v+=' ☀️ Syzet e diellit janë të domosdoshme!';}
-document.getElementById('veshjaTekst').innerText=v;
-document.getElementById('veshjaEmoji').innerText=e;
+if(era>35){v+=' 💨 Era e fortë - xhaketë që nuk e kalon era!';}
+document.getElementById('veshjaTekst').innerText=v;document.getElementById('veshjaEmoji').innerText=e;
 }
 
-// MOTI
+// ===== SABI NJERIU - LEVIZ + FLET =====
+let sabiKaFolur=false;
+function sabiFlet(force=false){
+if(!D) return;
+let temp=Math.round(D.current.temperature_2m),kod=D.current.weather_code,era=Math.round(D.current.wind_speed_10m),shiProb=D.daily.precipitation_probability_max[0]||0;
+let tekst="";
+if(kod>=95) tekst=`Kujdes! Ka stuhi në ${qyteti}! Mos dil jashtë pa nevojë!`;
+else if(kod>=71) tekst=`Po bie borë në ${qyteti}, ${temp} gradë. Vishu shumë trashë!`;
+else if(kod>=51||shiProb>50) tekst=`Merr çadrën! Në ${qyteti} pritet shi. Janë ${temp} gradë.`;
+else if(kod===0&&temp>25) tekst=`Sot në ${qyteti} është super vapë, ${temp} gradë! Pi ujë dhe vendos krem dielli!`;
+else if(kod===0) tekst=`Sot në ${qyteti} është ditë e bukur me diell, ${temp} gradë. Dil për shëtitje!`;
+else if(era>35) tekst=`Kujdes, era është shumë e fortë sot, ${era} kilometra në orë!`;
+else tekst=`Sot në ${qyteti} janë ${temp} gradë, ${pr(kod)}. Ditë e mirë!`;
+document.getElementById('sabiFlluska').innerText="🗣️ "+tekst;
+if('speechSynthesis' in window && (force||!sabiKaFolur)){
+speechSynthesis.cancel();
+let u=new SpeechSynthesisUtterance(tekst);u.lang='sq-AL';u.rate=0.95;u.pitch=1.1;
+speechSynthesis.speak(u);sabiKaFolur=true;
+}}
+function perditesoSabiNjeri(){
+if(!D) return;
+let kod=D.current.weather_code,ora=new Date().getHours();
+let njeri=document.getElementById('sabiNjeri'),scena=document.getElementById('sabiScena'),efektet=document.getElementById('sabiEfekte'),kembet=document.getElementById('sabiKembet');
+njeri.className='sabi-njeri';scena.className='sabi-scena';efektet.innerHTML='';
+if(ora>=21||ora<6){scena.classList.add('nate');njeri.innerText='😴';kembet.innerText='💤';efektet.innerHTML='<div style="position:absolute;top:10px;left:16px;font-size:36px">🌙⭐</div>';}
+else if(kod>=95){scena.classList.add('stuhi');njeri.innerText='😱';njeri.classList.add('trembet');kembet.innerText='🦶🦶';efektet.innerHTML='<div style="position:absolute;top:8px;left:20px;font-size:40px">⚡🌩️</div>';}
+else if(kod>=71){scena.classList.add('bore');njeri.innerText='🥶';njeri.classList.add('dridhet');kembet.innerText='🥾🥾';efektet.innerHTML='<div style="position:absolute;top:0;left:0;right:0;text-align:center">❄️ ❄️ ❄️ ❄️</div>';}
+else if(kod>=51){scena.classList.add('shi');njeri.innerText='🏃‍♂️';njeri.classList.add('vrapo');kembet.innerText='👟👟';efektet.innerHTML='<div style="position:absolute;top:5px;left:20px;font-size:38px">☔</div><div class="pika-shi" style="left:20%">💧</div><div class="pika-shi" style="left:50%">💧</div><div class="pika-shi" style="left:80%">💧</div>';}
+else if(kod===0){njeri.innerText='😎';njeri.classList.add('kercej');kembet.innerText='🩴🩴';efektet.innerHTML='<div class="dielli-rrotull">☀️</div><div style="position:absolute;bottom:10px;left:10px;font-size:24px">🌴</div><div style="position:absolute;bottom:10px;right:10px;font-size:24px">🏖️</div>';}
+else if(kod===45||kod===48){njeri.innerText='🧍‍♂️';kembet.innerText='👞👞';efektet.innerHTML='<div style="position:absolute;top:20px;left:0;right:0;font-size:32px;opacity:.7">🌫️🌫️🌫️</div>';}
+else{njeri.innerText='🙂';njeri.classList.add('kercej');kembet.innerText='👟👟';efektet.innerHTML='<div style="position:absolute;top:10px;left:16px;font-size:34px">⛅</div>';}
+}
+function sabiKercen(){let njeri=document.getElementById('sabiNjeri');njeri.classList.add('kercej');njeri.innerText='🕺';document.getElementById('sabiFlluska').innerText='💃 Hajde kërcejmë! Muzikë + mot i mirë = jetë!';sabiFlet(true);setTimeout(()=>{perditesoSabiNjeri();},4000);}
+
 async function merrMoti(){
 try{
 let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m,relative_humidity_2m,apparent_temperature&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,weather_code,wind_speed_10m_max,sunrise,sunset,uv_index_max&timezone=auto&forecast_days=14`);
-D=await r.json();
-localStorage.setItem('sabi_cache_moti',JSON.stringify({D,qyteti,lat,lon,koha:Date.now()}));
-shfaqMoti();
+D=await r.json();localStorage.setItem('sabi_cache_moti',JSON.stringify({D,qyteti,lat,lon,koha:Date.now()}));shfaqMoti();
 }catch(e){
-// OFFLINE - merr nga cache
 let c=localStorage.getItem('sabi_cache_moti');
 if(c){let p=JSON.parse(c);D=p.D;qyteti=p.qyteti;lat=p.lat;lon=p.lon;shfaqMoti();toast('📴 Offline - Po tregoj motin e ruajtur');}
 else document.getElementById('kushti').innerText='Pa internet - lidhu një herë për të ruajtur motin';
-}
-}
+}}
+
 function shfaqMoti(){
 if(!D) return;
 let temp=Math.round(D.current.temperature_2m),kod=D.current.weather_code,shiProb=D.daily.precipitation_probability_max[0]||0,era=Math.round(D.current.wind_speed_10m);
@@ -313,98 +339,64 @@ document.getElementById('lojraMotiTekst').innerText=`Moti sot në ${qyteti}: ${p
 llogaritVeshjen(temp,kod,era,shiProb);
 document.getElementById('alertShi').style.display=shiProb>50?'block':'none';
 document.getElementById('alertEra').style.display=era>35?'block':'none';
-// ORET SOT
 let oraTani=new Date().getHours();let oretHTML='';
 for(let i=oraTani;i<Math.min(oraTani+14,D.hourly.time.length);i++){let ora=new Date(D.hourly.time[i]).getHours();oretHTML+=`<div class="pill"><div>${ora}:00</div><div style="font-size:20px">${emojiVetem(D.hourly.weather_code[i])}</div><div><b>${Math.round(D.hourly.temperature_2m[i])}°</b></div><div style="opacity:.7">💨${Math.round(D.hourly.wind_speed_10m[i])} km/h</div><div style="opacity:.7">💧${D.hourly.precipitation_probability[i]||0}%</div></div>`;}
 document.getElementById('oret').innerHTML=oretHTML;
-// GRAFIK
-let max=Math.max(...D.hourly.temperature_2m.slice(0,14)),min=Math.min(...D.hourly.temperature_2m.slice(0,14));
-let gHTML='';
+let max=Math.max(...D.hourly.temperature_2m.slice(0,14)),min=Math.min(...D.hourly.temperature_2m.slice(0,14));let gHTML='';
 for(let i=0;i<14;i++){let t2=D.hourly.temperature_2m[i];let w=((t2-min+2)/(max-min+4))*100;let ora=new Date(D.hourly.time[i]).getHours();gHTML+=`<div style="display:flex;align-items:center;gap:8px;font-size:12px"><span style="width:35px">${ora}:00</span><div class="bar" style="width:${w}%"></div><b>${Math.round(t2)}°</b></div>`;}
 document.getElementById('grafiku').innerHTML=gHTML;
-// DITET 14
-let ditet=['Die','Hën','Mar','Mër','Enj','Pre','Sht'];let ditetPlota=['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtunë'];
+let ditet=['Die','Hën','Mar','Mër','Enj','Pre','Sht'];
 document.getElementById('parashikimi').innerHTML=D.daily.time.map((d,i)=>{let dt=new Date(d+'T12:00:00');let emri=i===0?'Sot':ditet[dt.getDay()];return `<div class="pill ${i===ditaZgjedhur?'aktiv':''}" onclick="hapDita(${i})"><div>${emri}</div><div style="font-size:12px;opacity:.7">${dt.getDate()}/${dt.getMonth()+1}</div><div style="font-size:22px">${emojiVetem(D.daily.weather_code[i])}</div><div><b>${Math.round(D.daily.temperature_2m_max[i])}°</b> / ${Math.round(D.daily.temperature_2m_min[i])}°</div><div style="opacity:.7">💧 ${D.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(D.daily.wind_speed_10m_max[i])} km/h</div></div>`}).join('');
 if(ditaZgjedhur!==null) hapDita(ditaZgjedhur,true);
 document.getElementById('rrufeCount').innerText=Math.floor(500+Math.random()*2000);
 document.getElementById('rrufeStatus').innerText=kod>=95?'AKTIVE ⚡':'E qetë';
 document.getElementById('rrufeQytet').innerText=qyteti;
 tregoHoroskop();
+perditesoSabiNjeri();
+if(!sabiKaFolur) setTimeout(()=>sabiFlet(false),1200);
 }
-// HAP DITA - E MERKURE ETJ - NGA MGJESI DERI NE DARKE
+
 function hapDita(i,auto=false){
-if(!D) return;
-ditaZgjedhur=i;
+if(!D) return;ditaZgjedhur=i;
 document.querySelectorAll('#parashikimi .pill').forEach((el,idx)=>{el.classList.toggle('aktiv',idx===i)});
 let d=D.daily.time[i];let dt=new Date(d+'T12:00:00');let ditetPlota=['E Diel','E Hënë','E Martë','E Mërkurë','E Enjte','E Premte','E Shtunë'];
 let maxT=Math.round(D.daily.temperature_2m_max[i]),minT=Math.round(D.daily.temperature_2m_min[i]),kod=D.daily.weather_code[i],shiP=D.daily.precipitation_probability_max[i]||0,eraMax=Math.round(D.daily.wind_speed_10m_max[i]);
 document.getElementById('ditaDetail').style.display='block';
 document.getElementById('ditaDetailTitull').innerText=`${i===0?'Sot - ':''}${ditetPlota[dt.getDay()]} • ${dt.getDate()}/${dt.getMonth()+1}`;
-let veshja='';
-if(maxT<8) veshja='🧥 Xhup i trashë gjithë ditën';
-else if(maxT<18) veshja='🧥 Xhaketë + bluzë - në mëngjes më ftohtë';
-else if(maxT<26) veshja='👕 T-shirt + xhaketë e lehtë për mbrëmje';
-else veshja='🎽 Rroba të lehta, kapele + krem dielli';
-if(shiP>50) veshja+=' + ☔ Çadër e domosdoshme!';
-document.getElementById('ditaDetailPermbajtje').innerHTML=`
-<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
-<div>🌡️ <b>Max:</b> ${maxT}° / <b>Min:</b> ${minT}°</div>
-<div>🌦️ <b>Moti:</b> ${pr(kod)}</div>
-<div>🌧️ <b>Shi:</b> ${shiP}%</div>
-<div>💨 <b>Era max:</b> ${eraMax} km/h</div>
-<div>🌅 <b>Lind dielli:</b> ${new Date(D.daily.sunrise[i]).toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})}</div>
-<div>🌇 <b>Perëndon:</b> ${new Date(D.daily.sunset[i]).toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})}</div>
-</div>
-<div style="margin-top:8px;background:rgba(56,189,248,.15);padding:10px;border-radius:12px"><b>👕 Çfarë të veshësh atë ditë:</b><br>${veshja}</div>
-<div style="margin-top:6px"><b>📝 Përmbledhje:</b> ${i===0?'Sot':'Atë ditë'} në ${qyteti} do jetë ${pr(kod).toLowerCase()}, nga ${minT}° në mëngjes deri ${maxT}° në mesditë. ${shiP>50?'Ka shanse të mëdha për shi, merr çadër!':'Nuk pritet shi i madh.'} Era deri ${eraMax} km/h.</div>
-`;
-// ORET PER ATE DITE - 0-23
+let veshja='';if(maxT<8) veshja='🧥 Xhup i trashë gjithë ditën';else if(maxT<18) veshja='🧥 Xhaketë + bluzë - në mëngjes më ftohtë';else if(maxT<26) veshja='👕 T-shirt + xhaketë e lehtë për mbrëmje';else veshja='🎽 Rroba të lehta, kapele + krem dielli';if(shiP>50) veshja+=' + ☔ Çadër e domosdoshme!';
+document.getElementById('ditaDetailPermbajtje').innerHTML=`<div style="display:grid;grid-template-columns:1fr 1fr;gap:8px"><div>🌡️ <b>Max:</b> ${maxT}° / <b>Min:</b> ${minT}°</div><div>🌦️ <b>Moti:</b> ${pr(kod)}</div><div>🌧️ <b>Shi:</b> ${shiP}%</div><div>💨 <b>Era max:</b> ${eraMax} km/h</div><div>🌅 <b>Lind:</b> ${new Date(D.daily.sunrise[i]).toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})}</div><div>🌇 <b>Perëndon:</b> ${new Date(D.daily.sunset[i]).toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'})}</div></div><div style="margin-top:8px;background:rgba(56,189,248,.15);padding:10px;border-radius:12px"><b>👕 Çfarë të veshësh:</b><br>${veshja}</div><div style="margin-top:6px"><b>📝 Përmbledhje:</b> ${i===0?'Sot':'Atë ditë'} në ${qyteti} do jetë ${pr(kod).toLowerCase()}, nga ${minT}° në mëngjes deri ${maxT}° në mesditë. ${shiP>50?'Ka shanse të mëdha për shi, merr çadër!':'Nuk pritet shi i madh.'} Era deri ${eraMax} km/h.</div>`;
 let start=i*24;let oretHTML='';
-for(let h=start;h<start+24;h+=2){
-if(h>=D.hourly.time.length) break;
-let ora=new Date(D.hourly.time[h]).getHours();
-let etiketa=ora<6?'🌙 Natë':ora<9?'🌅 Mëngjes':ora<12?'☀️ Paradite':ora<17?'🌞 Mesditë':ora<20?'🌇 Pasdite':'🌙 Darkë';
-oretHTML+=`<div class="pill" style="min-width:78px"><div>${String(ora).padStart(2,'0')}:00</div><div style="font-size:10px;opacity:.7">${etiketa}</div><div style="font-size:20px">${emojiVetem(D.hourly.weather_code[h])}</div><div><b>${Math.round(D.hourly.temperature_2m[h])}°</b></div><div style="opacity:.7">💨 ${Math.round(D.hourly.wind_speed_10m[h])} km/h</div><div style="opacity:.7">💧 ${D.hourly.precipitation_probability[h]||0}%</div></div>`;
-}
+for(let h=start;h<start+24;h+=2){if(h>=D.hourly.time.length) break;let ora=new Date(D.hourly.time[h]).getHours();let etiketa=ora<6?'🌙 Natë':ora<9?'🌅 Mëngjes':ora<12?'☀️ Paradite':ora<17?'🌞 Mesditë':ora<20?'🌇 Pasdite':'🌙 Darkë';oretHTML+=`<div class="pill" style="min-width:78px"><div>${String(ora).padStart(2,'0')}:00</div><div style="font-size:10px;opacity:.7">${etiketa}</div><div style="font-size:20px">${emojiVetem(D.hourly.weather_code[h])}</div><div><b>${Math.round(D.hourly.temperature_2m[h])}°</b></div><div style="opacity:.7">💨 ${Math.round(D.hourly.wind_speed_10m[h])} km/h</div><div style="opacity:.7">💧 ${D.hourly.precipitation_probability[h]||0}%</div></div>`;}
 document.getElementById('ditaDetailOret').innerHTML=oretHTML;
 if(!auto) document.getElementById('ditaDetail').scrollIntoView({behavior:'smooth'});
 }
 function mbyllDitaDetail(){document.getElementById('ditaDetail').style.display='none';ditaZgjedhur=null;document.querySelectorAll('#parashikimi .pill').forEach(el=>el.classList.remove('aktiv'));}
 
-// KERKIM
 let kerkImTimer=null,kerkImRez=[];
 async function kerkoQytet(q){q=q.trim();let box=document.getElementById('kerkImRezultatet');if(q.length<2){box.style.display='none';return;}clearTimeout(kerkImTimer);kerkImTimer=setTimeout(async()=>{try{let r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=6&language=sq&format=json`);let d=await r.json();kerkImRez=d.results||[];if(!kerkImRez.length){box.innerHTML='<div>❌ Nuk u gjet</div>';box.style.display='block';return;}box.innerHTML=kerkImRez.map((x,i)=>`<div onclick="zgjidhQytetKerkIm(${i})">📍 <b>${x.name}</b> ${x.admin1?'- '+x.admin1:''} ${x.country?','+x.country:''}</div>`).join('');box.style.display='block';}catch(e){}},400);}
-function zgjidhQytetKerkIm(i){let x=kerkImRez[i];if(!x)return;lat=x.latitude;lon=x.longitude;qyteti=x.name;document.getElementById('kerkImQytet').value=x.name;document.getElementById('kerkImRezultatet').style.display='none';ditaZgjedhur=0;merrMoti();toast('📍 '+x.name+' ✨');}
+function zgjidhQytetKerkIm(i){let x=kerkImRez[i];if(!x)return;lat=x.latitude;lon=x.longitude;qyteti=x.name;document.getElementById('kerkImQytet').value=x.name;document.getElementById('kerkImRezultatet').style.display='none';ditaZgjedhur=0;sabiKaFolur=false;merrMoti();toast('📍 '+x.name+' ✨');}
 function kerkoQytetEnter(){if(kerkImRez.length>0)zgjidhQytetKerkIm(0);}
-function shkoQytetBote(la,lo,em){lat=la;lon=lo;qyteti=em;ditaZgjedhur=0;merrMoti();toast('🌍 '+em);window.scrollTo(0,0);}
-function ndrroQytet(){let v=document.getElementById('qyteti').value.split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];ditaZgjedhur=0;merrMoti();toast('📍 '+qyteti);}
-function vendndodhjaIme(){if(!navigator.geolocation)return toast('Nuk mbështetet GPS');navigator.geolocation.getCurrentPosition(p=>{lat=p.coords.latitude;lon=p.coords.longitude;qyteti='Vendndodhja Ime 📍';merrMoti();toast('✅ U gjet!')},()=>toast('❌ Lejo vendndodhjen!'));}
-function luajZerin(){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance(`Sot në ${qyteti} është ${Math.round(D?D.current.temperature_2m:20)} gradë. ${D?pr(D.current.weather_code):'Mot i bukur'}. Era ${Math.round(D?D.current.wind_speed_10m:0)} kilometra në orë.`);u.lang='sq-AL';speechSynthesis.speak(u)}}
-function ndajMotin(){let t=`🌤️ SABIMOTI PRO\nSot në ${qyteti}: ${D?Math.round(D.current.temperature_2m)+'°C '+pr(D.current.weather_code):''} • Era ${D?Math.round(D.current.wind_speed_10m):''} km/h\n${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
+function shkoQytetBote(la,lo,em){lat=la;lon=lo;qyteti=em;ditaZgjedhur=0;sabiKaFolur=false;merrMoti();toast('🌍 '+em);window.scrollTo(0,0);}
+function ndrroQytet(){let v=document.getElementById('qyteti').value.split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];ditaZgjedhur=0;sabiKaFolur=false;merrMoti();toast('📍 '+qyteti);}
+function vendndodhjaIme(){if(!navigator.geolocation)return toast('Nuk mbështetet GPS');navigator.geolocation.getCurrentPosition(p=>{lat=p.coords.latitude;lon=p.coords.longitude;qyteti='Vendndodhja Ime 📍';sabiKaFolur=false;merrMoti();toast('✅ U gjet!')},()=>toast('❌ Lejo vendndodhjen!'));}
+function luajZerin(){sabiFlet(true);}
+function ndajMotin(){let t=`🌤️ SABIMOTI PRO VIP\nSot në ${qyteti}: ${D?Math.round(D.current.temperature_2m)+'°C '+pr(D.current.weather_code):''} • Era ${D?Math.round(D.current.wind_speed_10m):''} km/h\n${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
 function aktivizoNjoftimShi(){if('Notification' in window){Notification.requestPermission().then(p=>{if(p==='granted'){toast('🔔 Alarmi për shi u aktivizua!');new Notification('SABIMOTI ✨',{body:'Do të njoftojmë para çdo shiu! ☔'})}else toast('Lejo njoftimet!')})}}
-async function krahasoQytete(){
-try{
-let qytetet=[{n:'Tiranë',la:41.32,lo:19.81},{n:'Prishtinë',la:42.66,lo:21.16},{n:'Paris',la:48.85,lo:2.35},{n:'Londër',la:51.5,lo:-0.12}];
-let html='';
-for(let q of qytetet){let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${q.la}&longitude=${q.lo}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`);let d=await r.json();html+=`<div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding:6px 0"><span>${q.n}</span><span>${emojiVetem(d.current.weather_code)} <b>${Math.round(d.current.temperature_2m)}°</b> • 💨 ${Math.round(d.current.wind_speed_10m)} km/h</span></div>`;}
-document.getElementById('krahasimi').innerHTML=html;
-}catch(e){document.getElementById('krahasimi').innerHTML='Kontrollo internetin për krahasim';}
-}
+async function krahasoQytete(){try{let qytetet=[{n:'Tiranë',la:41.32,lo:19.81},{n:'Prishtinë',la:42.66,lo:21.16},{n:'Paris',la:48.85,lo:2.35},{n:'Londër',la:51.5,lo:-0.12}];let html='';for(let q of qytetet){let r=await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${q.la}&longitude=${q.lo}&current=temperature_2m,weather_code,wind_speed_10m&timezone=auto`);let d=await r.json();html+=`<div style="display:flex;justify-content:space-between;border-bottom:1px solid rgba(255,255,255,.1);padding:6px 0"><span>${q.n}</span><span>${emojiVetem(d.current.weather_code)} <b>${Math.round(d.current.temperature_2m)}°</b> • 💨 ${Math.round(d.current.wind_speed_10m)} km/h</span></div>`;}document.getElementById('krahasimi').innerHTML=html;}catch(e){document.getElementById('krahasimi').innerHTML='Kontrollo internetin për krahasim';}}
 
-// RADIO - E RREGULLUAR ME STREAM TE SIGURT
+// RADIO VIP
 let radiotShqip=[
 {name:'Top Albania Radio',url:'https://stream.topalbaniaradio.com/topalbaniaradio.mp3',emoji:'🎧',vend:'Tiranë'},
-{name:'Radio Klan',url:'https://radio.klan.fm/klan.mp3',emoji:'📻',vend:'Tiranë'},
+{name:'My Music Radio',url:'https://stream.zeno.fm/8wv8q3k0f0quv',emoji:'🎵',vend:'Shqipëri'},
 {name:'Radio 1 Albania',url:'https://stream.zeno.fm/0r0xa2na0f8uv',emoji:'🇦🇱',vend:'Shqipëri'},
 {name:'BBC World Service',url:'https://stream.live.vc.bbcmedia.co.uk/bbc_world_service',emoji:'🌍',vend:'UK'},
-{name:'Kiss FM',url:'https://stream.zeno.fm/0r0xa2na0f8uv',emoji:'🎵',vend:'UK'},
-{name:'Radio France',url:'https://stream.radiofrance.fr/fip/all/fiphautdebit.mp3',emoji:'🇫🇷',vend:'Francë'},
+{name:'Radio France - FIP',url:'https://stream.radiofrance.fr/fip/all/fiphautdebit.mp3',emoji:'🇫🇷',vend:'Francë'},
 ];
 let radioIndex=-1;
 function ngarkoRadioShqip(){
-document.getElementById('radioList').innerHTML=radiotShqip.map((r,i)=>`<div class="radio-item"><span>${r.emoji} <b>${r.name}</b><br><small style="opacity:.6">${r.vend}</small></span><button onclick="luajRadio(${i})" style="background:${radioIndex===i?'#22c55e':'#38bdf8'};border:none;padding:9px 15px;border-radius:100px;font-weight:800">${radioIndex===i?'🔊 PO LUAN':'▶️ LU AJ'}</button></div>`).join('');
+document.getElementById('radioList').innerHTML=radiotShqip.map((r,i)=>`<div class="radio-item"><span>${r.emoji} <b>${r.name}</b><br><small style="opacity:.6">${r.vend}</small></span><button onclick="luajRadio(${i})" style="background:${radioIndex===i?'#22c55e':'#38bdf8'};border:none;padding:9px 15px;border-radius:100px;font-weight:800">${radioIndex===i?'🔊 PO LUAN':'▶️ LUAJ'}</button></div>`).join('');
 let eFundit=localStorage.getItem('sabi_radio_fundit');
-if(eFundit && radioIndex===-1){let idx=radiotShqip.findIndex(x=>x.name===eFundit);if(idx>=0) document.getElementById('radioInfo').innerText='E fundit: '+eFundit+' - shtyp LU AJ për të vazhduar';}
+if(eFundit && radioIndex===-1){document.getElementById('radioInfo').innerText='E fundit: '+eFundit+' - shtyp LUAJ për të vazhduar';}
 }
 function luajRadio(i){
 let r=radiotShqip[i];radioIndex=i;radioAktuale=r;
@@ -422,20 +414,17 @@ async function kerkoRadio(q){
 if(q.length<2){document.getElementById('radioBoteList').innerHTML='';return;}
 document.getElementById('radioBoteList').innerHTML='<div style="font-size:13px">🔍 Duke kërkuar...</div>';
 try{
-let r=await fetch(`https://www.radio-browser.info/api/json/stations/search?name=${encodeURIComponent(q)}&limit=6&hidebroken=true&order=clickcount&reverse=true`,{headers:{'User-Agent':'SABIMOTI/1.0'}});
-let d=await r.json();
-if(!d.length){document.getElementById('radioBoteList').innerHTML='<div>❌ Nuk u gjet</div>';return;}
+let r=await fetch(`https://www.radio-browser.info/api/json/stations/search?name=${encodeURIComponent(q)}&limit=6&hidebroken=true&order=clickcount&reverse=true`);
+let d=await r.json();if(!d.length){document.getElementById('radioBoteList').innerHTML='<div>❌ Nuk u gjet</div>';return;}
 document.getElementById('radioBoteList').innerHTML=d.map(s=>`<div class="radio-item"><span>🌍 <b>${s.name.slice(0,35)}</b><br><small>${s.country||''} • ${s.codec||''}</small></span><button onclick="luajRadioBote('${encodeURIComponent(s.url_resolved)}','${s.name.replace(/'/g,"").slice(0,25)}')" style="background:#a855f7;color:#fff;border:none;padding:8px 12px;border-radius:100px;font-weight:800">▶️</button></div>`).join('');
 }catch(e){document.getElementById('radioBoteList').innerHTML='❌ Kontrollo internetin';}
 }
 function luajRadioBote(urlEnc,em){
-let url=decodeURIComponent(urlEnc);let a=document.getElementById('audioPlayer');a.src=url;document.getElementById('radioTani').innerText='🌍 '+em;document.getElementById('radioStatus').innerText='⏳ Duke u lidhur...';a.play().then(()=>{document.getElementById('radioStatus').innerText='✅ Duke luajtur';localStorage.setItem('sabi_radio_fundit',em);}).catch(()=>{document.getElementById('radioStatus').innerText='⚠️ Nuk u hap, provo tjetër';toast('Ky stacion nuk hapet, provo tjetër');});}
+let url=decodeURIComponent(urlEnc);let a=document.getElementById('audioPlayer');a.src=url;document.getElementById('radioTani').innerText='🌍 '+em;document.getElementById('radioStatus').innerText='⏳ Duke u lidhur...';a.play().then(()=>{document.getElementById('radioStatus').innerText='✅ Duke luajtur';localStorage.setItem('sabi_radio_fundit',em);}).catch(()=>{document.getElementById('radioStatus').innerText='⚠️ Nuk u hap, provo tjetër';toast('Ky stacion nuk hapet, provo tjetër');});
+}
 
 // LOJRA + HOROSKOPI
-function zgjidhLojen(l){
-['shi','qytet','rrufe','horoskop','dashuri'].forEach(x=>{document.getElementById('game-'+x).style.display=x===l?'block':'none';document.getElementById('btn-lojra-'+x).classList.toggle('on',x===l);});
-if(l==='qytet')pyetjeRe();if(l==='horoskop')tregoHoroskop();
-}
+function zgjidhLojen(l){['shi','qytet','rrufe','horoskop','dashuri'].forEach(x=>{document.getElementById('game-'+x).style.display=x===l?'block':'none';document.getElementById('btn-lojra-'+x).classList.toggle('on',x===l);});if(l==='qytet')pyetjeRe();if(l==='horoskop')tregoHoroskop();}
 let shiScore=0,shiInterval=null;
 function nisShiGame(){shiScore=0;document.getElementById('shiScore').innerText='0';let area=document.getElementById('shiArea');area.innerHTML='';let speed=(D&&D.current.weather_code>=51)?600:1000;toast('🌧️ Kap pikat!');if(shiInterval)clearInterval(shiInterval);shiInterval=setInterval(()=>{if(area.children.length>7)return;let d=document.createElement('div');d.className='drop';d.style.left=Math.random()*85+'%';d.style.top='-10px';let bomb=Math.random()<0.2;d.innerText=bomb?'💣':'💧';d.onclick=()=>{if(bomb){shiScore=Math.max(0,shiScore-5);toast('💥 -5');}else{shiScore+=10;}document.getElementById('shiScore').innerText=shiScore;d.remove();};area.appendChild(d);let pos=-10;let f=setInterval(()=>{pos+=4;d.style.top=pos+'px';if(pos>200){clearInterval(f);d.remove();}},30);},speed);setTimeout(()=>{clearInterval(shiInterval);toast('🏆 Pikët: '+shiScore);},20000);}
 let qytetetPyetje=[{q:'Cili qytet është më i nxehtë?',o:['Dubai','Oslo','Reykjavik'],s:0},{q:'Ku bie më shumë shi?',o:['Londër','Sahara','Dubai'],s:0},{q:'Ku bie borë më shumë?',o:['Moska','Kairo','Bangkok'],s:0},{q:'Qyteti më me diell?',o:['Sarandë','Londër','Oslo'],s:0}];
@@ -445,11 +434,7 @@ function pergjigjeQytet(i){if(i===qytetetPyetje[pyetjeAktuale].s){qytetScore+=20
 let rrufeScore=0,rrufeTimer=null,rrufeKoha=10;
 function nisRrufeGame(){rrufeScore=0;rrufeKoha=10;document.getElementById('rrufeScore2').innerText='0';document.getElementById('rrufeKoha').innerText='10';let area=document.getElementById('rrufeArea');if(rrufeTimer)clearInterval(rrufeTimer);rrufeTimer=setInterval(()=>{rrufeKoha--;document.getElementById('rrufeKoha').innerText=rrufeKoha;if(rrufeKoha<=0){clearInterval(rrufeTimer);area.innerHTML='<div style="text-align:center;padding-top:80px;font-size:40px">🏆 '+rrufeScore+' pikë!</div>';toast('🏆 '+rrufeScore+' pikë!');return;}let b=document.createElement('div');b.className='drop';b.innerText='⚡';b.style.left=Math.random()*80+'%';b.style.top=Math.random()*60+'%';b.style.fontSize='36px';b.onclick=()=>{rrufeScore+=15;document.getElementById('rrufeScore2').innerText=rrufeScore;b.remove();};area.appendChild(b);setTimeout(()=>b.remove(),1200);},700);}
 const HOROSKOPET={dashi:['♈ DASHI','90%','75%','85%','Sot dikush të shikon me dashuri! 😍'],demi:['♉ DEMI','82%','88%','78%','Ditë e mirë për lekë!'],binjaket:['♊ BINJAKËT','95%','65%','88%','Dita e dashurisë! 💘'],gaforrja:['♋ GAFORRJA','88%','70%','80%','Familja të jep forcë!'],luani:['♌ LUANI','92%','85%','95%','Ti shkëlqen sot! ☀️'],virgjeresha:['♍ VIRGJËRESHA','84%','90%','76%','Detajet bëjnë diferencën!'],peshorja:['♎ PESHORJA','89%','72%','84%','Balancë perfekte!'],akrepi:['♏ AKREPI','93%','78%','90%','Misteri yt tërheq!'],shigjetari:['♐ SHIGJETARI','87%','74%','91%','Aventurë e re!'],bricjapi:['♑ BRICJAPI','80%','92%','79%','Puna shpërblehet!'],ujori:['♒ UJORI','86%','68%','87%','Ide brilante!'],peshqit:['♓ PESHQIT','94%','66%','89%','Ëndrrat bëhen realitet!']};
-function tregoHoroskop(){
-let s=document.getElementById('horoskopiSelect').value;let sot=D?Math.round(D.current.temperature_2m)+'°C':'--';let shi=D?(D.daily.precipitation_probability_max[0]||0)+'%':'--';let h=HOROSKOPET[s]||HOROSKOPET.dashi;
-let dita=new Date();let nrFat=(dita.getDate()*7+h[1].length)%99+1;
-document.getElementById('horoskopiRezultat').innerHTML=`<b>${h[0]}</b><br>❤️ Dashuria: <b>${h[1]}</b> - ${h[4]}<br>💰 Lekët: <b>${h[2]}</b><br>🍀 Fati: <b>${h[3]}</b><br>🎯 Numri me fat: <b>${nrFat}</b><br>🌤️ Moti sot në ${qyteti}: <b>${sot}</b> • Shi ${shi}<br>💡 Këshillë: ${h[3]>'85%'?'Sot është dita jote, mos u ndal!':'Merr frymë thellë, dita do shkojë mirë.'}`;
-}
+function tregoHoroskop(){let s=document.getElementById('horoskopiSelect').value;let sot=D?Math.round(D.current.temperature_2m)+'°C':'--';let shi=D?(D.daily.precipitation_probability_max[0]||0)+'%':'--';let h=HOROSKOPET[s]||HOROSKOPET.dashi;let dita=new Date();let nrFat=(dita.getDate()*7+h[1].length)%99+1;document.getElementById('horoskopiRezultat').innerHTML=`<b>${h[0]}</b><br>❤️ Dashuria: <b>${h[1]}</b> - ${h[4]}<br>💰 Lekët: <b>${h[2]}</b><br>🍀 Fati: <b>${h[3]}</b><br>🎯 Numri me fat: <b>${nrFat}</b><br>🌤️ Moti sot në ${qyteti}: <b>${sot}</b> • Shi ${shi}<br>💡 Këshillë: Sot është dita jote, mos u ndal!`;}
 function llogaritDashuri(){let e1=document.getElementById('emer1').value.trim();let e2=document.getElementById('emer2').value.trim();if(!e1||!e2)return toast('❤️ Shkruaj 2 emrat!');let total=0;let b=(e1+e2).toLowerCase();for(let i=0;i<b.length;i++)total+=b.charCodeAt(i)*(i+1);let p=55+(total%44);if(e1.toLowerCase()===e2.toLowerCase())p=100;document.getElementById('dashuriRezultat').style.display='block';document.getElementById('dashuriPerqind').innerText=p;let m=p>=90?`💖 ${e1} + ${e2} = DASHURI E VËRTETË!`:p>=75?`😍 ${e1} + ${e2} = SHUMË MIRË!`:p>=60?`😊 ${e1} + ${e2} = MUND TË BËHET!`:`🤔 ${e1} + ${e2} = SHOQËRI E MIRË!`;document.getElementById('dashuriMesazh').innerHTML=m;document.getElementById('dashuriDetaje').innerHTML=`💍 <b>Martesa:</b> Pas <b>${1+(total%5)} vitesh</b> në <b>${['Tiranë','Paris','Santorini','Dubai'][total%4]}</b><br>👶 <b>Fëmijë:</b> <b>${1+(total%3)}</b>`;}
 function llogaritDitelindje(){let d=document.getElementById('ditelindjaInput').value;if(!d)return toast('Zgjidh ditëlindjen!');let dt=new Date(d),sot=new Date(),dv=new Date(sot.getFullYear(),dt.getMonth(),dt.getDate());let mbet=Math.ceil((dv-sot)/86400000);if(mbet<0)mbet+=365;document.getElementById('ditelindjeRezultat').innerHTML=`🎂 <b>Ditëlindja:</b> ${dt.getDate()}/${dt.getMonth()+1}<br>🎉 <b>Kanë mbetur:</b> <b style="color:#38bdf8">${mbet} ditë!</b><br>🎈 <b>Do bësh:</b> ${sot.getFullYear()-dt.getFullYear()+1} vjeç!`;}
 document.addEventListener('click',e=>{if(!e.target.closest('.search-box')){let b=document.getElementById('kerkImRezultatet');if(b)b.style.display='none';}});
