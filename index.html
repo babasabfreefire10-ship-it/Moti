@@ -3,137 +3,194 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-<title>SABIMOTI</title>
+<title>SABIMOTI LIVE</title>
 <link rel="icon" href="icon.png">
 <link rel="apple-touch-icon" href="icon.png">
 <link rel="manifest" href="manifest.json">
-<meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="theme-color" content="#B91C1C">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
-body{background:#0a0a0f;color:#fff;min-height:100vh;transition:.4s}
-body.diell{background:linear-gradient(180deg,#1e90ff,#00bfff)}body.re{background:linear-gradient(180deg,#334155,#64748b)}body.shi{background:linear-gradient(180deg,#1e293b,#334155)}body.stuhi{background:linear-gradient(180deg,#111827,#7f1d1d)}body.bore{background:linear-gradient(180deg,#0ea5e9,#e0f2fe)}body.nate{background:linear-gradient(180deg,#020617,#1e1b4b)}body.light{background:#f2f2f7!important;color:#111!important}
+body{background:#0a0a0f;color:#fff;min-height:100vh}
+body.light{background:#f2f2f7!important;color:#111!important}
 .app{max-width:480px;margin:0 auto;padding:14px 14px 30px}
 .top{display:flex;justify-content:space-between;align-items:center}
 .logo{display:flex;gap:10px;align-items:center;font-weight:800;font-size:18px}.logo img{width:44px;height:44px;border-radius:12px;border:2px solid #FFD700;object-fit:cover}.logo span{color:#FFD700}
-.vip{background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px;letter-spacing:.5px}
+.vip{background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
 .mode{width:38px;height:38px;border-radius:50%;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.15);font-size:18px;cursor:pointer;color:#fff}
-.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.7;margin-top:6px;font-weight:700}.by b{color:#FFD700}
-.alert{display:none;padding:14px;border-radius:16px;margin:12px 0;font-weight:700;font-size:13px;line-height:1.5;cursor:pointer}.alert.show{display:block}.alert.stuhi{background:#ef4444}.alert.shi{background:#0ea5e9}.alert.mire{background:#22c55e}.alert.bore{background:#0284c7}
+.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.7;margin:6px 0;font-weight:700}.by b{color:#FFD700}
+
+/* ===== VIDEO LIVE - LIDHUR ME INDEX ===== */
+.scene{position:relative;height:320px;border-radius:24px;overflow:hidden;border:2px solid #FFD700;margin:10px 0 12px;background:linear-gradient(180deg,#1e90ff,#aee3ff);transition:background 1s}
+.scene.diell{background:linear-gradient(180deg,#1e90ff,#ffe27a)}
+.scene.re{background:linear-gradient(180deg,#475569,#94a3b8)}
+.scene.shi{background:linear-gradient(180deg,#1e293b,#475569)}
+.scene.stuhi{background:linear-gradient(180deg,#0f172a,#7f1d1d)}
+.scene.bore{background:linear-gradient(180deg,#0ea5e9,#e0f2fe)}
+.scene.nate{background:linear-gradient(180deg,#020617,#1e1b4b)}
+.dielli{position:absolute;top:16px;right:18px;width:62px;height:62px;background:#FFD700;border-radius:50%;box-shadow:0 0 35px #FFD700;animation:diellRrot 8s linear infinite}
+@keyframes diellRrot{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+.dielli::after{content:'☀️';font-size:40px;position:absolute;top:10px;left:10px}
+.hena{position:absolute;top:16px;right:18px;font-size:50px;display:none;animation:henaLev 3s ease-in-out infinite}
+@keyframes henaLev{0%,100%{transform:translateY(0)}50%{transform:translateY(-6px)}}
+.rete{position:absolute;top:20px;left:-70px;font-size:54px;animation:reLev 14s linear infinite}
+.rete.r2{top:56px;font-size:40px;animation-duration:20s;animation-delay:3s;opacity:.7}
+@keyframes reLev{to{left:110%}}
+.rrufe{position:absolute;top:0;left:50%;font-size:64px;opacity:0;transform:translateX(-50%);z-index:5}
+.rrufe.show{animation:rrufeBie .6s}
+@keyframes rrufeBie{0%{opacity:0;transform:translateX(-50%) translateY(-20px)}20%{opacity:1}100%{opacity:0;transform:translateX(-50%) translateY(80px)}}
+.flash{position:absolute;inset:0;background:#fff;opacity:0;z-index:4;pointer-events:none}
+.flash.show{animation:flash .4s}
+@keyframes flash{0%{opacity:.7}100%{opacity:0}}
+.toka{position:absolute;bottom:0;left:0;right:0;height:70px;background:#2d2d2d;border-top:4px solid #fff;overflow:hidden}
+.toka::after{content:'';position:absolute;top:30px;left:0;right:0;height:4px;background:repeating-linear-gradient(90deg,#FFD700 0 30px,transparent 30px 60px);animation:rrugaLev .6s linear infinite}
+@keyframes rrugaLev{to{background-position-x:-60px}}
+.peme{position:absolute;bottom:62px;font-size:38px;animation:pemeLev 4s linear infinite}
+.peme.p2{font-size:30px;animation-duration:5s;animation-delay:1s;bottom:66px}
+@keyframes pemeLev{from{left:110%}to{left:-60px}}
+.shtepi{position:absolute;bottom:62px;font-size:50px;animation:pemeLev 9s linear infinite;opacity:.9}
+.njeriu{position:absolute;bottom:64px;left:50%;transform:translateX(-50%);z-index:10;text-align:center}
+.njeriu .trupi{font-size:68px;line-height:1;display:block;animation:ecje .55s ease-in-out infinite}
+.njeriu.vrapon .trupi{animation:ecje .22s ease-in-out infinite}
+.njeriu.ndalon .trupi{animation:none}
+@keyframes ecje{0%,100%{transform:translateY(0) rotate(-2deg)}50%{transform:translateY(-10px) rotate(2deg)}}
+.njeriu .cadra{font-size:76px;position:absolute;top:-58px;left:50%;transform:translateX(-50%) scale(0);transition:transform .4s;z-index:11}
+.njeriu.me-cadra .cadra{transform:translateX(-50%) scale(1)}
+.emri-njeri{position:absolute;top:-88px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:4px 10px;border-radius:100px;font-size:11px;font-weight:800;white-space:nowrap;border:1px solid #FFD700}
+.emri-njeri b{color:#FFD700}
+.fjala{position:absolute;top:-122px;left:50%;transform:translateX(-50%);background:#fff;color:#111;padding:7px 12px;border-radius:14px;font-size:12px;font-weight:800;white-space:nowrap;box-shadow:0 4px 14px rgba(0,0,0,.3);animation:fjalaLev 2s ease-in-out infinite;max-width:220px;white-space:normal;text-align:center}
+.fjala::after{content:'';position:absolute;bottom:-6px;left:50%;width:12px;height:12px;background:#fff;transform:rotate(45deg)}
+@keyframes fjalaLev{0%,100%{transform:translateX(-50%) translateY(0)}50%{transform:translateX(-50%) translateY(-4px)}}
+canvas#canvasShi{position:absolute;inset:0;width:100%;height:100%;z-index:3;pointer-events:none}
+.info{position:absolute;top:12px;left:12px;right:12px;z-index:20;display:flex;justify-content:space-between;align-items:flex-start;color:#fff;text-shadow:0 2px 10px rgba(0,0,0,.6)}
+.info .temp{font-size:48px;font-weight:800;line-height:1}.info .temp small{font-size:20px}
+.info .city{font-size:14px;font-weight:700}.info .cond{font-size:12px}
+.badge-live{background:#ef4444;color:#fff;font-size:11px;font-weight:800;padding:6px 10px;border-radius:100px;animation:blink 1s infinite}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:.5}}
+.statusi{position:absolute;bottom:78px;left:12px;right:12px;z-index:20;background:rgba(0,0,0,.55);backdrop-filter:blur(8px);padding:9px 11px;border-radius:13px;font-size:12px;font-weight:700;display:flex;justify-content:space-between;align-items:center;color:#fff}
+.statusi b{color:#FFD700}
+
+.alert{display:none;padding:13px;border-radius:16px;margin:10px 0;font-weight:700;font-size:13px;cursor:pointer}.alert.show{display:block}.alert.stuhi{background:#ef4444}.alert.shi{background:#0ea5e9}.alert.mire{background:#22c55e}.alert.bore{background:#0284c7}
 .card{background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);border-radius:20px;padding:14px}
 body.light .card,body.light .stat,body.light .notif{background:#fff;border-color:#e5e5e5}
 .title{font-size:12px;font-weight:800;text-transform:uppercase;display:flex;justify-content:space-between;margin-bottom:10px}
-.notif{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:13px 14px;border-radius:16px;margin:10px 0;font-size:13px;font-weight:700}
+.notif{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);padding:12px 14px;border-radius:16px;margin:10px 0;font-size:13px;font-weight:700}
 .notif small{display:block;font-weight:400;opacity:.7;font-size:11px}
-.sw{width:52px;height:30px;background:#555;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0;transition:.2s;border:2px solid transparent}.sw.on{background:#22c55e;border-color:#fff}.sw i{position:absolute;top:2px;left:2px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.2s;box-shadow:0 2px 6px rgba(0,0,0,.3)}.sw.on i{left:24px}
+.sw{width:52px;height:30px;background:#555;border-radius:100px;position:relative;cursor:pointer;flex-shrink:0;transition:.2s}.sw.on{background:#22c55e}.sw i{position:absolute;top:2px;left:2px;width:24px;height:24px;background:#fff;border-radius:50%;transition:.2s}.sw.on i{left:24px}
 .search{display:flex;gap:8px;margin:12px 0}.search input{flex:1;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;padding:14px;border-radius:14px;font-size:15px;outline:none}body.light .search input{background:#fff;color:#111;border-color:#ddd}.search button{border:none;border-radius:14px;padding:0 14px;font-weight:800;cursor:pointer}.gold{background:#FFD700}.white{background:#fff}
-.hero{text-align:center;padding:6px 0}.city{font-size:17px;font-weight:700}.date{font-size:12px;opacity:.8}.big{font-size:88px;font-weight:800;line-height:1;letter-spacing:-3px;margin:8px 0}.big small{font-size:34px}
-.day-badge{display:inline-block;background:#FFD700;color:#000;padding:5px 12px;border-radius:100px;font-size:11px;font-weight:800;margin-top:6px}
 .btn-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:12px 0}.btn-grid button{border:none;padding:12px 6px;border-radius:14px;font-weight:800;font-size:12px;cursor:pointer}.b-gold{background:#FFD700;color:#000}.b-white{background:#fff;color:#000}.b-green{background:#22c55e;color:#fff}.b-blue{background:#0ea5e9;color:#fff}.b-purple{background:#a855f7;color:#fff}.b-black{background:#111;color:#fff;border:1px solid #333}
 .hourly{display:flex;gap:9px;overflow-x:auto;scrollbar-width:none}.hourly::-webkit-scrollbar{display:none}.hour{min-width:66px;text-align:center;background:rgba(255,255,255,.12);border-radius:14px;padding:11px 6px;flex-shrink:0}body.light .hour{background:#f0f0f0}.hour.now{background:#FFD700;color:#000}.hour .em{font-size:24px;margin:5px 0}
 .stats{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}.stat{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.18);border-radius:16px;padding:12px;display:flex;gap:10px;align-items:center}.stat b{font-size:14px;display:block}.stat span{font-size:11px;opacity:.7}
-canvas{width:100%;height:150px;display:block}
+canvas#graf{width:100%;height:150px;display:block}
 .days{display:flex;flex-direction:column;gap:9px;margin-top:12px}.day{display:flex;align-items:center;gap:10px;padding:12px;cursor:pointer}.day.active{outline:2px solid #FFD700;background:rgba(255,215,0,.18)}.day .l{width:60px}.day .l b{font-size:14px}.day .l span{font-size:11px;opacity:.7;display:block}.day .m{flex:1;font-size:12px}.day .e{font-size:26px}.day .t{width:74px;text-align:right}.bar{height:5px;background:rgba(255,255,255,.25);border-radius:100px;margin-top:5px;overflow:hidden}.bar i{display:block;height:100%;background:#FFD700}
-.detail{margin-top:10px}.detail h3{font-size:15px;margin-bottom:6px}.detail p{font-size:12px;opacity:.85;line-height:1.6}
-.footer{text-align:center;margin-top:20px;font-size:10px;letter-spacing:2px;opacity:.6}.footer b{color:#FFD700}.load{text-align:center;padding:50px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:100px;font-size:13px;font-weight:700;z-index:99;display:none;white-space:nowrap;box-shadow:0 10px 30px rgba(0,0,0,.4)}.err{background:#ef4444;padding:12px;border-radius:14px;text-align:center;font-weight:700}.refresh{width:100%;margin-top:12px;background:#FFD700;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer}
-.install-box{background:#FFD700;color:#000;padding:12px;border-radius:16px;text-align:center;font-weight:800;font-size:13px;margin:10px 0;cursor:pointer;display:none}
+.detail{margin-top:10px}.footer{text-align:center;margin-top:20px;font-size:10px;letter-spacing:2px;opacity:.6}.footer b{color:#FFD700}.load{text-align:center;padding:40px 0}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:100px;font-size:13px;font-weight:700;z-index:99;display:none;white-space:nowrap}.err{background:#ef4444;padding:12px;border-radius:14px;text-align:center;font-weight:700}.refresh{width:100%;margin-top:12px;background:#FFD700;border:none;padding:13px;border-radius:14px;font-weight:800;cursor:pointer}
 select{width:100%;padding:12px;border-radius:14px;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.15);color:#fff;font-weight:700;margin-top:10px;outline:none}body.light select{background:#fff;color:#111}select option{color:#000}
-.popup{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}.popup.show{display:flex}.popup-card{background:#fff;color:#111;border-radius:22px;padding:22px;max-width:360px;width:100%;text-align:center}.popup-card h3{font-size:18px;margin-bottom:8px}.popup-card p{font-size:13px;opacity:.8;line-height:1.6}.popup-card button{width:100%;padding:13px;border:none;border-radius:14px;font-weight:800;margin-top:10px;cursor:pointer}.popup-gold{background:#FFD700}.popup-grey{background:#eee}
+.popup{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:999;padding:20px}.popup.show{display:flex}.popup-card{background:#fff;color:#111;border-radius:22px;padding:22px;max-width:360px;width:100%;text-align:center}.popup-card button{width:100%;padding:13px;border:none;border-radius:14px;font-weight:800;margin-top:10px;cursor:pointer}.popup-gold{background:#FFD700}.popup-grey{background:#eee}
 </style>
 </head>
-<body class="diell" id="body">
+<body id="body">
 <div class="app">
 <div class="top"><div class="logo"><img src="icon.png" onerror="this.src='https://cdn-icons-png.flaticon.com/512/1163/1163661.png'">SABI<span>•</span> MOTI</div><div style="display:flex;gap:8px;align-items:center"><button class="mode" id="modeBtn" onclick="ndryshoMode()">🌙</button><div class="vip">★ VIP</div></div></div>
 <div class="by">BY <b>SABI</b></div>
-<div id="installBox" class="install-box" onclick="instaloApp()">⬇ INSTALO APP-IN SABIMOTI</div>
-<div id="alertBox" class="alert" onclick="dergoSMS()"></div>
 
-<!-- NJOFTIMI I RREGULLUAR -->
-<div class="notif"><div><span id="notifTekst">🔔 Njoftime Shi & Stuhi</span><small id="notifStatus">Prek për ta ndezur • Do të njoftohesh për shi & stuhi</small></div><div class="sw" id="sw" onclick="toggleNotif()"><i></i></div></div>
-
-<div class="search"><input id="cityInput" placeholder="Kërko qytetin..." value="Tiranë"><button class="gold" onclick="kerko()">KËRKO</button><button class="white" onclick="gps()">📍 GPS</button></div>
-<div class="btn-grid">
-<button class="b-gold" onclick="rifresko()">🔄 Rifresko</button>
-<button class="b-white" onclick="shperndaje()">↗ Share</button>
-<button class="b-green" onclick="dergoWhatsApp()">💬 WhatsApp</button>
-<button class="b-blue" onclick="dergoSMS()">📩 SMS</button>
-<button class="b-purple" onclick="kopjoLink()">🔗 Kopjo Link</button>
-<button class="b-black" onclick="hapHarten()">🗺️ Harta</button>
-<button onclick="location.href='radar.html'" style="width:100%;margin-top:10px;background:#ef4444;color:#fff;border:none;padding:14px;border-radius:16px;font-weight:800;cursor:pointer;font-size:14px">📡 HAP LIVE RADARIN + RRUFE + TËRMETE →</button>
+<!-- VIDEO LIVE - TANI BRENDA INDEX, LIDHUR DIREKT -->
+<div class="scene diell" id="scene">
+  <div class="dielli" id="dielli"></div>
+  <div class="hena" id="hena">🌙</div>
+  <div class="rete" id="re1">☁️</div>
+  <div class="rete r2" id="re2">☁️</div>
+  <div class="rrufe" id="rrufe">⚡</div>
+  <div class="flash" id="flash"></div>
+  <canvas id="canvasShi"></canvas>
+  <div class="peme" id="peme1">🌳</div>
+  <div class="peme p2">🌲</div>
+  <div class="shtepi">🏠</div>
+  <div class="toka"></div>
+  <div class="njeriu ecen" id="njeriu">
+    <div class="fjala" id="fjala">☀️ Ditë e mirë!</div>
+    <div class="emri-njeri">🚶‍♂️ <b>SABI</b></div>
+    <div class="cadra" id="cadra">☂️</div>
+    <span class="trupi" id="trupi">🚶‍♂️</span>
+  </div>
+  <div class="info">
+    <div><div class="city">📍 <span id="liveQytet">Tiranë</span></div><div class="cond" id="liveCond">Duke ngarkuar...</div><div class="temp"><span id="liveTemp">--</span><small>°C</small></div></div>
+    <div class="badge-live">● LIVE</div>
+  </div>
+  <div class="statusi"><span id="statusiTekst">🚶‍♂️ SABI po ecën...</span><span id="statusiShi">🌧️ 0%</span></div>
 </div>
-<select id="qytetSelect" onchange="zgjidhQytetNgaLista()">
-<option value="">⚡ Zgjedh Qytet Shpejt...</option>
-<option value="41.3275,19.8187,Tiranë">📍 Tiranë</option>
-<option value="41.3246,19.4565,Durrës">📍 Durrës</option>
-<option value="40.7167,19.5667,Vlorë">📍 Vlorë</option>
-<option value="42.0667,19.5,Shkodër">📍 Shkodër</option>
-<option value="40.6333,22.95,Elbasan">📍 Elbasan</option>
-<option value="42.65,21.15,Prishtinë">📍 Prishtinë</option>
-<option value="42.38,20.43,Prizren">📍 Prizren</option>
-<option value="41.01,21.33,Korçë">📍 Korçë</option>
-</select>
+
+<div id="alertBox" class="alert" onclick="dergoSMS()"></div>
+<div class="notif"><div><span id="notifTekst">🔔 Njoftime Shi & Stuhi</span><small id="notifStatus">Prek për ta ndezur</small></div><div class="sw" id="sw" onclick="toggleNotif()"><i></i></div></div>
+<div class="search"><input id="cityInput" placeholder="Kërko qytetin..." value="Tiranë"><button class="gold" onclick="kerko()">KËRKO</button><button class="white" onclick="gps()">📍 GPS</button></div>
+<div class="btn-grid"><button class="b-gold" onclick="rifresko()">🔄 Rifresko</button><button class="b-white" onclick="shperndaje()">↗ Share</button><button class="b-green" onclick="dergoWhatsApp()">💬 WhatsApp</button><button class="b-blue" onclick="dergoSMS()">📩 SMS</button><button class="b-purple" onclick="kopjoLink()">🔗 Kopjo Link</button><button class="b-black" onclick="hapHarten()">🗺️ Harta</button></div>
+<select id="qytetSelect" onchange="zgjidhQytetNgaLista()"><option value="">⚡ Zgjedh Qytet Shpejt...</option><option value="41.3275,19.8187,Tiranë">📍 Tiranë</option><option value="41.3246,19.4565,Durrës">📍 Durrës</option><option value="40.7167,19.5667,Vlorë">📍 Vlorë</option><option value="42.0667,19.5,Shkodër">📍 Shkodër</option><option value="40.6333,22.95,Elbasan">📍 Elbasan</option><option value="42.65,21.15,Prishtinë">📍 Prishtinë</option><option value="42.38,20.43,Prizren">📍 Prizren</option><option value="41.01,21.33,Korçë">📍 Korçë</option></select>
 <div id="content"><div class="load">Duke ngarkuar...</div></div>
 <button class="refresh" onclick="rifresko()">🔄 Rifresko Motin</button>
 <div class="footer">SABIMOTI • BY <b>SABI</b> • © 2026</div>
 </div>
 <div class="toast" id="toast"></div>
-
-<!-- POPUP NJOFTIMI - KY E BEN TE PUNOJE EDHE KUR BROWSERI E BLLOKON -->
-<div class="popup" id="popupNotif"><div class="popup-card"><div style="font-size:48px">🔔</div><h3>Njoftimet u ndezën!</h3><p>Ti do të njoftohesh brenda App-it për çdo shi & stuhi në <b id="popupQytet">Tiranë</b>.<br><br>Nëse do njoftime edhe kur App-i është mbyllur, shtyp <b>Lejo</b> në hapin tjetër.</p><button class="popup-gold" onclick="konfirmoNotif()">✅ E KUptova, NdiZE</button><button class="popup-grey" onclick="mbyllPopup()">Mbyll</button></div></div>
+<div class="popup" id="popupNotif"><div class="popup-card"><div style="font-size:48px">🔔</div><h3>Njoftimet u ndezën!</h3><p>Do të njoftohesh për shi & stuhi.</p><button class="popup-gold" onclick="konfirmoNotif()">✅ E Kuptova, NdiZE</button><button class="popup-grey" onclick="mbyllPopup()">Mbyll</button></div></div>
 
 <script>
-let D=null, AQ=null, notifOn=localStorage.getItem('sabi_notif')==='1', qyteti='Tiranë, Shqipëri', lat=41.3275, lon=19.8187, ditaZgjedhur=0, deferredPrompt=null, infoIP='•••';
+let D=null, AQ=null, notifOn=localStorage.getItem('sabi_notif')==='1', qyteti='Tiranë, Shqipëri', lat=41.3275, lon=19.8187, ditaZgjedhur=0, deferredPrompt=null, infoIP='', motiVideo='diell', rrufeTimer=null;
 const ditet=["E Die","E Hën","E Mar","E Mër","E Enj","E Pre","E Sht"], ditetPlot=["E Diel","E Hënë","E Martë","E Mërkurë","E Enjte","E Premte","E Shtunë"], muajt=["Jan","Shk","Mar","Pri","Maj","Qer","Kor","Gus","Sht","Tet","Nën","Dhj"];
 function em(k){if(k===0)return"☀️";if(k===1||k===2)return"🌤️";if(k===3)return"☁️";if(k===45||k===48)return"🌫️";if(k>=51&&k<=57)return"🌦️";if(k>=61&&k<=67)return"🌧️";if(k>=71&&k<=77)return"❄️";if(k>=80&&k<=82)return"🌧️";if(k>=95)return"⛈️";return"🌤️"}
 function pr(k){if(k===0)return"Diell i plotë";if(k===1)return"Pjesërisht me diell";if(k===2)return"Pak re";if(k===3)return"Me re";if(k===45||k===48)return"Mjegull";if(k>=51&&k<=57)return"Shi i lehtë";if(k>=61&&k<=67)return"Shi";if(k>=71&&k<=77)return"Borë";if(k>=80&&k<=82)return"Shi i fortë";if(k>=95)return"Stuhi";return"Mot i ndryshueshëm"}
 function toast(t){const e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',3500)}
 
-// --- NJOFTIMI I RI - PUNON 100% ---
-function updateSw(){
-  const sw=document.getElementById('sw'); sw.classList.toggle('on',notifOn);
-  document.getElementById('notifStatus').innerText = notifOn ? '✅ I ndezur • Do të njoftohesh për shi & stuhi' : 'Prek për ta ndezur • Do të njoftohesh për shi & stuhi';
-  document.getElementById('notifTekst').innerText = notifOn ? '🔔 Njoftime ON' : '🔔 Njoftime Shi & Stuhi';
-}
-function toggleNotif(){
-  if(!notifOn){
-    // 1. Ndize menjehere brenda app-it - kjo punon gjithmone
-    notifOn=true; localStorage.setItem('sabi_notif','1'); updateSw();
-    document.getElementById('popupQytet').innerText=qyteti;
-    document.getElementById('popupNotif').classList.add('show');
-    // 2. Provo edhe njoftimin e telefonit - nese browseri e lejon
-    if('Notification' in window && Notification.permission==='default'){
-      Notification.requestPermission().then(p=>{ if(p==='granted'){ new Notification('SABIMOTI 🔔',{body:'Njoftimet u ndezën! Do të njoftohesh për shi & stuhi.'}); } });
-    } else if('Notification' in window && Notification.permission==='granted'){
-      new Notification('SABIMOTI 🔔',{body:'Njoftimet u ndezën!'});
-    }
-    // 3. Trego alertin ne app si prove qe punon
-    kontrolloAlarminPerNjoftim();
-  } else {
-    notifOn=false; localStorage.setItem('sabi_notif','0'); updateSw(); toast('🔕 Njoftimet u fikën');
+// ===== VIDEO LIVE - CANVAS SHI / BORE =====
+const canvas=document.getElementById('canvasShi'), ctx=canvas.getContext('2d');
+let W,H,pika=[];
+function resizeCanvas(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; }
+window.addEventListener('resize',resizeCanvas); setTimeout(resizeCanvas,200);
+function krijoPika(n){ pika=[]; for(let i=0;i<n;i++) pika.push({x:Math.random()*W,y:Math.random()*H,v:4+Math.random()*6,s:1+Math.random()*2}); }
+function vizatoShi(){
+  ctx.clearRect(0,0,W,H);
+  if(motiVideo==='shi'||motiVideo==='stuhi'){
+    ctx.strokeStyle='rgba(255,255,255,.75)'; ctx.lineWidth=1.5;
+    pika.forEach(p=>{ ctx.beginPath(); ctx.moveTo(p.x,p.y); ctx.lineTo(p.x-2,p.y+18); ctx.stroke(); p.y+=p.v; p.x-=1; if(p.y>H){p.y=-20;p.x=Math.random()*W;} });
   }
+  if(motiVideo==='bore'){
+    ctx.fillStyle='#fff';
+    pika.forEach(p=>{ ctx.beginPath(); ctx.arc(p.x,p.y,p.s,0,Math.PI*2); ctx.fill(); p.y+=p.v*0.5; p.x+=Math.sin(p.y/20)*0.5; if(p.y>H){p.y=-10;p.x=Math.random()*W;} });
+  }
+  requestAnimationFrame(vizatoShi);
 }
-function konfirmoNotif(){ document.getElementById('popupNotif').classList.remove('show'); toast('✅ Njoftimet janë ON - do të njoftohesh!'); }
+vizatoShi();
+
+// ===== FUNKSIONI QE LIDH VIDEON ME MOTIN REAL =====
+function ndryshoVideo(m, shiPerqind){
+  motiVideo=m;
+  if(rrufeTimer) clearInterval(rrufeTimer);
+  const scene=document.getElementById('scene'), njeriu=document.getElementById('njeriu'), trupi=document.getElementById('trupi'), fjala=document.getElementById('fjala'), statusi=document.getElementById('statusiTekst'), statusiShi=document.getElementById('statusiShi');
+  scene.className='scene '+m;
+  document.getElementById('dielli').style.display = m==='diell' ? 'block' : 'none';
+  document.getElementById('hena').style.display = m==='nate' ? 'block' : 'none';
+  document.getElementById('re1').style.display = (m==='re'||m==='shi'||m==='stuhi') ? 'block' : 'none';
+  document.getElementById('re2').style.display = (m==='re'||m==='shi'||m==='stuhi') ? 'block' : 'none';
+  njeriu.className='njeriu ecen'; njeriu.classList.remove('me-cadra'); document.getElementById('cadra').innerText='☂️';
+  statusiShi.innerText='🌧️ '+(shiPerqind||0)+'% Shi';
+  if(m==='diell'){ trupi.innerText='🚶‍♂️'; fjala.innerText='☀️ Ditë e mirë, po ecën SABI!'; statusi.innerText='🚶‍♂️ SABI po ecën ngadalë...'; krijoPika(0); }
+  if(m==='re'){ trupi.innerText='🚶‍♂️'; fjala.innerText='☁️ Pak re, por prapë po ecën!'; statusi.innerText='🚶‍♂️ SABI po ecën...'; krijoPika(0); }
+  if(m==='shi'){ njeriu.classList.add('me-cadra'); trupi.innerText='🚶‍♂️'; fjala.innerText='🌧️ Hapa çadrën! Po bie shi!'; statusi.innerText='☂️ SABI hapi çadrën dhe po ecën...'; krijoPika(80); }
+  if(m==='stuhi'){
+    njeriu.className='njeriu vrapon me-cadra'; trupi.innerText='🏃‍♂️'; fjala.innerText='⛈️ Shumë shi! Po vrapoj!'; statusi.innerText='🏃‍♂️ SABI po Vrapon! Stuhi!'; krijoPika(180);
+    rrufeTimer=setInterval(()=>{ if(motiVideo!=='stuhi') return; const r=document.getElementById('rrufe'), f=document.getElementById('flash'); r.classList.remove('show'); f.classList.remove('show'); void r.offsetWidth; r.classList.add('show'); f.classList.add('show'); }, 2200);
+    setTimeout(()=>{ if(motiVideo==='stuhi'){ document.getElementById('cadra').innerText='🌂💨'; fjala.innerText='💨 Era ma mori çadrën!'; statusi.innerText='💦 SABI u lag! Po vrapon në shtëpi!'; trupi.innerText='🏃‍♂️💦'; } }, 4000);
+  }
+  if(m==='bore'){ trupi.innerText='🚶‍♂️'; fjala.innerText='❄️ Po bie borë! Sa bukur!'; statusi.innerText='❄️ SABI po ecën në borë...'; krijoPika(90); }
+  if(m==='nate'){ trupi.innerText='🚶‍♂️'; fjala.innerText='🌙 Natë e qetë, po ecën SABI!'; statusi.innerText='🌙 SABI po ecën natën...'; krijoPika(0); }
+}
+
+function updateSw(){ document.getElementById('sw').classList.toggle('on',notifOn); document.getElementById('notifStatus').innerText=notifOn?'✅ I ndezur • Do të njoftohesh':'Prek për ta ndezur'; document.getElementById('notifTekst').innerText=notifOn?'🔔 Njoftime ON':'🔔 Njoftime Shi & Stuhi'; }
+function toggleNotif(){ if(!notifOn){ notifOn=true; localStorage.setItem('sabi_notif','1'); updateSw(); document.getElementById('popupNotif').classList.add('show'); if('Notification' in window && Notification.permission==='default'){ Notification.requestPermission().then(p=>{ if(p==='granted') new Notification('SABIMOTI 🔔',{body:'Njoftimet u ndezën!'}); }); } } else { notifOn=false; localStorage.setItem('sabi_notif','0'); updateSw(); toast('🔕 Njoftimet u fikën'); } }
+function konfirmoNotif(){ document.getElementById('popupNotif').classList.remove('show'); toast('✅ Njoftimet janë ON!'); }
 function mbyllPopup(){ document.getElementById('popupNotif').classList.remove('show'); }
-function kontrolloAlarminPerNjoftim(){ if(!D) return; const k=D.daily.weather_code[ditaZgjedhur]; const shi=D.daily.precipitation_probability_max[ditaZgjedhur]||0; if(k>=95||k>=61||shi>=70){ toast('⛈️ Kujdes! Ka shi/stuhi - Njoftimi punon!'); } else { toast('🔔 Njoftimi punon! Nuk ka stuhi sot.'); } }
-function alarm(d,emri){
-  const k=d.daily.weather_code[ditaZgjedhur], shi=d.daily.precipitation_probability_max[ditaZgjedhur]||0, box=document.getElementById('alertBox');
-  let h='',c='';
-  if(k>=95){c='stuhi';h='⛈️ ALERT STUHI! Stuhi në '+emri+'. Qëndro brenda! Prek për SMS →';}
-  else if(k>=61||shi>=70){c='shi';h='🌧️ ALERT SHI! Shi në '+emri+' ('+shi+'%). Merr çadër! Prek për SMS →';}
-  else if(k>=71&&k<=77){c='bore';h='❄️ ALERT BORË! Borë në '+emri;}
-  else if(k===0 && ditaZgjedhur===0){c='mire';h='☀️ Ditë e mirë! Diell në '+emri;}
-  if(h){box.className='alert show '+c;box.innerText=h;} else {box.className='alert';box.innerText='';}
-  // Njoftim automatik nese eshte ndezur
-  if(notifOn && (k>=95||k>=61||shi>=70)){
-    const key='sabi_'+new Date().toDateString()+'_'+ditaZgjedhur+'_'+k;
-    if(!localStorage.getItem(key)){ localStorage.setItem(key,'1'); toast('🔔 NJOFTIM: '+h.slice(0,60)); if('Notification' in window && Notification.permission==='granted'){ new Notification('SABIMOTI 🔔',{body:h}); } }
-  }
-}
+function alarm(d,emri){ const k=d.daily.weather_code[ditaZgjedhur], shi=d.daily.precipitation_probability_max[ditaZgjedhur]||0, box=document.getElementById('alertBox'); let h='',c=''; if(k>=95){c='stuhi';h='⛈️ ALERT STUHI! Stuhi në '+emri+'. Qëndro brenda! Prek për SMS →';} else if(k>=61||shi>=70){c='shi';h='🌧️ ALERT SHI! Shi në '+emri+' ('+shi+'%). Merr çadër!';} else if(k>=71&&k<=77){c='bore';h='❄️ ALERT BORË! Borë në '+emri;} else if(k===0 && ditaZgjedhur===0){c='mire';h='☀️ Ditë e mirë! Diell në '+emri;} if(h){box.className='alert show '+c;box.innerText=h;} else {box.className='alert';box.innerText='';} }
 function tekstMoti(){ if(!D) return 'SABIMOTI - Shiko motin'; const dt=new Date(D.daily.time[ditaZgjedhur]+'T12:00:00'); return `SABIMOTI 🇦🇱\n📍 ${qyteti} - ${ditetPlot[dt.getDay()]} ${dt.getDate()} ${muajt[dt.getMonth()]}\n${em(D.daily.weather_code[ditaZgjedhur])} ${pr(D.daily.weather_code[ditaZgjedhur])}\n🌡️ Max: ${Math.round(D.daily.temperature_2m_max[ditaZgjedhur])}° / Min: ${Math.round(D.daily.temperature_2m_min[ditaZgjedhur])}°\n🌧️ Shi: ${D.daily.precipitation_probability_max[ditaZgjedhur]||0}% • 💨 Era: ${Math.round(D.daily.wind_speed_10m_max[ditaZgjedhur])} km/h\nBY SABI`; }
-function dergoSMS(){ const t=encodeURIComponent(tekstMoti()); window.location.href='sms:?&body='+t; toast('📩 U hap SMS - zgjidh kontaktin!'); }
-function dergoWhatsApp(){ window.open('https://wa.me/?text='+encodeURIComponent(tekstMoti()),'_blank'); toast('💬 U hap WhatsApp!'); }
+function dergoSMS(){ window.location.href='sms:?&body='+encodeURIComponent(tekstMoti()); toast('📩 U hap SMS!'); }
+function dergoWhatsApp(){ window.open('https://wa.me/?text='+encodeURIComponent(tekstMoti()),'_blank'); }
 function shperndaje(){ if(navigator.share){ navigator.share({title:'SABIMOTI', text:tekstMoti(), url:location.href}).catch(()=>kopjoLink()); } else kopjoLink(); }
-function kopjoLink(){ if(navigator.clipboard){ navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Linku u kopjua!')); } }
+function kopjoLink(){ if(navigator.clipboard) navigator.clipboard.writeText(location.href).then(()=>toast('🔗 Linku u kopjua!')); }
 function hapHarten(){ window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lon}`,'_blank'); }
 function zgjidhQytetNgaLista(){ const v=document.getElementById('qytetSelect').value; if(!v) return; const p=v.split(','); merrMotin(parseFloat(p[0]),parseFloat(p[1]),p[2]+', Shqipëri'); }
 async function merrIP(){ try{ const r=await fetch('https://ipapi.co/json/'); const j=await r.json(); infoIP=`${j.city||''} • ${j.country_name||''}`; }catch(e){ infoIP=''; } if(D) render(); }
@@ -143,58 +200,51 @@ async function merrMotin(la,lo,emri){
   try{
     const url=`https://api.open-meteo.com/v1/forecast?latitude=${la}&longitude=${lo}&current=temperature_2m,relative_humidity_2m,apparent_temperature,weather_code,wind_speed_10m,pressure_msl,uv_index,is_day&hourly=temperature_2m,weather_code,precipitation_probability,wind_speed_10m&daily=temperature_2m_max,temperature_2m_min,precipitation_probability_max,wind_speed_10m_max,sunrise,sunset,weather_code,uv_index_max&timezone=auto&forecast_days=7`;
     const r=await fetch(url); if(!r.ok) throw new Error('net'); const d=await r.json(); D=d;
-    try{ const ra=await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${la}&longitude=${lo}&current=pm2_5,us_aqi&domains=cams`); AQ=await ra.json(); }catch(e){ AQ=null; }
+    try{ const ra=await fetch(`https://air-quality-api.open-meteo.com/v1/air-quality?latitude=${la}&longitude=${lo}&current=us_aqi&domains=cams`); AQ=await ra.json(); }catch(e){ AQ=null; }
     render();
   }catch(e){ document.getElementById('content').innerHTML='<div class="err">❌ Pa internet! Shtyp Rifresko.</div>'; }
 }
 function render(){
   const d=D;
-  // *** KJO ESHTE E REJA - KUR SHTYP TE MARTEN NDRYSHON KOMPLET ***
-  // Merr te dhenat e dites se zgjedhur, jo gjithmone te sotmes
   const kDite=d.daily.weather_code[ditaZgjedhur];
-  const maxDite=d.daily.temperature_2m_max[ditaZgjedhur];
-  const minDite=d.daily.temperature_2m_min[ditaZgjedhur];
-  const shiDite=d.daily.precipitation_probability_max[ditaZgjedhur]||0;
-  const eraDite=d.daily.wind_speed_10m_max[ditaZgjedhur];
-  const uvDite=d.daily.uv_index_max[ditaZgjedhur]||0;
+  const maxDite=d.daily.temperature_2m_max[ditaZgjedhur], minDite=d.daily.temperature_2m_min[ditaZgjedhur];
+  const shiDite=d.daily.precipitation_probability_max[ditaZgjedhur]||0, eraDite=d.daily.wind_speed_10m_max[ditaZgjedhur], uvDite=d.daily.uv_index_max[ditaZgjedhur]||0;
   const dtZg=new Date(d.daily.time[ditaZgjedhur]+'T12:00:00');
-  const eshteSot = ditaZgjedhur===0;
-  // Temperatura e madhe: nese eshte sot -> temperatura aktuale, nese eshte dite tjeter -> Max e asaj dite
-  const tempMadhe = eshteSot ? Math.round(d.current.temperature_2m) : Math.round(maxDite);
-  const ndjehet = eshteSot ? `Ndjehet si ${Math.round(d.current.apparent_temperature)}°` : `Min ${Math.round(minDite)}° • Ndjehet si ${Math.round(maxDite)}° ditën`;
-  const oraAktuale = new Date(d.current.time).getHours();
-  // Ngjyra e prapavijes ndryshon sipas dites se zgjedhur
-  let cls='diell'; if(!eshteSot){ if(kDite===0) cls='diell'; else if(kDite<=3) cls='re'; else if(kDite>=71&&kDite<=77) cls='bore'; else if(kDite>=95) cls='stuhi'; else if(kDite>=51) cls='shi'; } else { if(d.current.is_day===0) cls='nate'; else if(d.current.weather_code===0) cls='diell'; else if(d.current.weather_code<=3) cls='re'; else if(d.current.weather_code>=71&&d.current.weather_code<=77) cls='bore'; else if(d.current.weather_code>=95) cls='stuhi'; else if(d.current.weather_code>=51) cls='shi'; }
-  document.getElementById('body').className=(document.body.classList.contains('light')?'light ':'')+cls; if(document.body.classList.contains('light')) document.getElementById('body').classList.add('light');
+  const eshteSot=ditaZgjedhur===0;
+  const tempMadhe=eshteSot?Math.round(d.current.temperature_2m):Math.round(maxDite);
+  const ndjehet=eshteSot?`Ndjehet si ${Math.round(d.current.apparent_temperature)}°`:`Min ${Math.round(minDite)}° • Max ${Math.round(maxDite)}°`;
+  const oraAktuale=new Date(d.current.time).getHours();
+  // LIDH VIDEON ME DITEN E ZGJEDHUR - KJO ESHTE LIDHJA
+  let videoM='diell';
+  if(!eshteSot){ if(kDite===0) videoM='diell'; else if(kDite<=3) videoM='re'; else if(kDite>=71&&kDite<=77) videoM='bore'; else if(kDite>=95) videoM='stuhi'; else if(kDite>=51) videoM='shi'; }
+  else { if(d.current.is_day===0) videoM='nate'; else if(d.current.weather_code===0) videoM='diell'; else if(d.current.weather_code<=3) videoM='re'; else if(d.current.weather_code>=71&&d.current.weather_code<=77) videoM='bore'; else if(d.current.weather_code>=95) videoM='stuhi'; else if(d.current.weather_code>=51) videoM='shi'; }
+  ndryshoVideo(videoM, shiDite);
+  // Update VIDEO INFO
+  document.getElementById('liveQytet').innerText=qyteti.split(',')[0];
+  document.getElementById('liveCond').innerText=pr(kDite)+' • '+(eshteSot?'SOT':ditetPlot[dtZg.getDay()]);
+  document.getElementById('liveTemp').innerText=tempMadhe;
   alarm(d,qyteti);
-  // Hourly per diten e zgjedhur
-  const ditaData=d.daily.time[ditaZgjedhur]; let hr=''; let cnt=0;
-  d.hourly.time.forEach((t,i)=>{ if(!t.startsWith(ditaData)) return; cnt++; const dt=new Date(t); const eshteTani = eshteSot && dt.getHours()===oraAktuale; hr+=`<div class="hour ${eshteTani?'now':''}"><div style="font-size:11px">${dt.getHours()}:00</div><div class="em">${em(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:10px">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div><div style="font-size:10px">💨 ${Math.round(d.hourly.wind_speed_10m[i])}</div></div>`; });
+  const ditaData=d.daily.time[ditaZgjedhur]; let hr=''; d.hourly.time.forEach((t,i)=>{ if(!t.startsWith(ditaData)) return; const dt=new Date(t); const eshteTani=eshteSot&&dt.getHours()===oraAktuale; hr+=`<div class="hour ${eshteTani?'now':''}"><div style="font-size:11px">${dt.getHours()}:00</div><div class="em">${em(d.hourly.weather_code[i])}</div><b>${Math.round(d.hourly.temperature_2m[i])}°</b><div style="font-size:10px">🌧️ ${d.hourly.precipitation_probability[i]||0}%</div><div style="font-size:10px">💨 ${Math.round(d.hourly.wind_speed_10m[i])}</div></div>`; });
   let dy=''; d.daily.time.forEach((t,i)=>{ const dt=new Date(t+'T12:00:00'); dy+=`<div class="card day ${i===ditaZgjedhur?'active':''}" onclick="zgjidh(${i},this)"><div class="l"><b>${i===0?'SOT':ditet[dt.getDay()]}</b><span>${dt.getDate()} ${muajt[dt.getMonth()]}</span></div><div class="e">${em(d.daily.weather_code[i])}</div><div class="m">${pr(d.daily.weather_code[i])}<div class="bar"><i style="width:${d.daily.precipitation_probability_max[i]||0}%"></i></div><span style="font-size:11px">🌧️ ${d.daily.precipitation_probability_max[i]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[i])} km/h • ☀️ UV ${Math.round(d.daily.uv_index_max[i]||0)}</span></div><div class="t"><b>${Math.round(d.daily.temperature_2m_max[i])}°</b> <span style="opacity:.7">${Math.round(d.daily.temperature_2m_min[i])}°</span></div></div>`; });
-  const aqi = AQ?.current ? AQ.current.us_aqi : '--'; const aqiTxt = aqi==='--' ? 'N/A' : aqi<=50 ? '🟢 E mirë' : aqi<=100 ? '🟡 Mesatare' : '🔴 E keqe';
-  const hena = ['🌑 Hënë e Re','🌒','🌓','🌔','🌕 Hënë e Plotë','🌖','🌗','🌘'][new Date().getDate()%8];
-  const veshja = maxDite>25?'👕 T-shirt':maxDite>15?'🧥 Xhaketë e lehtë':maxDite>5?'🧥 Pallto':'🧥🧣 Pallto + Shall';
+  const aqi=AQ?.current?AQ.current.us_aqi:'--'; const aqiTxt=aqi==='--'?'N/A':aqi<=50?'🟢 E mirë':aqi<=100?'🟡 Mesatare':'🔴 E keqe';
+  const hena=['🌑 Hënë e Re','🌒','🌓','🌔','🌕 Hënë e Plotë','🌖','🌗','🌘'][new Date().getDate()%8];
+  const veshja=maxDite>25?'👕 T-shirt':maxDite>15?'🧥 Xhaketë e lehtë':maxDite>5?'🧥 Pallto':'🧥🧣 Pallto + Shall';
   document.getElementById('content').innerHTML=`
-  <div class="hero"><div class="city">📍 ${qyteti}</div><div class="date">${ditetPlot[dtZg.getDay()]} • ${dtZg.getDate()} ${muajt[dtZg.getMonth()]} ${eshteSot ? '• '+new Date().toLocaleTimeString('sq-AL',{hour:'2-digit',minute:'2-digit'}) : ''} • BY SABI</div>
-  ${!eshteSot ? `<div><span class="day-badge">👁️ PO SHIKON: ${ditetPlot[dtZg.getDay()].toUpperCase()} • ${dtZg.getDate()} ${muajt[dtZg.getMonth()].toUpperCase()}</span></div>` : `<div><span class="day-badge">📍 SOT • LIVE</span></div>`}
-  <div class="big">${tempMadhe}<small>°C</small></div><div style="font-size:17px;font-weight:600">${em(kDite)} ${pr(kDite)}</div><div style="font-size:13px;opacity:.85;margin-top:5px">${ndjehet} • Max ${Math.round(maxDite)}° / Min ${Math.round(minDite)}° • ☀️ UV ${Math.round(uvDite)}</div><div style="font-size:11px;opacity:.7;margin-top:4px">${infoIP ? '📍 '+infoIP : ''}</div></div>
-  <div class="card" style="margin-top:12px"><div class="title">${eshteSot ? 'Sot - Orë për Orë' : ditetPlot[dtZg.getDay()]+' - Orë për Orë'} <span style="color:#FFD700">👆 Kliko ditë tjetër</span></div><div class="hourly">${hr}</div></div>
-  <div class="stats"><div class="stat"><span style="font-size:20px">💨</span><div><b>${eshteSot ? Math.round(d.current.wind_speed_10m)+' km/h' : Math.round(eraDite)+' km/h max'}</b><span>Era ${eshteSot ? 'tani' : 'për '+ditet[dtZg.getDay()]}</span></div></div><div class="stat"><span style="font-size:20px">💧</span><div><b>${eshteSot ? d.current.relative_humidity_2m+'%' : '—'}</b><span>Lagështia ${eshteSot ? 'tani' : 'e '+ditet[dtZg.getDay()]}</span></div></div><div class="stat"><span style="font-size:20px">🌡️</span><div><b>${eshteSot ? Math.round(d.current.pressure_msl)+' hPa' : Math.round(maxDite)+'° / '+Math.round(minDite)+'°'}</b><span>${eshteSot ? 'Presioni' : 'Max / Min'}</span></div></div><div class="stat"><span style="font-size:20px">🌧️</span><div><b>${shiDite}%</b><span>Shi ${ditet[dtZg.getDay()]}</span></div></div><div class="stat"><span style="font-size:20px">🌅</span><div><b>${d.daily.sunrise[ditaZgjedhur].slice(11,16)}</b><span>Lindja ${ditet[dtZg.getDay()]}</span></div></div><div class="stat"><span style="font-size:20px">🌇</span><div><b>${d.daily.sunset[ditaZgjedhur].slice(11,16)}</b><span>Perëndimi</span></div></div><div class="stat"><span style="font-size:20px">☀️</span><div><b>UV ${Math.round(uvDite)}</b><span>UV ${ditet[dtZg.getDay()]}</span></div></div><div class="stat"><span style="font-size:20px">😷</span><div><b>AQI ${aqi} • ${aqiTxt}</b><span>Cilësia Ajrit</span></div></div><div class="stat"><span style="font-size:20px">🌙</span><div><b>${hena}</b><span>Hëna</span></div></div><div class="stat"><span style="font-size:20px">👕</span><div><b>${veshja}</b><span>Çfarë të veshësh</span></div></div></div>
+  <div class="card" style="margin-top:4px"><div class="title">${eshteSot?'Sot - Orë për Orë':ditetPlot[dtZg.getDay()]+' - Orë për Orë'} <span style="color:#FFD700">👆 Kliko ditë tjetër</span></div><div class="hourly">${hr}</div></div>
+  <div class="stats"><div class="stat"><span style="font-size:20px">💨</span><div><b>${eshteSot?Math.round(d.current.wind_speed_10m)+' km/h':Math.round(eraDite)+' km/h max'}</b><span>Era</span></div></div><div class="stat"><span style="font-size:20px">💧</span><div><b>${eshteSot?d.current.relative_humidity_2m+'%':'—'}</b><span>Lagështia</span></div></div><div class="stat"><span style="font-size:20px">🌡️</span><div><b>${eshteSot?Math.round(d.current.pressure_msl)+' hPa':Math.round(maxDite)+'° / '+Math.round(minDite)+'°'}</b><span>${eshteSot?'Presioni':'Max / Min'}</span></div></div><div class="stat"><span style="font-size:20px">🌧️</span><div><b>${shiDite}%</b><span>Shi</span></div></div><div class="stat"><span style="font-size:20px">🌅</span><div><b>${d.daily.sunrise[ditaZgjedhur].slice(11,16)}</b><span>Lindja</span></div></div><div class="stat"><span style="font-size:20px">🌇</span><div><b>${d.daily.sunset[ditaZgjedhur].slice(11,16)}</b><span>Perëndimi</span></div></div><div class="stat"><span style="font-size:20px">☀️</span><div><b>UV ${Math.round(uvDite)}</b><span>UV</span></div></div><div class="stat"><span style="font-size:20px">😷</span><div><b>AQI ${aqi} • ${aqiTxt}</b><span>Ajri</span></div></div><div class="stat"><span style="font-size:20px">🌙</span><div><b>${hena}</b><span>Hëna</span></div></div><div class="stat"><span style="font-size:20px">👕</span><div><b>${veshja}</b><span>Çfarë të veshësh</span></div></div></div>
   <div class="card" style="margin-top:10px"><div class="title">Grafik 7 Ditë <span>BY SABI</span></div><canvas id="graf" width="440" height="150"></canvas></div>
-  <div style="margin-top:14px;font-weight:800;font-size:14px">👆 Kliko një ditë - ndryshon komplet faqja:</div><div class="days">${dy}</div><div id="detaje" class="card detail"></div>`;
+  <div style="margin-top:14px;font-weight:800;font-size:14px">👆 Kliko një ditë - ndryshon komplet faqja + VIDEO:</div><div class="days">${dy}</div><div id="detaje" class="card detail" style="margin-top:10px"></div>`;
   zgjidhDetaje(); vizato();
 }
-function vizato(){ const c=document.getElementById('graf'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width,H=c.height; ctx.clearRect(0,0,W,H); const maxs=D.daily.temperature_2m_max, mins=D.daily.temperature_2m_min; const all=[...maxs,...mins]; const mn=Math.min(...all)-2,mx=Math.max(...all)+2; const X=i=>30+i*(W-50)/6,Y=v=>H-25-(v-mn)/(mx-mn)*(H-50); ctx.strokeStyle='rgba(255,255,255,.2)'; for(let i=0;i<4;i++){const y=20+i*(H-40)/3;ctx.beginPath();ctx.moveTo(30,y);ctx.lineTo(W-10,y);ctx.stroke()} function vl(data,color){ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();data.forEach((v,i)=>{if(i===0)ctx.moveTo(X(i),Y(v));else ctx.lineTo(X(i),Y(v))});ctx.stroke();ctx.fillStyle=color;data.forEach((v,i)=>{ if(i===ditaZgjedhur){ ctx.beginPath();ctx.arc(X(i),Y(v),9,0,Math.PI*2);ctx.fillStyle='#fff';ctx.fill();ctx.fillStyle=color; } ctx.beginPath();ctx.arc(X(i),Y(v),5,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 11px sans-serif';ctx.fillText(Math.round(v)+'°',X(i)-10,Y(v)-10);ctx.fillStyle=color})} vl(maxs,'#FFD700'); vl(mins,'#38BDF8'); ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; D.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00');ctx.fillText(ditet[dt.getDay()],X(i)-12,H-6)}); }
-function zgjidh(i,el){ ditaZgjedhur=i; document.querySelectorAll('.day').forEach(c=>c.classList.remove('active')); if(el) el.classList.add('active'); render(); const dt=new Date(D.daily.time[i]+'T12:00:00'); toast('📅 '+ditetPlot[dt.getDay()]+' - Faqja u ndryshua komplet!'); window.scrollTo({top:0,behavior:'smooth'}); }
-function zgjidhDetaje(){ const d=D; const dt=new Date(d.daily.time[ditaZgjedhur]+'T12:00:00'); const el=document.getElementById('detaje'); if(!el) return; el.innerHTML=`<h3>${ditaZgjedhur===0?'SOT - ':''}${ditetPlot[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]}</h3><p>${em(d.daily.weather_code[ditaZgjedhur])} ${pr(d.daily.weather_code[ditaZgjedhur])}<br>🌡️ Max ${Math.round(d.daily.temperature_2m_max[ditaZgjedhur])}° / Min ${Math.round(d.daily.temperature_2m_min[ditaZgjedhur])}° • 🌧️ ${d.daily.precipitation_probability_max[ditaZgjedhur]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[ditaZgjedhur])} km/h • ☀️ UV ${Math.round(d.daily.uv_index_max[ditaZgjedhur]||0)}<br>🌅 ${d.daily.sunrise[ditaZgjedhur].slice(11,16)} • 🌇 ${d.daily.sunset[ditaZgjedhur].slice(11,16)}<br><br><button onclick="dergoSMS()" style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">📩 Dërgo me SMS</button> <button onclick="dergoWhatsApp()" style="background:#22c55e;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">💬 WhatsApp</button> ${ditaZgjedhur!==0 ? `<button onclick="kthehuSot()" style="background:#FFD700;color:#000;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer;margin-top:8px">↩ Kthehu te SOT</button>` : ''}</p>`; }
+function vizato(){ const c=document.getElementById('graf'); if(!c) return; const ctx=c.getContext('2d'); const W=c.width,H=c.height; ctx.clearRect(0,0,W,H); const maxs=D.daily.temperature_2m_max, mins=D.daily.temperature_2m_min; const all=[...maxs,...mins]; const mn=Math.min(...all)-2,mx=Math.max(...all)+2; const X=i=>30+i*(W-50)/6,Y=v=>H-25-(v-mn)/(mx-mn)*(H-50); ctx.strokeStyle='rgba(255,255,255,.2)'; for(let i=0;i<4;i++){const y=20+i*(H-40)/3;ctx.beginPath();ctx.moveTo(30,y);ctx.lineTo(W-10,y);ctx.stroke()} function vl(data,color){ctx.strokeStyle=color;ctx.lineWidth=3;ctx.beginPath();data.forEach((v,i)=>{if(i===0)ctx.moveTo(X(i),Y(v));else ctx.lineTo(X(i),Y(v))});ctx.stroke();ctx.fillStyle=color;data.forEach((v,i)=>{ctx.beginPath();ctx.arc(X(i),Y(v),5,0,Math.PI*2);ctx.fill();ctx.fillStyle='#fff';ctx.font='bold 11px sans-serif';ctx.fillText(Math.round(v)+'°',X(i)-10,Y(v)-10);ctx.fillStyle=color})} vl(maxs,'#FFD700'); vl(mins,'#38BDF8'); ctx.fillStyle='#fff'; ctx.font='bold 11px sans-serif'; D.daily.time.forEach((t,i)=>{const dt=new Date(t+'T12:00:00');ctx.fillText(ditet[dt.getDay()],X(i)-12,H-6)}); }
+function zgjidh(i,el){ ditaZgjedhur=i; document.querySelectorAll('.day').forEach(c=>c.classList.remove('active')); if(el) el.classList.add('active'); render(); const dt=new Date(D.daily.time[i]+'T12:00:00'); toast('📅 '+ditetPlot[dt.getDay()]+' - VIDEO + Faqja u ndryshuan!'); window.scrollTo({top:0,behavior:'smooth'}); }
+function zgjidhDetaje(){ const d=D; const dt=new Date(d.daily.time[ditaZgjedhur]+'T12:00:00'); const el=document.getElementById('detaje'); if(!el) return; el.innerHTML=`<h3>${ditaZgjedhur===0?'SOT - ':''}${ditetPlot[dt.getDay()]} • ${dt.getDate()} ${muajt[dt.getMonth()]}</h3><p>${em(d.daily.weather_code[ditaZgjedhur])} ${pr(d.daily.weather_code[ditaZgjedhur])}<br>🌡️ Max ${Math.round(d.daily.temperature_2m_max[ditaZgjedhur])}° / Min ${Math.round(d.daily.temperature_2m_min[ditaZgjedhur])}° • 🌧️ ${d.daily.precipitation_probability_max[ditaZgjedhur]||0}% • 💨 ${Math.round(d.daily.wind_speed_10m_max[ditaZgjedhur])} km/h<br>🌅 ${d.daily.sunrise[ditaZgjedhur].slice(11,16)} • 🌇 ${d.daily.sunset[ditaZgjedhur].slice(11,16)}<br><br><button onclick="dergoSMS()" style="background:#0ea5e9;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">📩 SMS</button> <button onclick="dergoWhatsApp()" style="background:#22c55e;color:#fff;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer">💬 WhatsApp</button> ${ditaZgjedhur!==0?`<button onclick="kthehuSot()" style="background:#FFD700;color:#000;border:none;padding:10px 16px;border-radius:100px;font-weight:800;cursor:pointer;margin-top:8px">↩ Kthehu te SOT</button>`:''}</p>`; }
 function kthehuSot(){ ditaZgjedhur=0; render(); toast('📍 U ktheve te SOT'); window.scrollTo({top:0,behavior:'smooth'}); }
-async function kerko(){ const q=document.getElementById('cityInput').value.trim(); if(!q){toast('Shkruaj qytetin!');return} try{ const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`); const j=await r.json(); if(j.results?.length>0){const x=j.results[0]; merrMotin(x.latitude,x.longitude,x.name+', '+(x.country||'')); toast('✅ '+x.name);} else toast('❌ Qyteti nuk u gjet!'); }catch(e){toast('❌ Pa internet!')} }
+async function kerko(){ const q=document.getElementById('cityInput').value.trim(); if(!q){toast('Shkruaj qytetin!');return} try{ const r=await fetch(`https://geocoding-api.open-meteo.com/v1/search?name=${encodeURIComponent(q)}&count=1&language=sq&format=json`); const j=await r.json(); if(j.results?.length>0){const x=j.results[0]; merrMotin(x.latitude,x.longitude,x.name+', '+(x.country||''));} else toast('❌ Qyteti nuk u gjet!'); }catch(e){toast('❌ Pa internet!')} }
 function gps(){ if(!navigator.geolocation){toast('GPS nuk mbështetet');return} toast('📍 Duke marrë GPS...'); navigator.geolocation.getCurrentPosition(p=>{ merrMotin(p.coords.latitude,p.coords.longitude,'Vendndodhja Ime'); toast('✅ GPS u gjet!'); },()=>toast('❌ Lejo GPS!')); }
 function rifresko(){ merrMotin(lat,lon,qyteti); toast('🔄 U rifreskua'); }
 function ndryshoMode(){ const b=document.getElementById('body'); const l=b.classList.toggle('light'); document.getElementById('modeBtn').innerText=l?'☀️':'🌙'; localStorage.setItem('sabi_mode',l?'light':'dark'); }
 if(localStorage.getItem('sabi_mode')==='light'){ document.getElementById('body').classList.add('light'); document.getElementById('modeBtn').innerText='☀️'; }
-window.addEventListener('beforeinstallprompt',e=>{e.preventDefault();deferredPrompt=e;document.getElementById('installBox').style.display='block'});
-async function instaloApp(){ if(deferredPrompt){ deferredPrompt.prompt(); const c=await deferredPrompt.userChoice; if(c.outcome==='accepted') toast('✅ U instalua!'); deferredPrompt=null; } else toast('Në iPhone: Share → Add to Home Screen'); }
 document.getElementById('cityInput').addEventListener('keydown',e=>{ if(e.key==='Enter') kerko(); });
 updateSw(); merrIP(); merrMotin(41.3275,19.8187,'Tiranë, Shqipëri');
 </script>
