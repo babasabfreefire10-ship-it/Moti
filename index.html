@@ -2,9 +2,8 @@
 <html lang="sq">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1">
 <title>SABIMOTI ✨ BY SABI</title>
-<meta name="theme-color" content="#FFD700">
 <style>
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:system-ui;background:#0a0a0f;color:#fff;padding-bottom:110px}
@@ -26,14 +25,12 @@ button{cursor:pointer}
 </head>
 <body>
 <div class="app">
-<div class="top"><div class="logo">SABI<span>MOTI</span> ✨</div><div style="font-size:12px">🇦🇱 Shqipëri</div></div>
-
+<div class="top"><div class="logo">SABI<span>MOTI</span> ✨</div><div>🇦🇱 Shqipëri</div></div>
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95);border-color:#FFD700">
-<div style="font-size:30px">🔐</div><b>HYR NË SABIMOTI</b><p style="font-size:11px;opacity:.8">Shkruaj emrin tënd për të hyrë</p>
+<div style="font-size:30px">🔐</div><b>HYR NË SABIMOTI</b>
 <input id="loginEmri" placeholder="Shkruaj emrin...">
 <button onclick="hyrMeEmer()" style="width:100%;background:#FFD700;border:none;padding:13px;border-radius:13px;font-weight:800">🚀 HYR TANI</button>
 </div>
-
 <div class="tab active" id="tab-moti">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#0ea5e9,#1e1b4b)">
 <select id="qyteti" onchange="ndrroQytet()">
@@ -66,7 +63,6 @@ button{cursor:pointer}
 <iframe src="https://www.rainviewer.com/map.html?loc=41.32,19.81,7&oFa=0&oC=1&oCS=1&oF=0&oAP=1&c=1&o=83&lm=1&layer=radar&sm=1&sn=1" style="width:100%;height:220px;border:none;border-radius:13px"></iframe>
 </div>
 </div>
-
 <div class="tab" id="tab-wall">
 <div class="card"><div class="title">💬 SABIMOTI WALL</div>
 <input id="wallEmri" placeholder="Emri yt...">
@@ -75,10 +71,9 @@ button{cursor:pointer}
 <div id="wallList" style="margin-top:10px"></div>
 </div>
 </div>
-
 <div class="tab" id="tab-lojra">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#3b0764)">
-<div style="font-size:44px">🎮✨</div><h2>LOJRA OFFLINE</h2><p style="font-size:12px">Punojnë PA internet!</p>
+<div style="font-size:44px">🎮✨</div><h2>LOJRA OFFLINE</h2>
 <div style="display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-top:10px">
 <button onclick="zgjidhLojen('memory')" style="background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🧠<br>Memory</button>
 <button onclick="zgjidhLojen('snake')" style="background:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🐍<br>Snake</button>
@@ -88,37 +83,32 @@ button{cursor:pointer}
 <div class="card" id="game-snake" style="display:none"><div class="title"><span>🐍 SNAKE</span><span>⭐ <span id="snakeScore">0</span></span></div><canvas id="snakeCanvas" width="320" height="220" style="width:100%;background:#0a0a0f;border-radius:13px"></canvas><button onclick="nisSnake()" style="width:100%;margin-top:8px;background:#22c55e;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS SNAKE</button></div>
 <div class="card" id="game-klik" style="display:none"><div class="title"><span>⚡ CLICKER</span></div><div style="text-align:center"><div style="font-size:80px;cursor:pointer" onclick="klikoSabi()">☀️</div><div>Klikime: <b id="klikCount">0</b> • Koha: <span id="klikKoha">10</span>s</div></div><button onclick="nisKlik()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button></div>
 </div>
-
 <div class="tab" id="tab-fati">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95)">
-<div style="font-size:40px">🎰✨</div><h2>RROTA E FATIT</h2><p style="font-size:12px">Rrotullo dhe shiko çfarë fiton!</p>
+<div style="font-size:40px">🎰✨</div><h2>RROTA E FATIT</h2>
 <div style="width:240px;height:240px;margin:14px auto;border-radius:50%;border:4px solid #FFD700;background:conic-gradient(#FFD700 0 45deg,#ef4444 45deg 90deg,#22c55e 90deg 135deg,#0ea5e9 135deg 180deg,#a855f7 180deg 225deg,#FF8A00 225deg 270deg,#FFD700 270deg 315deg,#111 315deg 360deg);display:flex;align-items:center;justify-content:center;transition:transform 3s" id="rrota"><div style="background:#111;width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid #FFD700">✨</div></div>
 <div id="fatiStatus">Ke 1 rrotullim falas!</div>
 <button onclick="rrotullo()" id="btnRrotullo" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:14px;border-radius:14px;font-weight:800">🎰 RROTULLO TANI!</button>
 </div></div>
-
 <div class="tab" id="tab-vip">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000"><div style="font-size:45px">👑✨</div><h2>SABIMOTI VIP</h2><p>Zgjidh VIP-in tënd dhe bëhu VIP!</p><div style="background:#000;color:#FFD700;padding:10px;border-radius:13px;font-weight:800" id="vipStatus">Statusi: Fillestar ✨</div></div>
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000"><div style="font-size:45px">👑✨</div><h2>SABIMOTI VIP</h2><div style="background:#000;color:#FFD700;padding:10px;border-radius:13px;font-weight:800" id="vipStatus">Statusi: Fillestar ✨</div></div>
 <div class="card"><div class="title">🛒 VIP SHOP</div>
-<button onclick="blejVIP('VIP 1 Ditë 👑')" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 Ditë</b><br><span style="font-size:12px;opacity:.7">Horoskop i plotë + Ngjyra speciale + Pa reklama</span></button>
+<button onclick="blejVIP('VIP 1 Ditë 👑')" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 Ditë</b><br><span style="font-size:12px;opacity:.7">Horoskop i plotë + Ngjyra speciale</span></button>
 <button onclick="blejVIP('VIP 7 Ditë 💜')" style="width:100%;background:#111;color:#fff;border:2px solid #a855f7;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>💜 VIP 7 Ditë</b><br><span style="font-size:12px;opacity:.7">Të gjitha benefitet + Emër me ngjyra</span></button>
 <button onclick="blejVIP('VIP 30 Ditë 🔥')" style="width:100%;background:#111;color:#fff;border:2px solid #22c55e;padding:14px;border-radius:13px;text-align:left;margin:4px 0"><b>🔥 VIP 30 Ditë</b><br><span style="font-size:12px;opacity:.7">Benefitet maksimale për 1 muaj</span></button>
-<button onclick="blejVIP('VIP PËRGJITHMONË 👑👑')" style="width:100%;background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;border:none;padding:16px;border-radius:13px;text-align:left;margin:4px 0;font-weight:900"><b>👑👑 VIP PËRGJITHMONË</b><br><span style="font-size:12px">Një herë, përgjithmonë VIP!</span></button>
+<button onclick="blejVIP('VIP PËRGJITHMONË 👑👑')" style="width:100%;background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;border:none;padding:16px;border-radius:13px;text-align:left;margin:4px 0;font-weight:900"><b>👑👑 VIP PËRGJITHMONË</b></button>
 </div>
 <div class="card" style="background:linear-gradient(135deg,#1e1b4b,#6d28d9)"><div class="title">🔮 HOROSKOPI + MOTI</div>
 <select id="horoskopiSelect" onchange="tregoHoroskop()">
 <option value="dashi">♈ Dashi</option><option value="demi">♉ Demi</option><option value="binjaket">♊ Binjakët</option><option value="gaforrja">♋ Gaforrja</option><option value="luani">♌ Luani</option><option value="virgjeresha">♍ Virgjëresha</option><option value="peshorja">♎ Peshorja</option><option value="akrepi">♏ Akrepi</option><option value="shigjetari">♐ Shigjetari</option><option value="bricjapi">♑ Bricjapi</option><option value="ujori">♒ Ujori</option><option value="peshqit">♓ Peshqit</option>
 </select>
 <div id="horoskopiRezultat" style="margin-top:10px;background:rgba(255,255,255,.12);padding:12px;border-radius:14px;font-size:13px;line-height:1.7"></div>
-</div></div>
-
-<div class="tab" id="tab-dashuri">
+</div></div><div class="tab" id="tab-dashuri">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#be185d,#ec4899)"><div style="font-size:50px">💘✨</div><h2>SABIMOTI DASHURIA</h2><p style="font-size:12px">A përputheni ju të dy?</p></div>
 <div class="card"><input id="emer1" placeholder="💁‍♀️ Emri yt..."><div style="text-align:center;font-size:28px">❤️ + ❤️</div><input id="emer2" placeholder="💁‍♂️ Emri i tij/saj..."><button onclick="llogaritDashuri()" style="width:100%;margin-top:8px;background:#ec4899;color:#fff;border:none;padding:14px;border-radius:14px;font-weight:800">💘 LLOGARIT DASHURINË!</button></div>
 <div id="dashuriRezultat" style="display:none"><div class="card" style="text-align:center"><div style="font-size:48px;font-weight:900;color:#FFD700"><span id="dashuriPerqind">0</span>%</div><div id="dashuriMesazh" style="font-weight:800;line-height:1.6"></div><div id="dashuriDetaje" style="font-size:12px;line-height:1.8;margin-top:10px;background:rgba(255,255,255,.1);padding:10px;border-radius:13px;text-align:left"></div><button onclick="shperndajDashuri()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">↗ Shpërndaj Rezultatin 💘</button></div></div>
 <div class="card" style="text-align:center"><div style="font-size:28px">🎂</div><b>DITËLINDJA YT</b><input type="date" id="ditelindjaInput"><button onclick="llogaritDitelindje()" style="width:100%;margin-top:8px;background:#a855f7;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">🎂 SHIKO DITËLINDJEN</button><div id="ditelindjeRezultat" style="margin-top:10px;font-size:13px;line-height:1.7"></div></div>
 </div>
-
 <div class="tab" id="tab-filter">
 <div class="card" style="text-align:center"><div style="font-size:45px">📸✨</div><h2>SABIMOTI FILTER</h2><p style="font-size:12px">Foto me motin mbi kokë!</p></div>
 <div class="card">
@@ -140,10 +130,8 @@ button{cursor:pointer}
 </div>
 <div class="card" style="text-align:center"><div style="font-size:28px">🔔</div><b>NJOFTIMI ORA 7:00</b><button onclick="aktivizoNjoftimMengjes()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔔 AKTIVIZO NJOFTIMIN</button></div>
 </div>
-
 <div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI ✨ BY SABI • Made in Albania 🇦🇱</div>
 </div>
-
 <div class="tabs">
 <button onclick="hapTab('moti',this)" class="on">🌤️<br>Moti</button>
 <button onclick="hapTab('wall',this)">💬<br>Wall</button>
@@ -153,7 +141,6 @@ button{cursor:pointer}
 <button onclick="hapTab('dashuri',this)">💘<br>Dashuri</button>
 <button onclick="hapTab('filter',this)">📸<br>Filter</button>
 </div>
-
 <script>
 let D=null, qyteti='Tiranë', lat=41.32, lon=19.81;
 function hyrMeEmer(){
