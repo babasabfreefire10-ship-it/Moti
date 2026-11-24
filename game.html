@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>SABIMOTI GAME - BY SABI</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;-webkit-tap-highlight-color:transparent}
+body{background:#0a0a0f;color:#fff;overflow:hidden}
+.app{max-width:480px;margin:0 auto;height:100dvh;display:flex;flex-direction:column;padding:12px}
+.top{display:flex;justify-content:space-between;align-items:center}
+.logo{font-weight:800;font-size:18px}.logo span{color:#FFD700}
+.vip{background:#FFD700;color:#000;font-size:10px;font-weight:800;padding:6px 10px;border-radius:100px}
+.by{text-align:center;font-size:10px;letter-spacing:3px;opacity:.6;margin:6px 0}.by b{color:#FFD700}
+.score-bar{display:flex;gap:8px;margin:8px 0}
+.score-card{flex:1;background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);border-radius:14px;padding:10px;text-align:center}
+.score-card b{font-size:20px;display:block;color:#FFD700}.score-card span{font-size:11px;opacity:.7}
+.game-box{position:relative;flex:1;border-radius:24px;overflow:hidden;border:2px solid #FFD700;background:linear-gradient(180deg,#1e90ff,#aee3ff)}
+canvas{width:100%;height:100%;display:block}
+.overlay{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:20px;background:rgba(0,0,0,.55);z-index:10}
+.overlay h1{font-size:32px;margin-bottom:8px}.overlay p{font-size:13px;opacity:.85;line-height:1.6;margin-bottom:14px}
+.btn{border:none;padding:14px 22px;border-radius:100px;font-weight:800;font-size:15px;cursor:pointer}
+.btn-gold{background:#FFD700;color:#000}.btn-white{background:#fff;color:#000;margin-top:8px}
+.controls{margin-top:10px;display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px}
+.controls button{border:none;padding:14px;border-radius:14px;font-weight:800;font-size:16px;cursor:pointer}
+.gold{background:#FFD700}.white{background:#fff}.blue{background:#0ea5e9;color:#fff}
+.how{margin-top:10px;background:rgba(255,255,255,.1);border-radius:16px;padding:12px;font-size:12px;line-height:1.7}
+.how b{color:#FFD700}
+.footer{text-align:center;font-size:10px;opacity:.5;margin-top:8px;letter-spacing:2px}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#FFD700;color:#000;padding:11px 16px;border-radius:100px;font-weight:800;font-size:13px;display:none;z-index:99}
+</style>
+</head>
+<body>
+<div class="app">
+<div class="top"><div class="logo">SABI<span>•</span> MOTI 🎮</div><div class="vip">★ GAME</div></div>
+<div class="by">BY <b>SABI</b> • LOJA E MOTIT</div>
+
+<div class="score-bar">
+<div class="score-card"><b id="pike">0</b><span>⭐ Pikë</span></div>
+<div class="score-card"><b id="rekord">0</b><span>🏆 Rekord</span></div>
+<div class="score-card"><b id="jete">❤️❤️❤️</b><span>💛 Jetë</span></div>
+</div>
+
+<div class="game-box" id="gameBox">
+<canvas id="game"></canvas>
+<div class="overlay" id="startScreen">
+<div style="font-size:64px">🚶‍♂️☀️🌧️</div>
+<h1>SABIMOTI GAME</h1>
+<p><b>SABI</b> po vrapon!<br>Kap <b>☀️ Diellin</b> = +10 pikë<br>Shmang <b>🌧️ Shiun</b> = -1 jetë<br>Kap <b>☂️ Çadrën</b> = +1 jetë<br>Sa gjatë mbijeton?</p>
+<button class="btn btn-gold" onclick="nisLoja()">▶️ NIS LOJËN</button>
+<button class="btn btn-white" onclick="location.href='index.html'">↩ Kthehu te Moti</button>
+</div>
+<div class="overlay" id="gameOverScreen" style="display:none">
+<div style="font-size:64px">💦😵</div>
+<h1>GAME OVER!</h1>
+<p id="gameOverText">U lage SABI!</p>
+<p style="font-size:22px;font-weight:800">⭐ Pikë: <span id="finalPike" style="color:#FFD700">0</span></p>
+<button class="btn btn-gold" onclick="nisLoja()">🔄 LUAN PËRSËRI</button>
+<button class="btn btn-white" onclick="shperndajRezultatin()">↗ Shpërndaj Rezultatin</button>
+</div>
+</div>
+
+<div class="controls">
+<button class="gold" onclick="leviz('majtas')">⬅️</button>
+<button class="white" onclick="kerce()">⬆️ KËRCE</button>
+<button class="gold" onclick="leviz('djathtas')">➡️</button>
+</div>
+
+<div class="how">
+<b>🎮 Si luhet:</b> Përdor butonat ⬅️ ➡️ për të lëvizur SABI-n, ⬆️ për të kërcyer. Në kompjuter përdor <b>Shigjetat ← → + SPACE</b>. Kap diellin, shmang shiun. Nëse kap 50 pikë, SABI bëhet <b>👑 SUPER SABI</b>!
+</div>
+<div class="footer">SABIMOTI GAME • BY <b>SABI</b> • © 2026</div>
+</div>
+<div class="toast" id="toast"></div>
+
+<script>
+const canvas=document.getElementById('game'), ctx=canvas.getContext('2d');
+let W,H, loje=false, pike=0, jete=3, rekord=parseInt(localStorage.getItem('sabi_game_rekord')||'0');
+let sabi={x:50,y:0,vy:0,neToke:true,frame:0};
+let objekte=[], koha=0, shpejtesia=3;
+document.getElementById('rekord').innerText=rekord;
+function resize(){ W=canvas.width=canvas.offsetWidth; H=canvas.height=canvas.offsetHeight; sabi.y=H-90; }
+window.addEventListener('resize',resize); setTimeout(resize,100);
+function toast(t){const e=document.getElementById('toast');e.innerText=t;e.style.display='block';setTimeout(()=>e.style.display='none',2000)}
+function nisLoja(){
+  loje=true; pike=0; jete=3; objekte=[]; koha=0; shpejtesia=3;
+  sabi.x=50; sabi.y=H-90; sabi.vy=0;
+  document.getElementById('startScreen').style.display='none';
+  document.getElementById('gameOverScreen').style.display='none';
+  document.getElementById('pike').innerText='0';
+  document.getElementById('jete').innerText='❤️❤️❤️';
+  toast('▶️ Loja nisi! Kap diellin!');
+}
+function leviz(d){ if(!loje) return; if(d==='majtas') sabi.x=Math.max(10,sabi.x-30); if(d==='djathtas') sabi.x=Math.min(W-60,sabi.x+30); }
+function kerce(){ if(!loje||!sabi.neToke) return; sabi.vy=-14; sabi.neToke=false; }
+document.addEventListener('keydown',e=>{ if(e.key==='ArrowLeft') leviz('majtas'); if(e.key==='ArrowRight') leviz('djathtas'); if(e.key===' '||e.key==='ArrowUp'){ e.preventDefault(); kerce(); } });
+function shperndajRezultatin(){
+  const t=`🎮 SABIMOTI GAME\n⭐ Bëra ${pike} pikë në lojën e SABIT!\nA mundesh ti të më mundësh?\nLuaj këtu: ${location.href}\nBY SABI 🇦🇱`;
+  if(navigator.share) navigator.share({title:'SABIMOTI GAME',text:t});
+  else { navigator.clipboard.writeText(t); toast('🔗 U kopjua! Dërgoje te shokët!'); }
+}
+function loop(){
+  ctx.clearRect(0,0,W,H);
+  if(!loje){ requestAnimationFrame(loop); return; }
+  koha++;
+  // Toka
+  ctx.fillStyle='#2d2d2d'; ctx.fillRect(0,H-60,W,60);
+  ctx.fillStyle='#FFD700'; for(let x=0;x<W;x+=60) ctx.fillRect((x - (koha*shpejtesia)%60),H-32,30,4);
+  // SABI
+  sabi.vy+=0.7; sabi.y+=sabi.vy;
+  if(sabi.y>=H-90){ sabi.y=H-90; sabi.vy=0; sabi.neToke=true; }
+  sabi.frame++;
+  const kercim = !sabi.neToke ? -12 : Math.sin(sabi.frame/5)*4;
+  ctx.font='56px sans-serif'; ctx.fillText(pike>=50?'👑':'🚶‍♂️', sabi.x, sabi.y+50+kercim);
+  if(pike>=50){ ctx.font='bold 12px sans-serif'; ctx.fillStyle='#FFD700'; ctx.fillText('SUPER SABI!', sabi.x-5, sabi.y-10); }
+  // Krijo objekte
+  if(koha%45===0){
+    const r=Math.random();
+    let tip='diell', emoji='☀️';
+    if(r<0.4){ tip='shi'; emoji='🌧️'; }
+    else if(r<0.5){ tip='cadra'; emoji='☂️'; }
+    else if(r<0.6){ tip='rrufe'; emoji='⚡'; }
+    objekte.push({x:W, y:H-140+Math.random()*40, tip, emoji, v:shpejtesia});
+  }
+  // Leviz objektet
+  for(let i=objekte.length-1;i>=0;i--){
+    const o=objekte[i]; o.x-=o.v+2;
+    ctx.font='38px sans-serif'; ctx.fillText(o.emoji, o.x, o.y);
+    // Prekja?
+    if(Math.abs(o.x - sabi.x)<40 && Math.abs(o.y - sabi.y)<55){
+      if(o.tip==='diell'){ pike+=10; toast('☀️ +10 Pikë!'); }
+      if(o.tip==='cadra'){ jete=Math.min(3,jete+1); toast('☂️ +1 Jetë!'); document.getElementById('jete').innerText='❤️'.repeat(jete); }
+      if(o.tip==='shi'){ jete--; toast('💦 U lage! -1 Jetë'); document.getElementById('jete').innerText='❤️'.repeat(Math.max(0,jete))+'🤍'.repeat(3-Math.max(0,jete)); if(jete<=0){ gameOver(); } }
+      if(o.tip==='rrufe'){ jete--; toast('⚡ Rrufe! -1 Jetë'); document.getElementById('jete').innerText='❤️'.repeat(Math.max(0,jete))+'🤍'.repeat(3-Math.max(0,jete)); if(jete<=0){ gameOver(); } }
+      objekte.splice(i,1);
+      document.getElementById('pike').innerText=pike;
+      if(pike>rekord){ rekord=pike; localStorage.setItem('sabi_game_rekord',rekord); document.getElementById('rekord').innerText=rekord; }
+      continue;
+    }
+    if(o.x<-40) objekte.splice(i,1);
+  }
+  if(koha%500===0) shpejtesia+=0.5;
+  // Pikë për mbijetesë
+  if(koha%100===0){ pike+=1; document.getElementById('pike').innerText=pike; }
+  requestAnimationFrame(loop);
+}
+function gameOver(){
+  loje=false;
+  document.getElementById('finalPike').innerText=pike;
+  document.getElementById('gameOverText').innerText = pike>=50 ? '👑 SUPER SABI! Je legjendë!' : pike>=20 ? '👏 Shumë mirë!' : 'U lage SABI! Provo prapë!';
+  document.getElementById('gameOverScreen').style.display='flex';
+  if(pike>=rekord && pike>0) toast('🏆 REKORD I RI!');
+}
+loop();
+</script>
+</body>
+</html>
