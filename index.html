@@ -22,11 +22,21 @@ button{cursor:pointer}
 .rrufe-item{display:flex;justify-content:space-between;padding:9px 2px;border-bottom:1px solid rgba(255,255,255,.1);font-size:13px}
 .big{font-size:52px;font-weight:900;text-align:center}
 .sub{text-align:center;opacity:.8;font-size:13px}
+.adminBadge{background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;padding:3px 8px;border-radius:100px;font-size:10px;font-weight:900}
 </style>
 </head>
 <body>
 <div class="app">
-<div class="top"><div class="logo">SABI<span>MOTI</span> ✨</div><div style="font-size:12px">⭐ <span id="totalPike">0</span> pikë</div></div>
+<div class="top"><div class="logo">SABI<span>MOTI</span> ✨ <span id="adminBadgeTop"></span></div><div style="font-size:12px">⭐ <span id="totalPike">0</span> pikë</div></div>
+
+<!-- LOGIN ADMIN -->
+<div class="card" id="loginCard" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95);border-color:#FFD700">
+<div style="font-size:30px">🔐</div><b>HYR NË SABIMOTI</b><p style="font-size:11px;opacity:.8">Shkruaj emrin tënd për të hyrë. Admin: sabi007</p>
+<input id="loginEmri" placeholder="Shkruaj emrin... p.sh. sabi007">
+<button onclick="hyrMeEmer()" style="width:100%;background:#FFD700;border:none;padding:13px;border-radius:13px;font-weight:800">🚀 HYR TANI</button>
+<div style="font-size:11px;margin-top:6px;opacity:.7">Admini ka pikë ♾️ + VIP falas + 100 pikë çdo ditë</div>
+<div id="adminInfo" style="display:none;margin-top:10px;background:#FFD700;color:#000;padding:10px;border-radius:12px;font-weight:800;font-size:13px">👑 MIRË SE ERDHE ADMIN sabi007! ♾️ Pikë pa limit • VIP falas • +100 pikë sot!</div>
+</div>
 
 <!-- MOTI -->
 <div class="tab active" id="tab-moti">
@@ -83,25 +93,28 @@ button{cursor:pointer}
 </div></div>
 <div class="card" id="game-memory"><div class="title"><span>🧠 MEMORY</span><span id="memoryScore">Lëvizje: 0</span></div><div id="memoryGrid" style="display:grid;grid-template-columns:repeat(4,1fr);gap:8px"></div><button onclick="nisMemory()" style="width:100%;margin-top:10px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔄 NIS PËRSËRI</button></div>
 <div class="card" id="game-snake" style="display:none"><div class="title"><span>🐍 SNAKE</span><span>⭐ <span id="snakeScore">0</span></span></div><canvas id="snakeCanvas" width="320" height="220" style="width:100%;background:#0a0a0f;border-radius:13px"></canvas><button onclick="nisSnake()" style="width:100%;margin-top:8px;background:#22c55e;color:#fff;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS SNAKE</button></div>
-<div class="card" id="game-klik" style="display:none"><div class="title"><span>⚡ CLICKER</span><span>🏆 <span id="klikRekord">0</span></span></div><div style="text-align:center"><div style="font-size:80px;cursor:pointer" id="klikBtn" onclick="klikoSabi()">☀️</div><div>Klikime: <b id="klikCount">0</b> • Koha: <span id="klikKoha">10</span>s</div></div><button onclick="nisKlik()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button></div>
+<div class="card" id="game-klik" style="display:none"><div class="title"><span>⚡ CLICKER</span><span>🏆 <span id="klikRekord">0</span></span></div><div style="text-align:center"><div style="font-size:80px;cursor:pointer" onclick="klikoSabi()">☀️</div><div>Klikime: <b id="klikCount">0</b> • Koha: <span id="klikKoha">10</span>s</div></div><button onclick="nisKlik()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">▶️ NIS 10 SEKONDA!</button></div>
 </div>
 
 <!-- FATI -->
 <div class="tab" id="tab-fati">
 <div class="card" style="text-align:center;background:linear-gradient(135deg,#111,#4c1d95)">
-<div style="font-size:40px">🎰✨</div><h2>RROTA E FATIT</h2><p style="font-size:12px">1 rrotullim falas çdo ditë!</p>
+<div style="font-size:40px">🎰✨</div><h2>RROTA E FATIT</h2><p style="font-size:12px">1 rrotullim falas çdo ditë! Admin: pa limit</p>
 <div style="width:240px;height:240px;margin:14px auto;border-radius:50%;border:4px solid #FFD700;background:conic-gradient(#FFD700 0 45deg,#ef4444 45deg 90deg,#22c55e 90deg 135deg,#0ea5e9 135deg 180deg,#a855f7 180deg 225deg,#FF8A00 225deg 270deg,#FFD700 270deg 315deg,#111 315deg 360deg);display:flex;align-items:center;justify-content:center;transition:transform 3s" id="rrota"><div style="background:#111;width:70px;height:70px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:30px;border:3px solid #FFD700">✨</div></div>
 <div>⭐ Pikët: <b id="fatiPike" style="color:#FFD700">0</b> • <span id="fatiStatus">Ke 1 rrotullim!</span></div>
 <button onclick="rrotullo()" id="btnRrotullo" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:14px;border-radius:14px;font-weight:800">🎰 RROTULLO TANI!</button>
+<button onclick="merrBonusDitor()" style="width:100%;margin-top:8px;background:#22c55e;color:#fff;border:none;padding:13px;border-radius:14px;font-weight:800">🎁 MERR 100 PIKË FALAS SOT</button>
+<div id="bonusStatus" style="font-size:12px;margin-top:6px;opacity:.8"></div>
 </div></div>
 
 <!-- VIP -->
 <div class="tab" id="tab-vip">
-<div class="card" style="text-align:center;background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000"><div style="font-size:45px">👑✨</div><h2>SABIMOTI VIP</h2><div style="background:#000;color:#FFD700;padding:10px;border-radius:13px;font-weight:800">⭐ <span id="vipPike">0</span> pikë • <span id="vipNiveli">Fillestar</span></div></div>
+<div class="card" style="text-align:center;background:linear-gradient(135deg,#FFD700,#FF8A00);color:#000"><div style="font-size:45px">👑✨</div><h2>SABIMOTI VIP</h2><div style="background:#000;color:#FFD700;padding:10px;border-radius:13px;font-weight:800">⭐ <span id="vipPike">0</span> pikë • <span id="vipNiveli">Fillestar</span></div><div id="adminVipBox" style="display:none;margin-top:8px;background:#000;color:#FFD700;padding:8px;border-radius:10px;font-size:12px">👑 ADMIN sabi007 - VIP PËRGJITHMONË FALAS!</div></div>
 <div class="card"><div class="title">🛒 VIP SHOP</div>
-<button onclick="blejVIP('vip1')" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 Ditë</b> - 100 pikë</button>
-<button onclick="blejVIP('vip7')" style="width:100%;background:#111;color:#fff;border:2px solid #a855f7;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>💜 VIP 7 Ditë</b> - 500 pikë</button>
-<button onclick="blejVIP('emer')" style="width:100%;background:#111;color:#fff;border:2px solid #22c55e;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>🌈 Emër me Ngjyra</b> - 200 pikë</button>
+<button onclick="blejVIP('vip1')" style="width:100%;background:#111;color:#fff;border:2px solid #FFD700;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>👑 VIP 1 Ditë</b> - 100 pikë <span class="adminFree">/ FALAS për Admin</span></button>
+<button onclick="blejVIP('vip7')" style="width:100%;background:#111;color:#fff;border:2px solid #a855f7;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>💜 VIP 7 Ditë</b> - 500 pikë <span class="adminFree">/ FALAS për Admin</span></button>
+<button onclick="blejVIP('emer')" style="width:100%;background:#111;color:#fff;border:2px solid #22c55e;padding:12px;border-radius:13px;text-align:left;margin:4px 0"><b>🌈 Emër me Ngjyra</b> - 200 pikë <span class="adminFree">/ FALAS për Admin</span></button>
+<button onclick="blejVIP('vip_pergjithmone')" style="width:100%;background:linear-gradient(135deg,#FFD700,#FF0000);color:#000;border:none;padding:14px;border-radius:13px;text-align:left;margin:4px 0;font-weight:900"><b>👑👑 VIP PËRGJITHMONË</b> - Vetëm për sabi007 - FALAS</button>
 <div id="vipStatus" style="text-align:center;font-size:12px;font-weight:800;margin-top:8px;color:#FFD700"></div></div>
 <div class="card" style="background:linear-gradient(135deg,#1e1b4b,#6d28d9)"><div class="title">🔮 HOROSKOPI + MOTI</div>
 <select id="horoskopiSelect" onchange="tregoHoroskop()">
@@ -142,7 +155,7 @@ button{cursor:pointer}
 <div class="card" style="text-align:center"><div style="font-size:28px">🔔</div><b>NJOFTIMI ORA 7:00</b><button onclick="aktivizoNjoftimMengjes()" style="width:100%;margin-top:8px;background:#FFD700;border:none;padding:12px;border-radius:13px;font-weight:800">🔔 AKTIVIZO NJOFTIMIN</button></div>
 </div>
 
-<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI ✨ BY SABI • Made in Albania 🇦🇱</div>
+<div style="text-align:center;font-size:11px;opacity:.6;margin-top:12px">SABIMOTI ✨ BY SABI • Made in Albania 🇦🇱 <span id="adminFooter"></span></div>
 </div>
 
 <div class="tabs">
@@ -157,6 +170,65 @@ button{cursor:pointer}
 
 <script>
 let D=null, qyteti='Tiranë', lat=41.32, lon=19.81;
+// ===== ADMIN sabi007 =====
+function eshteAdmin(){ return (localStorage.getItem('sabi_emri')||'').toLowerCase() === 'sabi007'; }
+function hyrMeEmer(){
+  let e = document.getElementById('loginEmri').value.trim();
+  if(!e) return toast('❌ Shkruaj emrin!');
+  localStorage.setItem('sabi_emri', e);
+  document.getElementById('wallEmri').value = e;
+  document.getElementById('klasEmri').value = e;
+  if(e.toLowerCase()==='sabi007'){
+    localStorage.setItem('sabi_total_pike','999999');
+    localStorage.setItem('sabi_vip','VIP PËRGJITHMONË 👑👑 ADMIN');
+    document.getElementById('adminInfo').style.display='block';
+    document.getElementById('adminBadgeTop').innerHTML='<span class="adminBadge">👑 ADMIN</span>';
+    document.getElementById('adminVipBox').style.display='block';
+    document.getElementById('adminFooter').innerText=' • 👑 ADMIN sabi007';
+    toast('👑 MIRË SE ERDHE ADMIN sabi007! ♾️ Pikë pa limit!');
+    merrBonusDitor(true);
+  } else {
+    document.getElementById('adminInfo').style.display='none';
+    toast('✅ Mirë se erdhe '+e+' ✨');
+  }
+  updatePike(); updateVIPUI(); updateKlasifikimi(); kontrolloAdminUI();
+}
+function kontrolloAdminUI(){
+  if(eshteAdmin()){
+    document.getElementById('adminBadgeTop').innerHTML='<span class="adminBadge">👑 ADMIN</span>';
+    document.getElementById('adminVipBox').style.display='block';
+    document.getElementById('adminFooter').innerText=' • 👑 ADMIN sabi007';
+    document.getElementById('adminInfo').style.display='block';
+    // Mbush automatikisht emrin kudo
+    document.getElementById('loginEmri').value='sabi007';
+    document.getElementById('wallEmri').value='sabi007';
+    document.getElementById('klasEmri').value='sabi007';
+    document.getElementById('emer1').value='sabi007';
+    // Siguro pikët pa limit
+    if(parseInt(localStorage.getItem('sabi_total_pike')||'0') < 999999) localStorage.setItem('sabi_total_pike','999999');
+    if(!localStorage.getItem('sabi_vip')) localStorage.setItem('sabi_vip','VIP PËRGJITHMONË 👑👑 ADMIN');
+  }
+}
+function merrBonusDitor(auto){
+  let sot = new Date().toDateString();
+  let dataFundit = localStorage.getItem('sabi_bonus_data') || '';
+  if(dataFundit === sot && !auto) return toast('⏳ Ke marrë bonusin sot! Kthehu nesër!');
+  if(dataFundit === sot && auto) return;
+  // Çdo ditë +100 pikë për të gjithë, Admin merr edhe më shumë
+  if(eshteAdmin()){
+    localStorage.setItem('sabi_total_pike','999999');
+    localStorage.setItem('sabi_bonus_data', sot);
+    document.getElementById('bonusStatus').innerText='👑 ADMIN: Pikët e tua janë ♾️ pa limit! + VIP Përgjithmonë!';
+    if(!auto) toast('👑 ADMIN: Pikët ♾️ + VIP falas!');
+  } else {
+    let p = parseInt(localStorage.getItem('sabi_total_pike')||'0') + 100;
+    localStorage.setItem('sabi_total_pike', p);
+    localStorage.setItem('sabi_bonus_data', sot);
+    document.getElementById('bonusStatus').innerText='✅ +100 pikë u shtuan! Kthehu nesër për 100 të tjera!';
+    toast('🎁 +100 PIKË FALAS! Ke tani '+p+' pikë!');
+  }
+  updatePike(); updateKlasifikimi();
+}
 function hapTab(id,btn){document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));document.getElementById('tab-'+id).classList.add('active');document.querySelectorAll('.tabs button').forEach(b=>b.classList.remove('on'));if(btn)btn.classList.add('on');window.scrollTo(0,0);if(id==='lojra')nisMemory();if(id==='vip'){updateVIPUI();tregoHoroskop()}if(id==='filter')updateKlasifikimi();}
 function toast(m){let t=document.createElement('div');t.innerText=m;t.style.cssText='position:fixed;top:20px;left:50%;transform:translateX(-50%);background:#111;color:#fff;padding:12px 18px;border-radius:100px;border:2px solid #FFD700;z-index:999;font-weight:800;font-size:13px';document.body.appendChild(t);setTimeout(()=>t.remove(),2500)}
 function pr(k){if(k===0)return'☀️ Diell';if(k<=3)return'🌤️ Pak re';if(k<=48)return'☁️ Me re';if(k<=67)return'🌧️ Shi';if(k<=77)return'❄️ Borë';if(k>=95)return'⛈️ Stuhi';return'🌤️ Mot i mirë'}
@@ -164,11 +236,11 @@ async function merrMoti(){try{let r=await fetch(`https://api.open-meteo.com/v1/f
 function ndrroQytet(){let v=document.getElementById('qyteti').value.split(',');lat=parseFloat(v[0]);lon=parseFloat(v[1]);qyteti=v[2];merrMoti();toast('📍 '+qyteti)}
 function luajZerin(){if('speechSynthesis' in window){let u=new SpeechSynthesisUtterance(`Përshëndetje! Unë jam Sabi! Sot në ${qyteti} është ${Math.round(D?D.current.temperature_2m:20)} gradë. ${D?pr(D.current.weather_code):'Mot i bukur'}. Kalofsh mirë!`);u.lang='sq-AL';speechSynthesis.speak(u)}else toast('Zëri nuk mbështetet')}
 function ndajMotin(){let t=`🌤️ SABIMOTI ✨\nSot në ${qyteti}: ${D?Math.round(D.current.temperature_2m)+'°C '+pr(D.current.weather_code):''}\nShiko motin: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
-function postoWall(){let e=document.getElementById('wallEmri').value.trim()||'Anonim';let t=document.getElementById('wallTxt').value.trim();if(!t)return toast('Shkruaj diçka!');let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');w.unshift({e,t,koha:'Tani',like:0});localStorage.setItem('sabi_wall',JSON.stringify(w.slice(0,20)));document.getElementById('wallTxt').value='';shfaqWall();toast('✅ U postua!');let p=parseInt(localStorage.getItem('sabi_total_pike')||'0')+5;localStorage.setItem('sabi_total_pike',p);updatePike();}
-function shfaqWall(){let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');if(w.length===0)w=[{e:'SABI 👑',t:'Mirë se erdhët në SABIMOTI! Si është moti te ju sot? ✨',koha:'Tani',like:24}];document.getElementById('wallList').innerHTML=w.map((x,i)=>`<div class="rrufe-item"><span><b>${x.e}</b> • ${x.koha}<br>${x.t}</span><span style="cursor:pointer" onclick="likeWall(${i})">❤️ ${x.like}</span></div>`).join('')}
+function postoWall(){let e=document.getElementById('wallEmri').value.trim()||localStorage.getItem('sabi_emri')||'Anonim';let t=document.getElementById('wallTxt').value.trim();if(!t)return toast('Shkruaj diçka!');let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');let emriShfaq = eshteAdmin() ? 'sabi007 👑 ADMIN' : e;w.unshift({e:emriShfaq,t,koha:'Tani',like:0});localStorage.setItem('sabi_wall',JSON.stringify(w.slice(0,20)));document.getElementById('wallTxt').value='';shfaqWall();toast('✅ U postua!');if(!eshteAdmin()){let p=parseInt(localStorage.getItem('sabi_total_pike')||'0')+5;localStorage.setItem('sabi_total_pike',p);}updatePike();}
+function shfaqWall(){let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');if(w.length===0)w=[{e:'sabi007 👑 ADMIN',t:'Mirë se erdhët në SABIMOTI! Unë jam SABI! Si është moti te ju sot? ✨',koha:'Tani',like:24}];document.getElementById('wallList').innerHTML=w.map((x,i)=>`<div class="rrufe-item"><span><b>${x.e}</b> • ${x.koha}<br>${x.t}</span><span style="cursor:pointer" onclick="likeWall(${i})">❤️ ${x.like}</span></div>`).join('')}
 function likeWall(i){let w=JSON.parse(localStorage.getItem('sabi_wall')||'[]');if(w[i]){w[i].like++;localStorage.setItem('sabi_wall',JSON.stringify(w));shfaqWall()}}
-function updatePike(){let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');document.getElementById('totalPike').innerText=p;let f=document.getElementById('fatiPike');if(f)f.innerText=p;let v=document.getElementById('vipPike');if(v)v.innerText=p;let k=document.getElementById('klasPike');if(k)k.innerText=p;}
-function ruajPike(x){let p=parseInt(localStorage.getItem('sabi_total_pike')||'0')+x;localStorage.setItem('sabi_total_pike',p);updatePike()}
+function updatePike(){if(eshteAdmin()){document.getElementById('totalPike').innerText='♾️';let f=document.getElementById('fatiPike');if(f)f.innerText='♾️';let v=document.getElementById('vipPike');if(v)v.innerText='♾️';let k=document.getElementById('klasPike');if(k)k.innerText='♾️';return;}let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');document.getElementById('totalPike').innerText=p;let f=document.getElementById('fatiPike');if(f)f.innerText=p;let v=document.getElementById('vipPike');if(v)v.innerText=p;let k=document.getElementById('klasPike');if(k)k.innerText=p;}
+function ruajPike(x){if(eshteAdmin()){localStorage.setItem('sabi_total_pike','999999');updatePike();return;}let p=parseInt(localStorage.getItem('sabi_total_pike')||'0')+x;localStorage.setItem('sabi_total_pike',p);updatePike()}
 let memoryKarta=[],memoryHapur=[],memoryLev=0,memoryBllok=false;
 function zgjidhLojen(l){['memory','snake','klik'].forEach(x=>document.getElementById('game-'+x).style.display=x===l?'block':'none');if(l==='memory')nisMemory();}
 function nisMemory(){let em=['☀️','🌧️','⛈️','❄️','☁️','🌙','🌈','☂️'];let k=[...em,...em].sort(()=>Math.random()-0.5);memoryKarta=k;memoryHapur=[];memoryLev=0;memoryBllok=false;document.getElementById('memoryScore').innerText='Lëvizje: 0';document.getElementById('memoryGrid').innerHTML=k.map((e,i)=>`<div onclick="hapKarte(${i})" id="karta-${i}" style="aspect-ratio:1;background:rgba(255,255,255,.15);border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:26px;cursor:pointer">❓</div>`).join('')}
@@ -179,9 +251,9 @@ let klikCount=0,klikKoha=10,klikTimer=null;
 function nisKlik(){klikCount=0;klikKoha=10;document.getElementById('klikCount').innerText='0';document.getElementById('klikKoha').innerText='10';if(klikTimer)clearInterval(klikTimer);klikTimer=setInterval(()=>{klikKoha--;document.getElementById('klikKoha').innerText=klikKoha;if(klikKoha<=0){clearInterval(klikTimer);toast('🏆 Bëre '+klikCount+' klikime!');ruajPike(klikCount)}},1000);toast('⚡ Kliko sa më shpejt!')}
 function klikoSabi(){if(!klikTimer||klikKoha<=0)return toast('Shtyp NIS fillimisht!');klikCount++;document.getElementById('klikCount').innerText=klikCount}
 let fatiSot=localStorage.getItem('sabi_fati_data')||'';let sotData=new Date().toDateString();
-function rrotullo(){if(fatiSot===sotData)return toast('⏳ Ke rrotulluar sot! Kthehu nesër ✨');let r=document.getElementById('rrota');r.style.transform=`rotate(${360*5+Math.floor(Math.random()*360)}deg)`;document.getElementById('btnRrotullo').innerText='⏳ Po rrotullohet...';document.getElementById('btnRrotullo').disabled=true;setTimeout(()=>{let cm=['⭐ +100 Pikë ✨','🎁 VIP 1 Ditë!','☀️ +50 Pikë','💫 +20 Pikë','🌧️ +10 Pikë','🎰 +30 Pikë'];let f=cm[Math.floor(Math.random()*cm.length)];let p=0;if(f.includes('+100'))p=100;if(f.includes('+50'))p=50;if(f.includes('+30'))p=30;if(f.includes('+20'))p=20;if(f.includes('+10'))p=10;ruajPike(p);fatiSot=sotData;localStorage.setItem('sabi_fati_data',sotData);document.getElementById('fatiStatus').innerText='⏳ Ke rrotulluar sot!';document.getElementById('btnRrotullo').disabled=false;document.getElementById('btnRrotullo').innerText='⏳ NESËR PËRSËRI';toast('🎉 FITOVE: '+f)},3200)}
-function updateVIPUI(){let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let niv='Fillestar';if(p>=2000)niv='👑 LEGJENDË';else if(p>=1000)niv='💜 VIP PRO';else if(p>=500)niv='⭐ VIP';else if(p>=100)niv='✨ Aktiv';document.getElementById('vipNiveli').innerText=niv;document.getElementById('vipStatus').innerText=localStorage.getItem('sabi_vip')?'✅ VIP Aktiv: '+localStorage.getItem('sabi_vip')+' ✨':'Statusi: '+niv;}
-function blejVIP(t){let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let cm={vip1:100,vip7:500,emer:200};let em={vip1:'VIP 1 Ditë 👑',vip7:'VIP 7 Ditë 💜',emer:'Emër me Ngjyra 🌈'};if(p<cm[t])return toast('❌ Të duhen '+cm[t]+' pikë! Ke '+p);p-=cm[t];localStorage.setItem('sabi_total_pike',p);localStorage.setItem('sabi_vip',em[t]);updatePike();updateVIPUI();toast('🎉 BLEVE: '+em[t]+' ✨')}
+function rrotullo(){if(fatiSot===sotData && !eshteAdmin())return toast('⏳ Ke rrotulluar sot! Kthehu nesër ✨');let r=document.getElementById('rrota');r.style.transform=`rotate(${360*5+Math.floor(Math.random()*360)}deg)`;document.getElementById('btnRrotullo').innerText='⏳ Po rrotullohet...';document.getElementById('btnRrotullo').disabled=true;setTimeout(()=>{let cm=['⭐ +100 Pikë ✨','🎁 VIP 1 Ditë!','☀️ +50 Pikë','💫 +20 Pikë','🌧️ +10 Pikë','🎰 +30 Pikë'];let f=cm[Math.floor(Math.random()*cm.length)];let p=0;if(f.includes('+100'))p=100;if(f.includes('+50'))p=50;if(f.includes('+30'))p=30;if(f.includes('+20'))p=20;if(f.includes('+10'))p=10;ruajPike(p);if(!eshteAdmin()){fatiSot=sotData;localStorage.setItem('sabi_fati_data',sotData);}document.getElementById('fatiStatus').innerText=eshteAdmin()?'👑 ADMIN: Rrotullo pa limit!':'⏳ Ke rrotulluar sot!';document.getElementById('btnRrotullo').disabled=false;document.getElementById('btnRrotullo').innerText=eshteAdmin()?'🎰 RROTULLO PËRSËRI (ADMIN)':'⏳ NESËR PËRSËRI';toast('🎉 FITOVE: '+f)},3200)}
+function updateVIPUI(){if(eshteAdmin()){document.getElementById('vipNiveli').innerText='👑 ADMIN LEGJENDË';document.getElementById('vipStatus').innerText='✅ VIP PËRGJITHMONË AKTIV - sabi007 👑';return;}let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let niv='Fillestar';if(p>=2000)niv='👑 LEGJENDË';else if(p>=1000)niv='💜 VIP PRO';else if(p>=500)niv='⭐ VIP';else if(p>=100)niv='✨ Aktiv';document.getElementById('vipNiveli').innerText=niv;document.getElementById('vipStatus').innerText=localStorage.getItem('sabi_vip')?'✅ VIP Aktiv: '+localStorage.getItem('sabi_vip')+' ✨':'Statusi: '+niv;}
+function blejVIP(t){if(eshteAdmin()){localStorage.setItem('sabi_vip','VIP PËRGJITHMONË 👑👑 ADMIN');localStorage.setItem('sabi_total_pike','999999');updatePike();updateVIPUI();return toast('👑 ADMIN: BLEVE FALAS - VIP PËRGJITHMONË! ✨');}if(t==='vip_pergjithmone')return toast('❌ Ky VIP është vetëm për Admin sabi007!');let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let cm={vip1:100,vip7:500,emer:200};let em={vip1:'VIP 1 Ditë 👑',vip7:'VIP 7 Ditë 💜',emer:'Emër me Ngjyra 🌈'};if(p<cm[t])return toast('❌ Të duhen '+cm[t]+' pikë! Ke '+p);p-=cm[t];localStorage.setItem('sabi_total_pike',p);localStorage.setItem('sabi_vip',em[t]);updatePike();updateVIPUI();toast('🎉 BLEVE: '+em[t]+' ✨')}
 function tregoHoroskop(){let s=document.getElementById('horoskopiSelect').value;let sot=D?Math.round(D.current.temperature_2m)+'°C':'20°C';let shi=D?(D.daily.precipitation_probability_max[0]||0)+'%':'10%';let h={dashi:'♈ <b>DASHI</b><br>❤️ Dashuria: <b>90%</b> - Sot dikush të shikon me dashuri! 😍<br>💰 Lekët: <b>75%</b><br>🍀 Fati: <b>85%</b><br>🌤️ Moti: <b>'+sot+'</b> • Shi '+shi,luani:'♌ <b>LUANI</b><br>❤️ Dashuria: <b>92%</b> - Ti shkëlqen sot! ☀️<br>💰 Lekët: <b>85%</b><br>🍀 Fati: <b>95%</b><br>🌤️ Moti: <b>'+sot+'</b> • Shi '+shi,binjaket:'♊ <b>BINJAKËT</b><br>❤️ Dashuria: <b>95%</b> - Dita e dashurisë! 💘<br>💰 Lekët: <b>65%</b><br>🍀 Fati: <b>88%</b><br>🌤️ Moti: <b>'+sot+'</b> • Shi '+shi};document.getElementById('horoskopiRezultat').innerHTML=h[s]||'♈ <b>'+s+'</b><br>❤️ Dashuria: <b>85%</b> - Ditë e bukur!<br>💰 Lekët: <b>80%</b><br>🍀 Fati: <b>82%</b><br>🌤️ Moti: <b>'+sot+'</b> • Shi '+shi+'<br>👉 Sot është dita jote! ✨'}
 function llogaritDashuri(){let e1=document.getElementById('emer1').value.trim();let e2=document.getElementById('emer2').value.trim();if(!e1||!e2)return toast('❤️ Shkruaj 2 emrat!');let total=0;let b=(e1+e2).toLowerCase();for(let i=0;i<b.length;i++)total+=b.charCodeAt(i)*(i+1);let p=55+(total%44);if(e1.toLowerCase()===e2.toLowerCase())p=100;document.getElementById('dashuriRezultat').style.display='block';document.getElementById('dashuriPerqind').innerText=p;let m=p>=90?`💖 ${e1} + ${e2} = DASHURI E VËRTETË!`:p>=75?`😍 ${e1} + ${e2} = SHUMË MIRË!`:p>=60?`😊 ${e1} + ${e2} = MUND TË BËHET!`:`🤔 ${e1} + ${e2} = SHOQËRI E MIRË!`;document.getElementById('dashuriMesazh').innerHTML=m;document.getElementById('dashuriDetaje').innerHTML=`💍 <b>Martesa:</b> Pas <b>${1+(total%5)} vitesh</b> në <b>${['Tiranë','Paris','Santorini','Dubai'][total%4]}</b><br>👶 <b>Fëmijë:</b> <b>${1+(total%3)}</b><br>🌤️ <b>Moti në dasmë:</b> ☀️ Diell + 24°C<br>❤️ <b>Këshilla:</b> Dërgoja këtë rezultat tani! 💘`;document.getElementById('dashuriRezultat').scrollIntoView({behavior:'smooth'});ruajPike(20);toast('💘 +20 pikë!')}
 function shperndajDashuri(){let e1=document.getElementById('emer1').value,e2=document.getElementById('emer2').value,p=document.getElementById('dashuriPerqind').innerText;let t=`💘 SABIMOTI DASHURIA ✨\n${e1} ❤️ ${e2} = ${p}% PËRPUTHJE!\nProvoje edhe ti: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
@@ -190,10 +262,18 @@ let filterAktiv='diell';const fEm={diell:['☀️','🌞','✨'],shi:['🌧️',
 function zgjidhFilter(t){filterAktiv=t;['diell','shi','bore','stuhi'].forEach(x=>{document.getElementById('f-'+x).style.background=x===t?'#FFD700':'#fff'});document.getElementById('filterOverlay').innerHTML=fEm[t].map(e=>`<span>${e}</span>`).join('');toast('📸 Filter: '+t)}
 function ngarkoFoto(ev){let f=ev.target.files[0];if(!f)return;let r=new FileReader();r.onload=e=>{let img=document.getElementById('filterImg');img.src=e.target.result;img.style.display='block';document.getElementById('filterPlaceholder').style.display='none';toast('📸 Foto u ngarkua! ✨')};r.readAsDataURL(f)}
 function shperndajFilter(){let t=`📸 SABIMOTI FILTER ✨\nBëje edhe ti foton tënde: ${location.href}`;if(navigator.share)navigator.share({text:t});else{navigator.clipboard.writeText(t);toast('🔗 U kopjua!')}}
-function updateKlasifikimi(){let em=localStorage.getItem('sabi_emri')||'Ti';let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let l=JSON.parse(localStorage.getItem('sabi_klasifikimi')||'[]');if(l.length===0){l=[{emri:'SABI 👑',pike:2450},{emri:'Ana ❤️',pike:1890},{emri:'Erion 🔥',pike:1650},{emri:'Sara ✨',pike:1320},{emri:'Doni',pike:980}]}let ex=l.find(x=>x.emri===em);if(ex)ex.pike=p;else if(p>0)l.push({emri:em,pike:p});l.sort((a,b)=>b.pike-a.pike);localStorage.setItem('sabi_klasifikimi',JSON.stringify(l.slice(0,10)));let v=l.findIndex(x=>x.emri===em)+1;document.getElementById('klasifikimiList').innerHTML=l.slice(0,6).map((x,i)=>`<div class="rrufe-item"><span>${i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1)} <b>${x.emri}</b></span><span>⭐ ${x.pike}</span></div>`).join('');document.getElementById('klasVendi').innerText=v>0?'#'+v:'#?'}
-function ruajEmrinKlas(){let e=document.getElementById('klasEmri').value.trim();if(!e)return toast('Shkruaj emrin!');localStorage.setItem('sabi_emri',e);updateKlasifikimi();toast('✅ Emri u ruajt: '+e)}
+function updateKlasifikimi(){let em=localStorage.getItem('sabi_emri')||'Ti';let p=parseInt(localStorage.getItem('sabi_total_pike')||'0');let l=JSON.parse(localStorage.getItem('sabi_klasifikimi')||'[]');if(l.length===0){l=[{emri:'sabi007 👑 ADMIN',pike:999999},{emri:'Ana ❤️',pike:1890},{emri:'Erion 🔥',pike:1650},{emri:'Sara ✨',pike:1320},{emri:'Doni',pike:980}]}let ex=l.find(x=>x.emri.includes(em));if(ex)ex.pike=eshteAdmin()?999999:p;else if(p>0)l.push({emri:eshteAdmin()?'sabi007 👑 ADMIN':em,pike:eshteAdmin()?999999:p});l.sort((a,b)=>b.pike-a.pike);localStorage.setItem('sabi_klasifikimi',JSON.stringify(l.slice(0,10)));let v=l.findIndex(x=>x.emri.includes(em))+1;document.getElementById('klasifikimiList').innerHTML=l.slice(0,6).map((x,i)=>`<div class="rrufe-item"><span>${i===0?'🥇':i===1?'🥈':i===2?'🥉':'#'+(i+1)} <b>${x.emri}</b></span><span>⭐ ${x.pike===999999?'♾️':x.pike}</span></div>`).join('');document.getElementById('klasVendi').innerText=v>0?'#'+v:'#?'}
+function ruajEmrinKlas(){let e=document.getElementById('klasEmri').value.trim();if(!e)return toast('Shkruaj emrin!');localStorage.setItem('sabi_emri',e);updateKlasifikimi();updatePike();kontrolloAdminUI();toast('✅ Emri u ruajt: '+e)}
 function aktivizoNjoftimMengjes(){if('Notification' in window){Notification.requestPermission().then(p=>{if(p==='granted'){toast('🔔 Njoftimi u aktivizua! Nesër ora 7!');new Notification('SABIMOTI ✨',{body:'Sot moti është i bukur! ☀️'})}else toast('Lejo njoftimet!')})}else toast('Nuk mbështetet')}
+// AUTO-LOGIN: nese ke hyre me pare si sabi007, hyn direkt
+if(localStorage.getItem('sabi_emri')){ document.getElementById('loginEmri').value = localStorage.getItem('sabi_emri'); }
+kontrolloAdminUI();
 merrMoti();shfaqWall();nisMemory();updatePike();tregoHoroskop();updateKlasifikimi();zgjidhFilter('diell');
+// Bonus ditor automatik per te gjithe kur hapin app-in
+let sotBonus = new Date().toDateString();
+if(localStorage.getItem('sabi_bonus_data') !== sotBonus && localStorage.getItem('sabi_emri')){
+  setTimeout(()=>merrBonusDitor(),1500);
+}
 </script>
 </body>
 </html>
